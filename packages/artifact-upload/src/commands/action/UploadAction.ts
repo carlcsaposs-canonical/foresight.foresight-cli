@@ -1,22 +1,21 @@
 /* eslint-disable */
 
-import UploadActionModel from '../model/UploadActionModel';
+import UploadActionModel from '../../model/UploadActionModel';
 import { createFolderUnderTmpSync, removeFolderSync } from '../../utils/File';
 import { zipFolder } from '../../utils/Archive';
 import * as path from 'path';
-import UploaderConfigProvider from '../../config/UploaderConfigProvider';
-import ConfigNames from '../../config/ConfigNames';
-import { uploaderTmpPrefix } from '../../constats';
+import ConfigProvider from '../../config/ConfigProvider';
+import { UPLOADER_TMP_PREFIX } from '../../constats';
+import * as EnvironmentSupport from '../../environment/EnvironmentSupport';
 
-export const preAction = (command: any) => {
+export const preAction = async (command: any) => {
     if (!command) {
+        // log && throw error
         return;
     }
     
-    const options = command.opts();
-    console.log(options);
-
-    UploaderConfigProvider.init(options);
+    ConfigProvider.init(command.opts());
+    await EnvironmentSupport.init();
 
     /**
      * init config from options
@@ -30,7 +29,7 @@ export const action = async (options: UploadActionModel) => {
      * Options Usage
      * 
      * options.uploadDir
-     * const size = UploaderConfigProvider.get<number>(ConfigNames.THUNDRA_UPLOADER_SIZE_MAX);
+     * const size = ConfigProvider.get<number>(ConfigNames.THUNDRA_UPLOADER_SIZE_MAX);
      */
 
     /**
@@ -38,10 +37,13 @@ export const action = async (options: UploadActionModel) => {
      * validate path options is exists
      */
 
-    const sourceDir = path.join(__dirname, '../../../tmp')
-    const destinationDir = createFolderUnderTmpSync(uploaderTmpPrefix);
+    const metaData = EnvironmentSupport.getEnvironmentInfo();
+    console.log(EnvironmentSupport.getEnvironmentInfo());
 
-    const result = await zipFolder(sourceDir, path.join(destinationDir, '/tmp.zip'));
+    const sourceDir = path.join(__dirname, '../../../tmp')
+    const destinationDir = createFolderUnderTmpSync(UPLOADER_TMP_PREFIX);
+
+    const result = await zipFolder(sourceDir, path.join(destinationDir, '/tmp.zip'), JSON.stringify(metaData));
     console.log(result);
 
     /**

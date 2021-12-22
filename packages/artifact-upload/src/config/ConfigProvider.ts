@@ -1,16 +1,16 @@
 /* eslint-disable */
 import ConfigMetadata from './ConfigMetadata';
 
-export default class UploaderConfigProvider {
+export default class ConfigProvider {
 
     static configs: any;
 
     static init(options: any): void{
-        UploaderConfigProvider.configs = options;
+        ConfigProvider.configs = options;
     }
 
     static get<T>(key: string, defaultValue?: T): T {
-        const value: T = UploaderConfigProvider.configs[key];
+        const value: T = ConfigProvider.configs[key];
         // tslint:disable-next-line:triple-equals
         if (value != undefined) { // if not null or undefined
             return value;

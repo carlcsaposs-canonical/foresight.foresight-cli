@@ -1,7 +1,12 @@
 import * as archiver from 'archiver';
 import * as fs from 'fs';
+import { UPLOADER_TMP_PREFIX } from '../constats';
 
-export const zipFolder = async (sourceDir: string, destinationDir: string) : Promise<any> => {
+export const zipFolder = async (
+    sourceDir: string,
+    destinationDir: string,
+    metadata?: string,
+) : Promise<any> => {
     
     return new Promise((resolve, reject) => {
 
@@ -10,6 +15,10 @@ export const zipFolder = async (sourceDir: string, destinationDir: string) : Pro
         output.on('end', async () => resolve({ destinationDir }));
         
         const archive = archiver('zip', { zlib: { level: 9 }});
+
+        if (metadata) {
+            archive.append(metadata, { name: `${UPLOADER_TMP_PREFIX}.json` });
+        }
 
         archive.on('error', (err: Error) => reject(err));
         archive.on('warning', (err: Error) => {

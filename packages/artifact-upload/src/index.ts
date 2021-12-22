@@ -20,9 +20,9 @@ program.version('0.0.1');
                 .hideHelp())
         .addOption(
             new Option(
-                ConfigMetadata[ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID].flag,
-                ConfigMetadata[ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID].description)
-                .env(ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID)
+                ConfigMetadata[ConfigNames.THUNDRA_AGENT_TEST_RUN_ID].flag,
+                ConfigMetadata[ConfigNames.THUNDRA_AGENT_TEST_RUN_ID].description)
+                .env(ConfigNames.THUNDRA_AGENT_TEST_RUN_ID)
                 .makeOptionMandatory()
                 .hideHelp())
         .addOption(

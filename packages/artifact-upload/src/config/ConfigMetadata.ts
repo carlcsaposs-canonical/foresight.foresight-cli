@@ -5,7 +5,7 @@ export default {
         flag: '--apiKey <string>',
         description: 'Thundra API Key'
     },
-    [ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID]: {
+    [ConfigNames.THUNDRA_AGENT_TEST_RUN_ID]: {
         flag: '--testProjectId <string>',
         description: 'Thundra Foresight Test Project Id'
     },
