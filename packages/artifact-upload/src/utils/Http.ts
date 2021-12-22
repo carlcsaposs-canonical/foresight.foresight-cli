@@ -21,14 +21,14 @@ export const getHttpModule = (url: any) => {
     return http;
 };
 
-export const makeRequest = (url: string, data: any, { headers = {} }: any): any => {
+export const makeRequest = (url: string, data: any, { method = 'GET', headers = {} }: any): any => {
     const requestUrl = new Url.URL(url);
     const useHttps = requestUrl.protocol === 'https:';
     const options = {
         hostname: requestUrl.hostname,
         port: requestUrl.port,
         path: requestUrl.pathname + requestUrl.search,
-        method: 'PUT',
+        method,
         headers,
         //agent: useHttps ? httpsAgent : httpAgent,
     };
