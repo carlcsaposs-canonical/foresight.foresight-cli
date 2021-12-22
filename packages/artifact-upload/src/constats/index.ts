@@ -1,0 +1,1 @@
+export const uploaderTmpPrefix = 'THUNDRA_UPLOADS';
