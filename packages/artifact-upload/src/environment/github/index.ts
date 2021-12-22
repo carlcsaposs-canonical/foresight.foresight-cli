@@ -1,7 +1,7 @@
 import ConfigProvider from '../../config/ConfigProvider';
 import ConfigNames from '../../config/ConfigNames';
 import EnvironmentInfo from '../../model/EnvironmentInfo';
-import TestRunnerUtils from '../../utils/TestRunnerUtils';
+import * as TestRunnerUtils from '../../utils/TestRunnerUtils';
 import * as GitHelper from '../git/helper';
 import {extractRepoName} from '../git/helper';
 import * as fs from 'fs';

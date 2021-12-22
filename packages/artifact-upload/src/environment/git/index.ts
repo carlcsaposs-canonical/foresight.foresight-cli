@@ -1,6 +1,6 @@
 import EnvironmentInfo from '../../model/EnvironmentInfo';
 import * as GitHelper from './helper';
-import TestRunnerUtils from '../../utils/TestRunnerUtils';
+import * as TestRunnerUtils from '../../utils/TestRunnerUtils';
 import ConfigNames from '../../config/ConfigNames';
 import ConfigProvider from '../../config/ConfigProvider';
 

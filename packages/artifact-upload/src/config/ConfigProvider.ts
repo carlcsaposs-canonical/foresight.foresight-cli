@@ -10,11 +10,13 @@ export default class ConfigProvider {
     }
 
     static get<T>(key: string, defaultValue?: T): T {
-        const value: T = ConfigProvider.configs[key];
-        // tslint:disable-next-line:triple-equals
-        if (value != undefined) { // if not null or undefined
+        const value: T = ConfigProvider.configs[key] 
+            || (ConfigMetadata[key] && ConfigMetadata[key].key 
+                ? ConfigProvider.configs[ConfigMetadata[key].key] : undefined);
+
+        if (value != undefined) {
             return value;
-        } else if (defaultValue !== undefined) { // if user passes null as defaultValue, return null
+        } else if (defaultValue !== undefined) { 
             return defaultValue;
         } else if (ConfigMetadata[key]) {
             return ConfigMetadata[key].default as T;

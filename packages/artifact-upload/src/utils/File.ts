@@ -1,6 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';
+import * as util from 'util';
+
+const readFile = util.promisify(fs.readFile);
 
 export const createFolderUnderTmpSync = (prefix: string): string | undefined => {
     try {
@@ -16,5 +19,23 @@ export const removeFolderSync = (tmpDir: string): void => {
         fs.rmSync(tmpDir, { recursive: true });
     } catch (error) {
         // log
+    }
+};
+
+export const isExist = (dir: string): boolean => {
+    try {
+        return fs.existsSync(dir);
+    } catch (error) {
+        // log
+        return false;
+    }
+};
+
+export const getFile = async (fileDir: string): Promise<Buffer | undefined> => {
+    try {
+        return (await readFile(fileDir));
+    } catch (error) {
+        // log
+        return null;
     }
 };
