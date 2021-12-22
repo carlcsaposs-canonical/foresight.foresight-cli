@@ -44,7 +44,7 @@ export const action = async (options: UploadActionModel) => {
      * optain file key for signed url
      * 
      * const testProjectId = ConfigProvider.get<number>(ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID);
-     * const fileKey = `${testProjectId}/filename`;
+     * const fileKey = `${testProjectId}-filename`;
      */
 
     const metaData = Metadata.createMetaData();
