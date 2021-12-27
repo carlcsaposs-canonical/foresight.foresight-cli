@@ -64,7 +64,7 @@ export const action = async (options: UploadActionModel) => {
         return;
     }
 
-    const mineType = FileUtil.getMineType(archivedFileDir);
+    const mimeType = FileUtil.getMimeType(archivedFileDir);
 
     const presignedS3Url = await HttpUtil.request({
         url: signerUrl,
@@ -72,7 +72,7 @@ export const action = async (options: UploadActionModel) => {
         data: {
             type,
             key: fileKey,
-            contentType: mineType
+            contentType: mimeType
         },
         headers: {
             'Content-type': 'application/json; charset=utf-8'
@@ -93,7 +93,7 @@ export const action = async (options: UploadActionModel) => {
         method: 'PUT',
         data: file,
         headers: {
-            'Content-Type': mineType,
+            'Content-Type': mimeType,
             'Content-Length': file.length
         }
     });

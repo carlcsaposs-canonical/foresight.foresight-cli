@@ -42,6 +42,6 @@ export const getFile = async (fileDir: string): Promise<Buffer | undefined> => {
     }
 };
 
-export const getMineType = (filename: string): string | false => {
+export const getMimeType = (filename: string): string | false => {
     return mime.contentType(path.extname(filename));
 };
