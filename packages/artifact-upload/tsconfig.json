@@ -9,7 +9,8 @@
         "outDir": "./dist",
         "preserveConstEnums": true,
         "removeComments": false,
-        "strictNullChecks": false
+        "strictNullChecks": false,
+        "sourceMap": true
     },
     "include": [
         "src"

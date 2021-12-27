@@ -12,7 +12,7 @@ export default {
         description: 'Thundra Foresight Test Project Id'
     },
     [ConfigNames.THUNDRA_UPLOADER_TYPE]: {
-        key: 'testProjectId',
+        key: 'type',
         flag: '-t, --type <enum>',
         description: 'Thundra Uploader Type Values <TEST>'
     },
@@ -27,10 +27,10 @@ export default {
         description: 'Thundra Uploader Log Level',
         default: 'ERROR'
     },
-    [ConfigNames.THUNDRA_ARTIFACT_UPLOADER_URL]: {
-        key: 'artifactUploaderUrl',
-        flag: '--artifactUploaderUrl <string>',
-        description: 'Thundra Artifact Uploader Url',
+    [ConfigNames.THUNDRA_UPLOADER_SIGNER_URL]: {
+        key: 'uploaderSignerUrl',
+        flag: '--uploaderSignerUrl <string>',
+        description: 'Thundra Uploader Signer Url',
         default: 'https://'
     },
     [ConfigNames.THUNDRA_UPLOADER_SIZE_MAX]: {

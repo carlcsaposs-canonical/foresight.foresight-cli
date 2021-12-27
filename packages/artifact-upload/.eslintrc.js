@@ -20,5 +20,6 @@ module.exports = {
         '@typescript-eslint/semi': ['error'],
         'no-unused-vars': 0,
         'no-console': ['warn', {allow: ['warn', 'error']}],
+        '@typescript-eslint/no-var-requires': 0,
     }
 };

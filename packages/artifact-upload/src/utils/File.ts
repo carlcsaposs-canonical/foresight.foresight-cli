@@ -3,6 +3,8 @@ import * as path from 'path';
 import * as os from 'os';
 import * as util from 'util';
 
+const mime = require('mime-types');
+
 const readFile = util.promisify(fs.readFile);
 
 export const createFolderUnderTmpSync = (prefix: string): string | undefined => {
@@ -38,4 +40,8 @@ export const getFile = async (fileDir: string): Promise<Buffer | undefined> => {
         // log
         return null;
     }
+};
+
+export const getMineType = (filename: string): string | false => {
+    return mime.contentType(path.extname(filename));
 };

@@ -50,10 +50,10 @@ program.version('0.0.1');
                 }))
         .addOption(
             new Option(
-                ConfigMetadata[ConfigNames.THUNDRA_ARTIFACT_UPLOADER_URL].flag,
-                ConfigMetadata[ConfigNames.THUNDRA_ARTIFACT_UPLOADER_URL].description)
-                .env(ConfigNames.THUNDRA_ARTIFACT_UPLOADER_URL)
-                .default(ConfigMetadata[ConfigNames.THUNDRA_ARTIFACT_UPLOADER_URL].default)
+                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIGNER_URL].flag,
+                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIGNER_URL].description)
+                .env(ConfigNames.THUNDRA_UPLOADER_SIGNER_URL)
+                .default(ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIGNER_URL].default)
                 .hideHelp())
         .addOption(
             new Option(

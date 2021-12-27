@@ -1,6 +1,6 @@
-import BaseActionModel from './BaseOptionModel';
+import BaseOption from './BaseOption';
 
-export default class UploadActionOption extends BaseActionModel {
+export default class UploadActionOption extends BaseOption {
 
     uploadDir: string;
 
