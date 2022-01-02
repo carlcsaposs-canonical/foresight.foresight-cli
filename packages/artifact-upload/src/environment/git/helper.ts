@@ -46,10 +46,10 @@ export const init = async (): Promise<GitEnvironmentInfo> => {
 
     try {
         // log
-
+        
         const gitroot = await git.findRoot({
             fs,
-            filepath: __dirname,
+            filepath: process.cwd(),
         });
 
         if (!gitroot) {
@@ -91,6 +91,7 @@ export const init = async (): Promise<GitEnvironmentInfo> => {
 
         // log
     } catch (error) {
+        console.log(error);
         // log
     }
 

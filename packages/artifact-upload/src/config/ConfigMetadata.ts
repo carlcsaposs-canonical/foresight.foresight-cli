@@ -1,10 +1,22 @@
 import ConfigNames from './ConfigNames';
+import { FILE_TYPES, FRAMEWORK_TYPES } from '../constats';
 
-export default {
+interface ConfigMeta {
+    [key: string]: {
+        key: string,
+        flag: string,
+        description: string,
+        type?: string,
+        default?: any,
+    };
+}
+
+const config: ConfigMeta = {
     [ConfigNames.THUNDRA_APIKEY]: {
         key: 'apiKey',
         flag: '--apiKey <string>',
-        description: 'Thundra API Key'
+        description: 'Thundra API Key',
+        type: 'string'
     },
     [ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID]: {
         key: 'testProjectId',
@@ -14,7 +26,12 @@ export default {
     [ConfigNames.THUNDRA_UPLOADER_TYPE]: {
         key: 'type',
         flag: '-t, --type <enum>',
-        description: 'Thundra Uploader Type Values <TEST>'
+        description: `Thundra Uploader Type Values <${Object.keys(FILE_TYPES).join(' | ')}>`
+    },
+    [ConfigNames.THUNDRA_UPLOADER_FRAMEWORK]: {
+        key: 'framework',
+        flag: '-f, --framework <enum>',
+        description: `Thundra Uploader Framework Type Values <${Object.keys(FRAMEWORK_TYPES).join(' | ')}>`
     },
     [ConfigNames.THUNDRA_UPLOADER_REPORT_DIR]: {
         key: 'uploadDir',
@@ -46,3 +63,5 @@ export default {
         default: {}
     }
 };
+
+export default config;

@@ -8,7 +8,8 @@
   "scripts": {
     "bootstrap": "lerna exec npm install",
     "compile": "lerna exec npm run compile",
-    "diff": "lerna diff"
+    "diff": "lerna diff",
+    "publish": "lerna exec -- npm publish"
   },
   "workspaces": {
     "packages": [

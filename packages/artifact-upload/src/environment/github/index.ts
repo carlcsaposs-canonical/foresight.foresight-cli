@@ -42,7 +42,6 @@ export const init = async (): Promise<void> => {
     try {
         if (environmentInfo == null) {
             const gitEnvironmentInfo = await GitHelper.init();
-
             const githubRepo = process.env[ConfigNames.GITHUB_REPOSITORY_ENV_VAR_NAME]
                 || process.env[ConfigNames.GITHUB_REPOSITORY_ENV_VAR_NAME.toLowerCase()];
             if (!githubRepo) {
@@ -88,6 +87,7 @@ export const init = async (): Promise<void> => {
             environmentInfo = new EnvironmentInfo(testRunId, ENVIRONMENT, repoURL, repoName, branch, commitHash, commitMessage);
         }
     } catch (e) {
+        console.error(e);
         // log
     }
 };

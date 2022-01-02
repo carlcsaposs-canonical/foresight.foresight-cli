@@ -4,7 +4,7 @@ import { Command, Option } from 'commander';
 import { action, preAction } from './commands/action/UploadAction';
 import ConfigNames from './config/ConfigNames';
 import ConfigMetadata from './config/ConfigMetadata';
-import { FILE_TYPES } from './constats';
+import { FILE_TYPES, FRAMEWORK_TYPES } from './constats';
 import * as FileUtils from './utils/File';
 import * as Utils from './utils/Utils';
 
@@ -50,24 +50,28 @@ program.version('0.0.1');
                 }))
         .addOption(
             new Option(
+                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_FRAMEWORK].flag,
+                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_FRAMEWORK].description)
+                .choices(Object.values(FRAMEWORK_TYPES))
+                .env(ConfigNames.THUNDRA_UPLOADER_FRAMEWORK)
+                .makeOptionMandatory())             
+        .addOption(
+            new Option(
                 ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIGNER_URL].flag,
                 ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIGNER_URL].description)
                 .env(ConfigNames.THUNDRA_UPLOADER_SIGNER_URL)
-                .default(ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIGNER_URL].default)
                 .hideHelp())
         .addOption(
             new Option(
                 ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_LOG_LEVEL].flag,
                 ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_LOG_LEVEL].description)
                 .env(ConfigNames.THUNDRA_UPLOADER_LOG_LEVEL)
-                .default(ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_LOG_LEVEL].default)
                 .hideHelp())
         .addOption(
             new Option(
                 ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIZE_MAX].flag,
                 ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIZE_MAX].description)
                 .env(ConfigNames.THUNDRA_UPLOADER_SIZE_MAX)
-                .default(ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIZE_MAX].default)
                 .hideHelp())
         .description('Uploader')
         .hook('preAction', preAction)
