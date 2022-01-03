@@ -20,6 +20,7 @@ export const createMetaData = (): Metadata => {
         environmentInfo.commitMessage,
         apiKey,
         projectId,
+        environmentInfo.testRunId,
         framework,
         Math.floor(new Date().getTime() / 1000));
 };

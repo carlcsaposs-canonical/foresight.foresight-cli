@@ -9,6 +9,7 @@ export default class Metadata {
     commitMessage: string;
     apiKey: string;
     projectId: string;
+    testRunId: string;
     testFramework: string;
     createdAt: number;
 
@@ -22,6 +23,7 @@ export default class Metadata {
         commitMessage: string,
         apiKey: string,
         projectId: string,
+        testRunId: string,
         testFramework: string,
         createdAt: number,
     ) {
@@ -34,6 +36,7 @@ export default class Metadata {
         this.commitMessage = commitMessage;
         this.apiKey = apiKey;
         this.projectId = projectId;
+        this.testRunId = testRunId;
         this.testFramework = testFramework;
         this.createdAt = createdAt;
     }
