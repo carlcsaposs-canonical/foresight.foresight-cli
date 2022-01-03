@@ -1,27 +1,39 @@
-import OwnerInfo from './OwnerInfo';
-import SourceInfo from './SourceInfo';
-
 export default class Metadata {
 
-    sourceInfo: SourceInfo;
-    ownerInfo: OwnerInfo;
-    ciProvider: String;
-    workflowRunId: string;
+    environment: string;
+    repoUrl: string;
+    repoName: string;
+    repoFullName: string;
+    branch: string;
+    commitHash: string;
+    commitMessage: string;
+    apiKey: string;
+    projectId: string;
     testFramework: string;
-    createdAt: string;
+    createdAt: number;
 
     constructor(
-        sourceInfo: SourceInfo,
-        ownerInfo: OwnerInfo,
-        ciProvider: String,
-        workflowRunId: string,
+        environment: string,
+        repoUrl: string,
+        repoName: string,
+        repoFullName: string,
+        branch: string,
+        commitHash: string,
+        commitMessage: string,
+        apiKey: string,
+        projectId: string,
         testFramework: string,
-        createdAt: string,
-    ){
-        this.sourceInfo = sourceInfo;
-        this.ownerInfo = ownerInfo;
-        this.ciProvider = ciProvider;
-        this.workflowRunId = workflowRunId;
+        createdAt: number,
+    ) {
+        this.environment = environment;
+        this.repoUrl = repoUrl;
+        this.repoName = repoName;
+        this.repoFullName = repoFullName;
+        this.branch = branch;
+        this.commitHash = commitHash;
+        this.commitMessage = commitMessage;
+        this.apiKey = apiKey;
+        this.projectId = projectId;
         this.testFramework = testFramework;
         this.createdAt = createdAt;
     }

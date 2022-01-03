@@ -32,7 +32,8 @@ export const action = async () => {
      */
     const filename = Utils.generateRandomFileName('.zip');
     const signerUrl = ConfigProvider.get<string>(ConfigNames.THUNDRA_UPLOADER_SIGNER_URL);
-    const testProjectId = ConfigProvider.get<number>(ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID);
+    const apiKey = ConfigProvider.get<string>(ConfigNames.THUNDRA_APIKEY);
+    const testProjectId = ConfigProvider.get<string>(ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID);
     const type = ConfigProvider.get<string>(ConfigNames.THUNDRA_UPLOADER_TYPE);
     const reportDir = ConfigProvider.get<string>(ConfigNames.THUNDRA_UPLOADER_REPORT_DIR);
     const fileKey = `${testProjectId}/${filename}`; // '/' for foldering on s3
@@ -63,7 +64,8 @@ export const action = async () => {
                 contentType: mimeType
             },
             headers: {
-                'Content-type': 'application/json; charset=utf-8'
+                'Content-type': 'application/json; charset=utf-8',
+                "authorization": `ApiKey ${apiKey}`
             }
         });
 

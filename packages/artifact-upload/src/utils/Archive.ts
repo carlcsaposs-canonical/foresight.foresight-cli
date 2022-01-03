@@ -18,7 +18,7 @@ export const zipFolder = async (
         const archive = archiver('zip', { zlib: { level: 9 }});
 
         if (metadata) {
-            archive.append(metadata, { name: `${UPLOADER_TMP_PREFIX}.json` });
+            archive.append(metadata, { name: `${UPLOADER_TMP_PREFIX}` });
         }
 
         archive.on('error', (err: Error) => reject(err));
