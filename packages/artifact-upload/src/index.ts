@@ -7,6 +7,7 @@ import ConfigMetadata from './config/ConfigMetadata';
 import { FILE_TYPES, FRAMEWORK_TYPES } from './constats';
 import * as FileUtils from './utils/File';
 import * as Utils from './utils/Utils';
+import logger from './logger';
 
 const program = new Command();
 program.version('0.0.1');
@@ -61,25 +62,12 @@ program.version('0.0.1');
                 ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIGNER_URL].description)
                 .env(ConfigNames.THUNDRA_UPLOADER_SIGNER_URL)
                 .hideHelp())
-        .addOption(
-            new Option(
-                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_LOG_LEVEL].flag,
-                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_LOG_LEVEL].description)
-                .env(ConfigNames.THUNDRA_UPLOADER_LOG_LEVEL)
-                .hideHelp())
-        .addOption(
-            new Option(
-                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIZE_MAX].flag,
-                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIZE_MAX].description)
-                .env(ConfigNames.THUNDRA_UPLOADER_SIZE_MAX)
-                .hideHelp())
         .description('Uploader')
         .hook('preAction', preAction)
         .action(action);
   
     await program.parseAsync(process.argv);
-})().catch(err => {
-    // handle all errors
-    console.error(err);
+})().catch((err: Error) => {
+    logger.error(err.message);
 });
 

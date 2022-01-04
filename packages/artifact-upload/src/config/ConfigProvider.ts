@@ -7,6 +7,14 @@ export default class ConfigProvider {
 
     static init(options: any): void{
         ConfigProvider.configs = options;
+        Object.keys(ConfigMetadata).forEach(configName => {
+            const env = process.env[configName] || ConfigMetadata[configName].default;   
+            if (env 
+                && !ConfigProvider.configs[ConfigMetadata[configName].key]
+                && !ConfigProvider.configs[configName]) {
+                ConfigProvider.configs[configName] = env;
+            }
+        });
     }
 
     static get<T>(key: string, defaultValue?: T): T {

@@ -48,7 +48,7 @@ const config: ConfigMeta = {
         key: 'uploaderSignerUrl',
         flag: '--uploaderSignerUrl <string>',
         description: 'Thundra Uploader Signer Url',
-        default: 'https://'
+        default: 'https://upload.thundra.io'
     },
     [ConfigNames.THUNDRA_UPLOADER_SIZE_MAX]: {
         key: 'uploaderMaxSize',
