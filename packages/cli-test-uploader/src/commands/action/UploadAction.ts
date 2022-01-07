@@ -70,7 +70,7 @@ export const action = async () => {
             url: Utils.getJoinedUrl(signerUrl, UPLOADER_SIGNER_PATH),
             method: 'POST',
             data: {
-                UPLOADER_SIGNED_URL_TYPE,
+                type: UPLOADER_SIGNED_URL_TYPE,
                 key: fileKey,
                 contentType: mimeType
             },
