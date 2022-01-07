@@ -3,7 +3,7 @@
 import { Command } from "commander";
 import logger from './logger';
 
-const { version } = require('./package.json');
+const { version } = require('../package.json');
 
 const program = new Command();
 program.version(version);
