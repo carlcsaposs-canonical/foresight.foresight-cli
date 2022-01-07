@@ -1,5 +1,5 @@
 import ConfigNames from './ConfigNames';
-import { FILE_TYPES, FRAMEWORK_TYPES } from '../constats';
+import { FRAMEWORK_TYPES } from '../constats';
 
 interface ConfigMeta {
     [key: string]: {
@@ -22,11 +22,6 @@ const config: ConfigMeta = {
         key: 'testProjectId',
         flag: '--testProjectId <string>',
         description: 'Thundra Foresight Test Project Id'
-    },
-    [ConfigNames.THUNDRA_UPLOADER_TYPE]: {
-        key: 'type',
-        flag: '-t, --type <enum>',
-        description: `Thundra Uploader Type Values <${Object.keys(FILE_TYPES).join(' | ')}>`
     },
     [ConfigNames.THUNDRA_UPLOADER_FRAMEWORK]: {
         key: 'framework',

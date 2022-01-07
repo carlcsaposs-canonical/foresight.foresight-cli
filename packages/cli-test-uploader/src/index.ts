@@ -4,7 +4,7 @@ import { Command, Option } from 'commander';
 import { action, preAction } from './commands/action/UploadAction';
 import ConfigNames from './config/ConfigNames';
 import ConfigMetadata from './config/ConfigMetadata';
-import { FILE_TYPES, FRAMEWORK_TYPES } from './constats';
+import { FRAMEWORK_TYPES } from './constats';
 import * as FileUtils from './utils/File';
 import * as Utils from './utils/Utils';
 import logger from './logger';
@@ -30,13 +30,6 @@ program.version(version);
                 .env(ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID)
                 .makeOptionMandatory()
                 .hideHelp())
-        .addOption(
-            new Option(
-                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_TYPE].flag,
-                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_TYPE].description)
-                .choices(Object.values(FILE_TYPES))
-                .env(ConfigNames.THUNDRA_UPLOADER_TYPE)
-                .makeOptionMandatory())
         .addOption(
             new Option(
                 ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_REPORT_DIR].flag,

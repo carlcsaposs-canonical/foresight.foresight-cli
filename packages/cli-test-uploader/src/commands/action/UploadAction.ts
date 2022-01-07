@@ -11,7 +11,11 @@ import ConfigProvider from '../../config/ConfigProvider';
 import * as MetadataProvider from '../../metadata';
 import Metadata from '../../model/Metadata';
 import ConfigNames from '../../config/ConfigNames';
-import { UPLOADER_TMP_PREFIX, UPLOADER_SIGNER_PATH } from '../../constats';
+import { 
+    UPLOADER_TMP_PREFIX,
+    UPLOADER_SIGNER_PATH,
+    UPLOADER_SIGNED_URL_TYPE,
+} from '../../constats';
 import { init } from '../init';
 import logger from '../../logger';
 
@@ -38,7 +42,6 @@ export const action = async () => {
     const signerUrl = ConfigProvider.get<string>(ConfigNames.THUNDRA_UPLOADER_SIGNER_URL);
     const apiKey = ConfigProvider.get<string>(ConfigNames.THUNDRA_APIKEY);
     const testProjectId = ConfigProvider.get<string>(ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID);
-    const type = ConfigProvider.get<string>(ConfigNames.THUNDRA_UPLOADER_TYPE);
     const reportDir = ConfigProvider.get<string>(ConfigNames.THUNDRA_UPLOADER_REPORT_DIR);
     const fileKey = `${testProjectId}/${filename}`; // '/' for foldering on s3
 
@@ -67,7 +70,7 @@ export const action = async () => {
             url: Utils.getJoinedUrl(signerUrl, UPLOADER_SIGNER_PATH),
             method: 'POST',
             data: {
-                type,
+                UPLOADER_SIGNED_URL_TYPE,
                 key: fileKey,
                 contentType: mimeType
             },
