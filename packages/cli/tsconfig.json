@@ -14,7 +14,7 @@
         "composite": true,
         "baseUrl": "./",
         "paths": {
-          "@thundra-foresight/cli-test-uploader": ["../cli-test-uploader"]
+          "@thundra-foresight/cli-test-uploader": ["@thundra-foresight/cli-test-uploader"]
         }
     },
     "include": [

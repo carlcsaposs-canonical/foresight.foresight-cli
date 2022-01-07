@@ -2,6 +2,7 @@
 
 import { Command } from "commander";
 import logger from './logger';
+import * as TestUploader from '@thundra-foresight/cli-test-uploader/dist/commands/upload'
 
 const { version } = require('../package.json');
 
@@ -9,9 +10,8 @@ const program = new Command();
 program.version(version);
 
 (async() => {
-    program.command('upload test', 'update installed packages', { 
-        executableFile: require.resolve('@thundra-foresight/cli-test-uploader') 
-    });
+    program
+        .addCommand(TestUploader.createTestUploadCommand());
     
     await program.parseAsync(process.argv);
 })().catch((err: Error) => {

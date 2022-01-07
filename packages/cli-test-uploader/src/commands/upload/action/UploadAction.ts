@@ -2,22 +2,22 @@
 
 import * as fs from 'fs';
 import * as util from 'util';
-import * as Utils from '../../utils/Utils';
-import * as FileUtil from '../../utils/File';
-import * as ArchiveUtil from '../../utils/Archive';
-import * as HttpUtil from '../../utils/Http';
+import * as Utils from '../../../utils/Utils';
+import * as FileUtil from '../../../utils/File';
+import * as ArchiveUtil from '../../../utils/Archive';
+import * as HttpUtil from '../../../utils/Http';
 import * as path from 'path';
-import ConfigProvider from '../../config/ConfigProvider';
-import * as MetadataProvider from '../../metadata';
-import Metadata from '../../model/Metadata';
-import ConfigNames from '../../config/ConfigNames';
+import ConfigProvider from '../../../config/ConfigProvider';
+import * as MetadataProvider from '../../../metadata';
+import Metadata from '../../../model/Metadata';
+import ConfigNames from '../../../config/ConfigNames';
 import { 
     UPLOADER_TMP_PREFIX,
     UPLOADER_SIGNER_PATH,
     UPLOADER_SIGNED_URL_TYPE,
-} from '../../constats';
-import { init } from '../init';
-import logger from '../../logger';
+} from '../../../constats';
+import { init } from '../../../init';
+import logger from '../../../logger';
 
 const readFile = util.promisify(fs.readFile);
 
