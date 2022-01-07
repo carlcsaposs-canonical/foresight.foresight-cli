@@ -4,15 +4,21 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "noImplicitAny": true,
-        "target": "ES2017",
+        "target": "ES2018",
         "rootDir": "src",
         "outDir": "./dist",
         "preserveConstEnums": true,
         "removeComments": false,
         "strictNullChecks": false,
-        "sourceMap": true
+        "sourceMap": true,
+        "composite": true,
+        "baseUrl": "./",
+        "paths": {
+          "@thundra-foresight/cli-test-uploader": ["../cli-test-uploader"]
+        }
     },
     "include": [
         "src"
-    ]
+    ],
+    "references": [{ "path": "../cli-test-uploader" }]
 }

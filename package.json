@@ -1,15 +1,20 @@
 {
-  "name": "@thundra/root",
+  "name": "@thundra-foresight/root",
   "private": true,
   "version": "1.0.0",
+  "dependencies": {
+    "rimraf": "^3.0.1"
+  },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "lerna": "^4.0.0",
+    "npm-run-all": "^4.1.5"
   },
   "scripts": {
-    "bootstrap": "lerna exec npm install",
-    "compile": "lerna exec npm run compile",
-    "diff": "lerna diff",
-    "publish": "lerna exec -- npm publish"
+    "bootstrap": "lerna bootstrap --hoist",
+    "clean:all": "lerna run --parallel clean",
+    "build:all": "lerna exec npm run build",
+    "clean-build:all": "npm-run-all -p clean:all -s build:all",
+    "diff": "lerna diff"
   },
   "workspaces": {
     "packages": [

@@ -1,0 +1,1 @@
+export const UPLOADER_LOG_PREFIX = 'Foresight-CLI';

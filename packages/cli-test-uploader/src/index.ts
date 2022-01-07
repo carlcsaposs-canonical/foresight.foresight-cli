@@ -9,12 +9,14 @@ import * as FileUtils from './utils/File';
 import * as Utils from './utils/Utils';
 import logger from './logger';
 
+const { version } = require('./package.json');
+
 const program = new Command();
 program.version('0.0.1');
 
 (async() => {
     program
-        .command('upload')
+        .command('test')
         .addOption(
             new Option(
                 ConfigMetadata[ConfigNames.THUNDRA_APIKEY].flag,
@@ -68,6 +70,6 @@ program.version('0.0.1');
   
     await program.parseAsync(process.argv);
 })().catch((err: Error) => {
-    logger.error(err.message);
+    logger.error(err.message, err);
 });
 

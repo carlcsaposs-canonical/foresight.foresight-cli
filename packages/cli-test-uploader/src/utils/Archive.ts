@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { UPLOADER_TMP_PREFIX } from '../constats';
+import { UPLOADER_METADATA_FILENAME } from '../constats';
 
 const archiver = require('archiver');
 
@@ -18,7 +18,7 @@ export const zipFolder = async (
         const archive = archiver('zip', { zlib: { level: 9 }});
 
         if (metadata) {
-            archive.append(metadata, { name: `${UPLOADER_TMP_PREFIX}` });
+            archive.append(metadata, { name: `${UPLOADER_METADATA_FILENAME}` });
         }
 
         archive.on('error', (err: Error) => reject(err));
