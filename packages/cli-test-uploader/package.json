@@ -1,9 +1,9 @@
 {
   "name": "@thundra-foresight/cli-test-uploader",
-  "version": "2.0.3",
+  "version": "0.0.2",
   "description": "",
   "bin": {
-    "thundra-foresight-cli-upload": "dist/index.js"
+    "thundra-foresight-cli-upload-test": "dist/index.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -40,5 +40,5 @@
     "url-join": "^4.0.1",
     "uuid": "8.3.2"
   },
-  "gitHead": "4c90d0a14b73bd0481b1a800a3813e5b62bb0a5e"
+  "gitHead": "4738d39159bd2edeb81016cf79730908d3d4a00f"
 }

@@ -12,11 +12,10 @@ import logger from './logger';
 const { version } = require('../package.json');
 
 const program = new Command();
-program.version('0.0.1');
+program.version(version);
 
 (async() => {
     program
-        .command('test')
         .addOption(
             new Option(
                 ConfigMetadata[ConfigNames.THUNDRA_APIKEY].flag,

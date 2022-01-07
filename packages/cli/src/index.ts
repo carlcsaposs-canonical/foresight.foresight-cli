@@ -9,9 +9,9 @@ const program = new Command();
 program.version(version);
 
 (async() => {
-    program.command('upload', 'update installed packages', { 
+    program.command('upload test', 'update installed packages', { 
         executableFile: require.resolve('@thundra-foresight/cli-test-uploader') 
-    });;
+    });
     
     await program.parseAsync(process.argv);
 })().catch((err: Error) => {
