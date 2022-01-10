@@ -15,15 +15,6 @@ export default class ConfigProvider {
             }
             
         })
-
-        // Object.keys(ConfigProvider.configMetadata).forEach(configName => {
-        //     const env = process.env[configName] || ConfigProvider.configMetadata[configName].default;   
-        //     if (env 
-        //         && !ConfigProvider.configs[ConfigProvider.configMetadata[configName].key]
-        //         && !ConfigProvider.configs[configName]) {
-        //         ConfigProvider.configs[configName] = env;
-        //     }
-        // });
     }
 
     static get<T>(key: string, defaultValue?: T): T {
