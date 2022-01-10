@@ -16,8 +16,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "npmlog": "6.0.0"
-  },
   "gitHead": "d7673838229f4a08cff9fcf45444333b8417fa9f"
 }
