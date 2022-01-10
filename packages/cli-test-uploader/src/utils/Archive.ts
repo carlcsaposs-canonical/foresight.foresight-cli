@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import { UPLOADER_METADATA_FILENAME } from '../constats';
+import logger from '../logger';
 
 const archiver = require('archiver');
 
@@ -23,7 +24,7 @@ export const zipFolder = async (
 
         archive.on('error', (err: Error) => reject(err));
         archive.on('warning', (err: Error) => {
-            // log err
+            logger.debug(`<ArchiveUtil> ${err.message}`)
             resolve(err.message);
         });
 

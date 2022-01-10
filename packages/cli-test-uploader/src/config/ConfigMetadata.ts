@@ -50,12 +50,6 @@ const config: ConfigMeta = {
         flag: '--uploaderMaxSize <string>',
         description: 'Thundra Artifact Uploader Url',
         default: 100 * 1024
-    },
-    [ConfigNames.THUNDRA_TMP]: {
-        key: 'tmp',
-        flag: '--tmp []',
-        description: 'tmp',
-        default: {}
     }
 };
 

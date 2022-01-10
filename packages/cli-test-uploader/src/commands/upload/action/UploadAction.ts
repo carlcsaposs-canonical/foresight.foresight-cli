@@ -23,7 +23,7 @@ const readFile = util.promisify(fs.readFile);
 
 export const preAction = async (command: any) => {
     if (!command) {
-        logger.error('Command can not be null');
+        logger.error('<PreAction> Command can not be null');
         return;
     }
     
@@ -36,7 +36,7 @@ export const action = async () => {
      * (runId + time) as uuid ?
      */
 
-    logger.debug('Upload action working ...');
+    logger.debug('<UploadAction> Upload action working ...');
 
     const filename = Utils.generateRandomFileName('.zip');
     const signerUrl = ConfigProvider.get<string>(ConfigNames.THUNDRA_UPLOADER_SIGNER_URL);
@@ -49,7 +49,7 @@ export const action = async () => {
     const sourceDir = Utils.getAbsolutePath(reportDir);
     const destinationDir = FileUtil.createFolderUnderTmpSync(UPLOADER_TMP_PREFIX);
 
-    logger.debug(`Tmp folder created under ${destinationDir}`);
+    logger.debug(`<UploadAction> Tmp folder created under ${destinationDir}`);
 
     try {
         const archivedFileDir = await ArchiveUtil.zipFolder(
@@ -59,11 +59,11 @@ export const action = async () => {
         );
 
         if (!archivedFileDir) {
-            logger.debug('Files did not archived');
+            logger.debug('<UploadAction> Files did not archived');
             return;
         }
 
-        logger.debug(`Files archived to ${archivedFileDir}`);
+        logger.debug(`<UploadAction> Files archived to ${archivedFileDir}`);
 
         const mimeType = FileUtil.getMimeType(archivedFileDir);
         const presignedS3Url = await HttpUtil.request({
@@ -81,11 +81,11 @@ export const action = async () => {
         });
 
         if (!presignedS3Url) {
-            logger.debug('Signed url did not created');
+            logger.debug('<UploadAction> Signed url did not created');
             return;
         }
 
-        logger.debug('Signed url created successfully');
+        logger.debug('<UploadAction> Signed url created successfully');
 
         const uploadUrl = JSON.parse(presignedS3Url).url;
         const file = await readFile(archivedFileDir);
@@ -100,7 +100,7 @@ export const action = async () => {
             }
         });
 
-        logger.debug('Files uploaded');
+        logger.debug('<UploadAction> Files uploaded');
 
         return console.log(JSON.stringify({
             status: 'Ok',
@@ -108,6 +108,6 @@ export const action = async () => {
         }));
     } finally {
         FileUtil.removeFolderSync(destinationDir);
-        logger.debug(`Tmp folder: ${destinationDir} deleted`);
+        logger.debug(`<UploadAction> Tmp folder: ${destinationDir} deleted`);
     }
 };

@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 
 import * as git from 'isomorphic-git';
+import logger from '../../logger';
 
 import { GitEnvironmentInfo } from '../../model/GitEnvironmentInfo';
 
@@ -45,7 +46,7 @@ export const init = async (): Promise<GitEnvironmentInfo> => {
     let commitMessage: string;
 
     try {
-        // log
+        logger.debug('<GitHelper> Obtaining git environment information ...');
         
         const gitroot = await git.findRoot({
             fs,
@@ -89,10 +90,9 @@ export const init = async (): Promise<GitEnvironmentInfo> => {
             commitMessage,
         );
 
-        // log
+        logger.debug('<GitHelper> Obtained git environment information ...');
     } catch (error) {
-        console.log(error);
-        // log
+        logger.error('<GitHelper> Git environment did not created.', error);
     }
 
     return gitEnvironmentInfo;

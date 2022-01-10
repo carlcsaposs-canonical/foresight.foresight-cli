@@ -4,6 +4,7 @@ import EnvironmentInfo from '../../model/EnvironmentInfo';
 import * as TestRunnerUtils from '../../utils/TestRunnerUtils';
 import * as GitHelper from '../git/helper';
 import * as GitEnvironmentInfo from '../git';
+import logger from '../../logger';
 
 export const ENVIRONMENT = 'Jenkins';
 
@@ -81,6 +82,7 @@ export const init = async (): Promise<void> => {
             environmentInfo = new EnvironmentInfo(testRunId, ENVIRONMENT, repoURL, repoName, branch, commitHash, commitMessage);
         }
     } catch (e) {
-        // log
+        logger.error(
+            '<JenkinsEnvironmentInfoProvider> Unable to build environment info');
     }
 };

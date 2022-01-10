@@ -3,6 +3,7 @@ import * as GitHelper from './helper';
 import * as TestRunnerUtils from '../../utils/TestRunnerUtils';
 import ConfigNames from '../../config/ConfigNames';
 import ConfigProvider from '../../config/ConfigProvider';
+import logger from '../../logger';
 
 export const ENVIRONMENT = 'Git';
 
@@ -29,7 +30,7 @@ export const getEnvironmentInfo = (): EnvironmentInfo => {
  */
 export const init = async (): Promise<void> => {
     if (environmentInfo == null) {
-        // log
+        logger.debug('<GitEnvironmentProvider> Initializing git environment ...');
 
         const gitEnvironmentInfo = await GitHelper.init();
         if (gitEnvironmentInfo != null) {
@@ -50,7 +51,7 @@ export const init = async (): Promise<void> => {
                 commitHash,
                 commitMessage);
 
-            // log
+            logger.debug('<GitEnvironmentProvider> Initialized git environment ...');
         }
     }
 };

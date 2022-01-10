@@ -15,6 +15,6 @@ program.version(version);
   
     await program.parseAsync(process.argv);
 })().catch((err: Error) => {
-    logger.error(err.message, err);
+    logger.error(`<CLITestUploader> ${err.message}`, err);
 });
 

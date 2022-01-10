@@ -6,6 +6,7 @@ import * as GitHelper from '../git/helper';
 import {extractRepoName} from '../git/helper';
 import * as fs from 'fs';
 import * as util from 'util';
+import logger from '../../logger';
 
 export const ENVIRONMENT = 'Github';
 const REFS_HEADS_PREFIX = 'refs/heads/';
@@ -63,7 +64,7 @@ export const init = async (): Promise<void> => {
                     const eventJSON = JSON.parse(await readFile(githubEventPath, 'utf8'));
                     commitHash = eventJSON.pull_request.head.sha; // get(eventJSON, 'pull_request.head.sha');
                 } catch (e) {
-                    // log
+                    logger.debug(`Unable to read GitHub event from file ${githubEventPath}`);
                 }
             }
 
@@ -87,7 +88,7 @@ export const init = async (): Promise<void> => {
             environmentInfo = new EnvironmentInfo(testRunId, ENVIRONMENT, repoURL, repoName, branch, commitHash, commitMessage);
         }
     } catch (e) {
-        console.error(e);
-        // log
+        logger.error(
+            '<GithubEnvironmentInfoProvider> Unable to build environment info');
     }
 };

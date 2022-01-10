@@ -1,5 +1,6 @@
 import EnvironmentInfo from '../model/EnvironmentInfo';
 import * as InfoProvider from './';
+import logger from '../logger';
 
 let environmentInfo: EnvironmentInfo;
 
@@ -7,14 +8,14 @@ let environmentInfo: EnvironmentInfo;
  * Initiate all environment providers and set non empty one
  */
 export const init = async (): Promise<void> => {
-    // log
+    logger.debug('<EnvironmentSupport> Environments initilizing ...');
 
     await InfoProvider.init();
 
     Object.values(InfoProvider.environmentInfoProviders).forEach((environmentInfoProvider) => {
         const ei: EnvironmentInfo = environmentInfoProvider.getEnvironmentInfo();
         if (ei != null) {
-            // log
+            logger.debug(`<EnvironmentSupport> Environment loaded. ${ei.environment}`);
             environmentInfo = ei;
             return;
         }

@@ -1,6 +1,6 @@
 {
   "name": "@thundra-foresight/cli",
-  "version": "0.0.15",
+  "version": "0.0.19",
   "description": "",
   "bin": {
     "thundra-foresight-cli": "dist/index.js"
@@ -28,9 +28,9 @@
     "typescript": "4.4.4"
   },
   "dependencies": {
-    "@thundra-foresight/cli-test-uploader": "^0.0.15",
+    "@thundra-foresight/cli-test-uploader": "^0.0.19",
     "commander": "8.3.0",
     "npmlog": "6.0.0"
   },
-  "gitHead": "57f9a828f3f3a6b0bd0e8c5cbd31a138773decbf"
+  "gitHead": "82ba407927a45190f8ed643a1847965752737c0b"
 }
