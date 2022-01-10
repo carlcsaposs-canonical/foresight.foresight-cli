@@ -1,6 +1,6 @@
 import Metadata from '../model/Metadata';
-import * as EnvironmentSupport from '../environment/EnvironmentSupport';
-import ConfigProvider from '../config/ConfigProvider';
+import { EnvironmentSupport } from '@thundra-foresight/cli-environment-provider';
+import { ConfigProvider } from '@thundra-foresight/cli-config-provider';
 import ConfigNames from '../config/ConfigNames';
 
 export const createMetaData = (): Metadata => {

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from "commander";
-import logger from './logger';
+import { logger } from '@thundra-foresight/cli-logger';
 import * as TestUploader from '@thundra-foresight/cli-test-uploader/dist/commands/upload'
 
 const { version } = require('../package.json');

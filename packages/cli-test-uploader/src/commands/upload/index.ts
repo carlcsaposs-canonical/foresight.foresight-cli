@@ -3,8 +3,10 @@ import { action, preAction } from './action/UploadAction';
 import ConfigNames from '../../config/ConfigNames';
 import ConfigMetadata from '../../config/ConfigMetadata';
 import { FRAMEWORK_TYPES } from '../../constats';
-import * as FileUtils from '../../utils/File';
-import * as Utils from '../../utils/Utils';
+import {
+    FileUtil,
+    Utils,
+} from '@thundra-foresight/cli-utils';
 
 export const createTestUploadCommand = () => {
     return new Command('upload-test')
@@ -29,7 +31,7 @@ export const createTestUploadCommand = () => {
                 .env(ConfigNames.THUNDRA_UPLOADER_REPORT_DIR)
                 .makeOptionMandatory()
                 .argParser<string>((value: string): string => {
-                    if (!FileUtils.isExist(Utils.getAbsolutePath(value))) {
+                    if (!FileUtil.isExist(Utils.getAbsolutePath(value))) {
                         throw new Error(`${value} is not valid directory.`);
                     }
 

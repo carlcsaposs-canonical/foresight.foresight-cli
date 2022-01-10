@@ -4,7 +4,7 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "noImplicitAny": true,
-        "target": "ES2018",
+        "target": "ES2017",
         "rootDir": "src",
         "outDir": "./dist",
         "preserveConstEnums": true,
@@ -13,16 +13,8 @@
         "sourceMap": true,
         "composite": true,
         "baseUrl": "./",
-        "paths": {
-          "@thundra-foresight/cli-logger": ["@thundra-foresight/cli-logger"],
-          "@thundra-foresight/cli-test-uploader": ["@thundra-foresight/cli-test-uploader"]
-        }
     },
     "include": [
         "src"
-    ],
-    "references": [
-        { "path": "../cli-test-uploader" },
-        { "path": "../cli-logger" }
     ]
 }

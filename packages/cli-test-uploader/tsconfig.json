@@ -11,9 +11,22 @@
         "removeComments": false,
         "strictNullChecks": false,
         "sourceMap": true,
-        "composite": true
+        "composite": true,
+        "baseUrl": "./",
+        "paths": {
+            "@thundra-foresight/cli-logger": ["@thundra-foresight/cli-logger"],
+            "@thundra-foresight/cli-utils": ["@thundra-foresight/cli-utils"],
+            "@thundra-foresight/cli-config-provider": ["@thundra-foresight/cli-config-provider"],
+            "@thundra-foresight/cli-environment-provider": ["@thundra-foresight/cli-environment-provider"]
+        }
     },
     "include": [
         "src"
+    ],
+    "references": [
+        { "path": "../cli-logger" },
+        { "path": "../cli-utils" },
+        { "path": "../cli-config-provider" },
+        { "path": "../cli-environment-provider" }
     ]
 }

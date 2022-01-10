@@ -2,12 +2,14 @@
 
 import * as fs from 'fs';
 import * as util from 'util';
-import * as Utils from '../../../utils/Utils';
-import * as FileUtil from '../../../utils/File';
-import * as ArchiveUtil from '../../../utils/Archive';
-import * as HttpUtil from '../../../utils/Http';
+import {
+    Utils,
+    FileUtil,
+    ArchiveUtil,
+    HttpUtil,
+} from '@thundra-foresight/cli-utils';
 import * as path from 'path';
-import ConfigProvider from '../../../config/ConfigProvider';
+import { ConfigProvider } from '@thundra-foresight/cli-config-provider';
 import * as MetadataProvider from '../../../metadata';
 import Metadata from '../../../model/Metadata';
 import ConfigNames from '../../../config/ConfigNames';
@@ -17,7 +19,7 @@ import {
     UPLOADER_SIGNED_URL_TYPE,
 } from '../../../constats';
 import { init } from '../../../init';
-import logger from '../../../logger';
+import { logger } from '@thundra-foresight/cli-logger';
 
 const readFile = util.promisify(fs.readFile);
 
