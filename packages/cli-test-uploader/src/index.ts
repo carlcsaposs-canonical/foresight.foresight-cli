@@ -2,7 +2,7 @@
 
 import { Command } from 'commander';
 import * as CommandCreater from './commands/upload';
-import { logger } from '@thundra-foresight/cli-logger';
+import { logger } from '@thundra/foresight-cli-logger';
 
 const { version } = require('../package.json');
 

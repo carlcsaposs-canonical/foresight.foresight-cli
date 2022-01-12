@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 
 import * as git from 'isomorphic-git';
-import { logger } from '@thundra-foresight/cli-logger';
+import { logger } from '@thundra/foresight-cli-logger';
 
 import { GitEnvironmentInfo } from '../../model/GitEnvironmentInfo';
 

@@ -7,9 +7,9 @@ import {
     FileUtil,
     ArchiveUtil,
     HttpUtil,
-} from '@thundra-foresight/cli-utils';
+} from '@thundra/foresight-cli-utils';
 import * as path from 'path';
-import { ConfigProvider } from '@thundra-foresight/cli-config-provider';
+import { ConfigProvider } from '@thundra/foresight-cli-config-provider';
 import * as MetadataProvider from '../../../metadata';
 import Metadata from '../../../model/Metadata';
 import ConfigNames from '../../../config/ConfigNames';
@@ -19,7 +19,7 @@ import {
     UPLOADER_SIGNED_URL_TYPE,
 } from '../../../constats';
 import { init } from '../../../init';
-import { logger } from '@thundra-foresight/cli-logger';
+import { logger } from '@thundra/foresight-cli-logger';
 
 const readFile = util.promisify(fs.readFile);
 
@@ -109,7 +109,8 @@ export const action = async () => {
             message: `Successfully uploaded all files under ${reportDir}`,
         }));
     } finally {
-        FileUtil.removeFolderSync(destinationDir);
-        logger.debug(`<UploadAction> Tmp folder: ${destinationDir} deleted`);
+        if (FileUtil.removeFolderSync(destinationDir)) {
+            logger.debug(`<UploadAction> Tmp folder: ${destinationDir} deleted`);
+        }
     }
 };

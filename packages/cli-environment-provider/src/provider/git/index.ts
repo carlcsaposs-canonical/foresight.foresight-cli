@@ -2,8 +2,8 @@ import EnvironmentInfo from '../../model/EnvironmentInfo';
 import * as GitHelper from './helper';
 import * as TestRunnerUtils from '../../utils/CliRunUtils';
 import { ENVIRONMENT_VARIABLE_NAMES } from '../../constants';
-import { logger } from '@thundra-foresight/cli-logger';
-import { ConfigProvider } from '@thundra-foresight/cli-config-provider';
+import { logger } from '@thundra/foresight-cli-logger';
+import { ConfigProvider } from '@thundra/foresight-cli-config-provider';
 
 export const ENVIRONMENT = 'Git';
 

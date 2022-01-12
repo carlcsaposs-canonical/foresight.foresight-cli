@@ -6,7 +6,7 @@ import { FRAMEWORK_TYPES } from '../../constats';
 import {
     FileUtil,
     Utils,
-} from '@thundra-foresight/cli-utils';
+} from '@thundra/foresight-cli-utils';
 
 export const createTestUploadCommand = () => {
     return new Command('upload-test')

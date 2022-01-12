@@ -1,8 +1,8 @@
 import EnvironmentInfo from '../../model/EnvironmentInfo';
 import * as CliRunUtils from '../../utils/CliRunUtils';
 import { ENVIRONMENT_VARIABLE_NAMES } from '../../constants';
-import { ConfigProvider } from '@thundra-foresight/cli-config-provider';
-import { logger } from '@thundra-foresight/cli-logger';
+import { ConfigProvider } from '@thundra/foresight-cli-config-provider';
+import { logger } from '@thundra/foresight-cli-logger';
 import * as GitHelper from '../git/helper';
 import * as GitEnvironmentInfo from '../git';;
 

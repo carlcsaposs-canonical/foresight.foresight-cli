@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import { UPLOADER_METADATA_FILENAME } from '../constants';
-import { logger } from '@thundra-foresight/cli-logger';
+import { logger } from '@thundra/foresight-cli-logger';
 
 const archiver = require('archiver');
 

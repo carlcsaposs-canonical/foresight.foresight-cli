@@ -1,4 +1,4 @@
-import { Utils } from '@thundra-foresight/cli-utils';
+import { Utils } from '@thundra/foresight-cli-utils';
 
 export const getTestRunId = (
     environment: string,

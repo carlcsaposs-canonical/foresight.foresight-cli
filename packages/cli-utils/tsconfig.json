@@ -14,7 +14,7 @@
         "composite": true,
         "baseUrl": "./",
         "paths": {
-            "@thundra-foresight/cli-logger": ["@thundra-foresight/cli-logger"]
+            "@thundra/foresight-cli-logger": ["@thundra/foresight-cli-logger"]
         }
     },
     "include": [

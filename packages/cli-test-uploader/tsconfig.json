@@ -14,10 +14,10 @@
         "composite": true,
         "baseUrl": "./",
         "paths": {
-            "@thundra-foresight/cli-logger": ["@thundra-foresight/cli-logger"],
-            "@thundra-foresight/cli-utils": ["@thundra-foresight/cli-utils"],
-            "@thundra-foresight/cli-config-provider": ["@thundra-foresight/cli-config-provider"],
-            "@thundra-foresight/cli-environment-provider": ["@thundra-foresight/cli-environment-provider"]
+            "@thundra/foresight-cli-logger": ["@thundra/foresight-cli-logger"],
+            "@thundra/foresight-cli-utils": ["@thundra/foresight-cli-utils"],
+            "@thundra/foresight-cli-config-provider": ["@thundra/foresight-cli-config-provider"],
+            "@thundra/foresight-cli-environment-provider": ["@thundra/foresight-cli-environment-provider"]
         }
     },
     "include": [
