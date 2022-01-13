@@ -10,10 +10,10 @@ export const ENVIRONMENT = 'Jenkins';
 
 let environmentInfo: EnvironmentInfo;
 
-const getTestRunId = (repoURL: string, commitHash: string) => {
-    const testRunId = ConfigProvider.get<string>(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_AGENT_CLI_RUN_ID);
-    if (testRunId) {
-        return testRunId;
+const getCliRunId = (repoURL: string, commitHash: string) => {
+    const cliRunId = ConfigProvider.get<string>(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_FORESIGHT_CLI_RUN_ID);
+    if (cliRunId) {
+        return cliRunId;
     }
 
     const jobName = process.env[ENVIRONMENT_VARIABLE_NAMES.JOB_NAME_ENV_VAR_NAME]
@@ -22,9 +22,9 @@ const getTestRunId = (repoURL: string, commitHash: string) => {
         || process.env[ENVIRONMENT_VARIABLE_NAMES.BUILD_ID_ENV_VAR_NAME.toLowerCase()];
 
     if (jobName || buildId) {
-        return CliRunUtils.getTestRunId(ENVIRONMENT, repoURL, commitHash, jobName + '_' + buildId);
+        return CliRunUtils.getCliRunId(ENVIRONMENT, repoURL, commitHash, jobName + '_' + buildId);
     } else {
-        return CliRunUtils.getDefaultTestRunId(ENVIRONMENT, repoURL, commitHash);
+        return CliRunUtils.getDefaultCliRunId(ENVIRONMENT, repoURL, commitHash);
     }
 };
 
@@ -77,9 +77,9 @@ export const init = async (): Promise<void> => {
                 }
             }
 
-            const testRunId = getTestRunId(repoURL, commitHash);
+            const cliRunId = getCliRunId(repoURL, commitHash);
 
-            environmentInfo = new EnvironmentInfo(testRunId, ENVIRONMENT, repoURL, repoName, branch, commitHash, commitMessage);
+            environmentInfo = new EnvironmentInfo(cliRunId, ENVIRONMENT, repoURL, repoName, branch, commitHash, commitMessage);
         }
     } catch (e) {
         logger.error(

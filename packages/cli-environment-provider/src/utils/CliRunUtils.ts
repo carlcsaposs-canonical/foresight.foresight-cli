@@ -1,17 +1,17 @@
 import { Utils } from '@thundra/foresight-cli-utils';
 
-export const getTestRunId = (
+export const getCliRunId = (
     environment: string,
     repoURL: string,
     commitHash: string,
-    testRunKey: string): string => {
+    cliRunKey: string): string => {
 
-    const testRunIdSeed = environment + '_' + repoURL + '_' + commitHash + '_' + testRunKey;
+    const cliRunIdSeed = environment + '_' + repoURL + '_' + commitHash + '_' + cliRunKey;
 
-    return Utils.generareIdFrom(testRunIdSeed);
+    return Utils.generareIdFrom(cliRunIdSeed);
 };
 
-export const getDefaultTestRunId = (
+export const getDefaultCliRunId = (
     environment: string,
     repoURL: string,
     commitHash: string): string => {
@@ -19,7 +19,7 @@ export const getDefaultTestRunId = (
     /** todo: generate more unique id from parente process ? */
     const runId = process.ppid + '_';
 
-    return getTestRunId(
+    return getCliRunId(
         environment,
         repoURL,
         commitHash,

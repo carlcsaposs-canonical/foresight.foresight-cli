@@ -1,5 +1,5 @@
 {
-  "name": "@thundra/foresight-root",
+  "name": "@thundra/foresight-cli-root",
   "private": true,
   "version": "1.0.0",
   "dependencies": {
@@ -14,7 +14,7 @@
     "clean:all": "lerna run --parallel clean",
     "build:all": "lerna exec npm run build",
     "clean-build:all": "npm-run-all -p clean:all -s build:all",
-    "prerelease": "lerna version patch -m \"chore(release): publish %s\" --no-push --exact --yes",
+    "prerelease": "lerna version patch -m \"chore(release): publish %s\" --no-push --exact --yes && npm run clean-build:all",
     "release": "lerna publish from-package --ignore-scripts --no-verify-access --yes",
     "postrelease": "git push --follow-tags origin"
   },

@@ -11,19 +11,19 @@ export const ENVIRONMENT = 'BitBucket';
 
 let environmentInfo: EnvironmentInfo;
 
-const getTestRunId = (repoURL: string, commitHash: string) => {
-    const testRunId = ConfigProvider.get<string>(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_AGENT_CLI_RUN_ID);
-    if (testRunId) {
-        return testRunId;
+const getCliRunId = (repoURL: string, commitHash: string) => {
+    const cliRunId = ConfigProvider.get<string>(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_FORESIGHT_CLI_RUN_ID);
+    if (cliRunId) {
+        return cliRunId;
     }
 
     const buildNumber = process.env[ENVIRONMENT_VARIABLE_NAMES.BITBUCKET_BUILD_NUMBER_ENV_VAR_NAME]
         || process.env[ENVIRONMENT_VARIABLE_NAMES.BITBUCKET_BUILD_NUMBER_ENV_VAR_NAME.toLowerCase()];
 
     if (buildNumber) {
-        return CliRunUtils.getTestRunId(ENVIRONMENT, repoURL, commitHash, buildNumber);
+        return CliRunUtils.getCliRunId(ENVIRONMENT, repoURL, commitHash, buildNumber);
     } else {
-        return CliRunUtils.getDefaultTestRunId(ENVIRONMENT, repoURL, commitHash);
+        return CliRunUtils.getDefaultCliRunId(ENVIRONMENT, repoURL, commitHash);
     }
 };
 
@@ -75,9 +75,9 @@ export const init = async (): Promise<void> => {
                 }
             }
 
-            const testRunId = getTestRunId(repoURL, commitHash);
+            const cliRunId = getCliRunId(repoURL, commitHash);
 
-            environmentInfo = new EnvironmentInfo(testRunId, ENVIRONMENT, repoURL, repoName, branch, commitHash, commitMessage);
+            environmentInfo = new EnvironmentInfo(cliRunId, ENVIRONMENT, repoURL, repoName, branch, commitHash, commitMessage);
         }
     } catch (e) {
         logger.error(

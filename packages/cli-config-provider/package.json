@@ -1,6 +1,6 @@
 {
   "name": "@thundra/foresight-cli-config-provider",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,5 +16,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "gitHead": "a1e08e82aa0a34f3d2786e8e90cfb07f46b8405a"
+  "gitHead": "7f89e4dc1a6a36b11f86c68d6be0a47bbc1f0159"
 }

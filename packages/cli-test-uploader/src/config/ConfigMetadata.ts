@@ -18,10 +18,10 @@ const config: ConfigMeta = {
         description: 'Thundra API Key',
         type: 'string'
     },
-    [ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID]: {
-        key: 'testProjectId',
-        flag: '--testProjectId <string>',
-        description: 'Thundra Foresight Test Project Id'
+    [ConfigNames.THUNDRA_FORESIGHT_PROJECT_ID]: {
+        key: 'projectId',
+        flag: '--projectId <string>',
+        description: 'Thundra Foresight Project Id'
     },
     [ConfigNames.THUNDRA_UPLOADER_FRAMEWORK]: {
         key: 'framework',

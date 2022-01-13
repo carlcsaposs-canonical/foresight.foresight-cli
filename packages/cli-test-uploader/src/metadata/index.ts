@@ -6,7 +6,7 @@ import ConfigNames from '../config/ConfigNames';
 export const createMetaData = (): Metadata => {
 
     const apiKey = ConfigProvider.get<string>(ConfigNames.THUNDRA_APIKEY);
-    const projectId = ConfigProvider.get<string>(ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID);
+    const projectId = ConfigProvider.get<string>(ConfigNames.THUNDRA_FORESIGHT_PROJECT_ID);
     const framework = ConfigProvider.get<string>(ConfigNames.THUNDRA_UPLOADER_FRAMEWORK);
     const environmentInfo = EnvironmentSupport.getEnvironmentInfo();
 
@@ -20,7 +20,7 @@ export const createMetaData = (): Metadata => {
         environmentInfo.commitMessage,
         apiKey,
         projectId,
-        environmentInfo.testRunId,
+        environmentInfo.cliRunId,
         framework,
         Math.floor(new Date().getTime() / 1000));
 };

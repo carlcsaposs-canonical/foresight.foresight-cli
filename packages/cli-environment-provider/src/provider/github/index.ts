@@ -12,10 +12,10 @@ export const ENVIRONMENT = 'Github';
 const REFS_HEADS_PREFIX = 'refs/heads/';
 let environmentInfo: EnvironmentInfo;
 
-const getTestRunId = (repoURL: string, commitHash: string) => {
-    const testRunId = ConfigProvider.get<string>(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_AGENT_CLI_RUN_ID);
-    if (testRunId) {
-        return testRunId;
+const getCliRunId = (repoURL: string, commitHash: string) => {
+    const cliRunId = ConfigProvider.get<string>(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_FORESIGHT_CLI_RUN_ID);
+    if (cliRunId) {
+        return cliRunId;
     }
 
     const githubRunId = process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_RUN_ID_ENV_VAR_NAME]
@@ -23,9 +23,9 @@ const getTestRunId = (repoURL: string, commitHash: string) => {
     if (githubRunId) {
         const invocationId = process.env[ENVIRONMENT_VARIABLE_NAMES.INVOCATION_ID_ENV_VAR_NAME]
             || process.env[ENVIRONMENT_VARIABLE_NAMES.INVOCATION_ID_ENV_VAR_NAME.toLowerCase()];
-        return CliRunUtils.getTestRunId(ENVIRONMENT, repoURL, commitHash, githubRunId + '_' + invocationId);
+        return CliRunUtils.getCliRunId(ENVIRONMENT, repoURL, commitHash, githubRunId + '_' + invocationId);
     } else {
-        return CliRunUtils.getDefaultTestRunId(ENVIRONMENT, repoURL, commitHash);
+        return CliRunUtils.getDefaultCliRunId(ENVIRONMENT, repoURL, commitHash);
     }
 };
 
@@ -83,9 +83,9 @@ export const init = async (): Promise<void> => {
                 commitHash = gitEnvironmentInfo.commitHash;
             }
 
-            const testRunId = getTestRunId(repoURL, commitHash);
+            const cliRunId = getCliRunId(repoURL, commitHash);
 
-            environmentInfo = new EnvironmentInfo(testRunId, ENVIRONMENT, repoURL, repoName, branch, commitHash, commitMessage);
+            environmentInfo = new EnvironmentInfo(cliRunId, ENVIRONMENT, repoURL, repoName, branch, commitHash, commitMessage);
         }
     } catch (e) {
         logger.error(

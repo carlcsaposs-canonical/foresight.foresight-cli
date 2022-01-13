@@ -19,9 +19,9 @@ export const createTestUploadCommand = () => {
                 .hideHelp())
         .addOption(
             new Option(
-                ConfigMetadata[ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID].flag,
-                ConfigMetadata[ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID].description)
-                .env(ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID)
+                ConfigMetadata[ConfigNames.THUNDRA_FORESIGHT_PROJECT_ID].flag,
+                ConfigMetadata[ConfigNames.THUNDRA_FORESIGHT_PROJECT_ID].description)
+                .env(ConfigNames.THUNDRA_FORESIGHT_PROJECT_ID)
                 .makeOptionMandatory()
                 .hideHelp())
         .addOption(

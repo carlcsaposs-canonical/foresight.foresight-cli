@@ -43,9 +43,9 @@ export const action = async () => {
     const filename = Utils.generateRandomFileName('.zip');
     const signerUrl = ConfigProvider.get<string>(ConfigNames.THUNDRA_UPLOADER_SIGNER_URL);
     const apiKey = ConfigProvider.get<string>(ConfigNames.THUNDRA_APIKEY);
-    const testProjectId = ConfigProvider.get<string>(ConfigNames.THUNDRA_AGENT_TEST_PROJECT_ID);
+    const projectId = ConfigProvider.get<string>(ConfigNames.THUNDRA_FORESIGHT_PROJECT_ID);
     const reportDir = ConfigProvider.get<string>(ConfigNames.THUNDRA_UPLOADER_REPORT_DIR);
-    const fileKey = `${testProjectId}/${filename}`; // '/' for foldering on s3
+    const fileKey = `${projectId}/${filename}`; // '/' for foldering on s3
 
     const metaData: Metadata = MetadataProvider.createMetaData();
     const sourceDir = Utils.getAbsolutePath(reportDir);

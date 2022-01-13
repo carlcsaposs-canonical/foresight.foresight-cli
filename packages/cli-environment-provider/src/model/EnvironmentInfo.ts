@@ -2,7 +2,7 @@ import { GitEnvironmentInfo } from './GitEnvironmentInfo';
 
 export default class EnvironmentInfo extends GitEnvironmentInfo {
 
-    testRunId: string;
+    cliRunId: string;
     environment: string;
     repoURL: string;
     repoName: string;
@@ -11,7 +11,7 @@ export default class EnvironmentInfo extends GitEnvironmentInfo {
     commitMessage: string;
 
     constructor(
-        testRunId: string,
+        cliRunId: string,
         environment: string,
         repoURL: string,
         repoName: string,
@@ -21,7 +21,7 @@ export default class EnvironmentInfo extends GitEnvironmentInfo {
     ) {
         super(repoURL, repoName, branch, commitHash, commitMessage);
 
-        this.testRunId = testRunId;
+        this.cliRunId = cliRunId;
         this.environment = environment;
     }
 }

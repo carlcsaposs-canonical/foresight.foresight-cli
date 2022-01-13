@@ -1,6 +1,6 @@
 import EnvironmentInfo from '../../model/EnvironmentInfo';
 import * as GitHelper from './helper';
-import * as TestRunnerUtils from '../../utils/CliRunUtils';
+import * as CliRunUtils from '../../utils/CliRunUtils';
 import { ENVIRONMENT_VARIABLE_NAMES } from '../../constants';
 import { logger } from '@thundra/foresight-cli-logger';
 import { ConfigProvider } from '@thundra/foresight-cli-config-provider';
@@ -9,13 +9,13 @@ export const ENVIRONMENT = 'Git';
 
 let environmentInfo: EnvironmentInfo;
 
-const getTestRunId = (repoURL: string, commitHash: string) => {
-    const testRunId = ConfigProvider.get<string>(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_AGENT_CLI_RUN_ID);
-    if (testRunId) {
-        return testRunId;
+const getCliRunId = (repoURL: string, commitHash: string) => {
+    const cliRunId = ConfigProvider.get<string>(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_FORESIGHT_CLI_RUN_ID);
+    if (cliRunId) {
+        return cliRunId;
     }
 
-    return TestRunnerUtils.getDefaultTestRunId(ENVIRONMENT, repoURL, commitHash);
+    return CliRunUtils.getDefaultCliRunId(ENVIRONMENT, repoURL, commitHash);
 };
 
 /**
@@ -40,10 +40,10 @@ export const init = async (): Promise<void> => {
             const commitHash = gitEnvironmentInfo.commitHash;
             const commitMessage = gitEnvironmentInfo.commitMessage;
 
-            const testRunId = getTestRunId(repoURL, commitHash);
+            const cliRunId = getCliRunId(repoURL, commitHash);
 
             environmentInfo = new EnvironmentInfo(
-                testRunId,
+                cliRunId,
                 ENVIRONMENT,
                 repoURL,
                 repoName,
