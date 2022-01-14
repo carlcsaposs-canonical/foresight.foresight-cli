@@ -1,6 +1,6 @@
 {
   "name": "@thundra/foresight-cli",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "bin": {
     "thundra-foresight-cli": "dist/index.js"
@@ -12,14 +12,14 @@
   ],
   "scripts": {
     "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
-    "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js",
+    "build": "esbuild src/index.ts --bundle --minify --platform=node --outfile=dist/index.js",
     "build:tsc": "tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@thundra/foresight-cli-logger": "1.0.10",
+    "@thundra/foresight-cli-logger": "1.0.11",
     "@types/node": "^16.11.6",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",
@@ -28,8 +28,8 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@thundra/foresight-cli-test-uploader": "1.0.10",
+    "@thundra/foresight-cli-test-uploader": "1.0.11",
     "commander": "^8.3.0"
   },
-  "gitHead": "7a587f48e4a8b825b0e26e2e743b8b64bf9527d2"
+  "gitHead": "dad282d75fd80852663b75733c83bb9f92276083"
 }
