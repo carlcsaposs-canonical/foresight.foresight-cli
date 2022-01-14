@@ -24,9 +24,9 @@
         "src"
     ],
     "references": [
-        { "path": "../cli-logger" },
-        { "path": "../cli-utils" },
-        { "path": "../cli-config-provider" },
-        { "path": "../cli-environment-provider" }
+        { "path": "../../commons/cli-logger" },
+        { "path": "../../commons/cli-utils" },
+        { "path": "../../commons/cli-config-provider" },
+        { "path": "../../commons/cli-environment-provider" }
     ]
 }

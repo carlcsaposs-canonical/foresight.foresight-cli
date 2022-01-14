@@ -2,7 +2,7 @@
 
 import { Command } from "commander";
 import { logger } from '@thundra/foresight-cli-logger';
-import * as TestUploader from '@thundra/foresight-cli-test-uploader/dist/commands/upload'
+import * as TestUploader from '@thundra/foresight-cli-test-uploader/src/commands/upload';
 
 const { version } = require('../package.json');
 
