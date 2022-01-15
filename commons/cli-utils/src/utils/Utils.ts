@@ -20,8 +20,8 @@ export const generateRandomFileName = (extention = ''): string => {
     return `artifact-${generateShortId()}${extention}`;
 };
 
-export const getAbsolutePath = (relativePath: string): string => {
-    return path.join(process.cwd(), relativePath);
+export const getAbsolutePath = (candidatePath: string): string => {
+    return path.isAbsolute(candidatePath) ? candidatePath : path.join(process.cwd(), candidatePath);
 };
 
 export const getJoinedUrl = (url: string, path: string): string => {

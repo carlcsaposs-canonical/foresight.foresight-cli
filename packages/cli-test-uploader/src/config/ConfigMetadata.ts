@@ -1,5 +1,4 @@
 import ConfigNames from './ConfigNames';
-import { FRAMEWORK_TYPES } from '../constats';
 
 interface ConfigMeta {
     [key: string]: {
@@ -26,7 +25,7 @@ const config: ConfigMeta = {
     [ConfigNames.THUNDRA_UPLOADER_FRAMEWORK]: {
         key: 'framework',
         flag: '-f, --framework <enum>',
-        description: `Thundra Uploader Framework Type Values <${Object.keys(FRAMEWORK_TYPES).join(' | ')}>`
+        description: `Thundra Uploader Framework Type`
     },
     [ConfigNames.THUNDRA_UPLOADER_REPORT_DIR]: {
         key: 'uploadDir',
@@ -49,7 +48,7 @@ const config: ConfigMeta = {
         key: 'uploaderMaxSize',
         flag: '--uploaderMaxSize <string>',
         description: 'Thundra Artifact Uploader Url',
-        default: 100 * 1024
+        default: 20 // MB
     }
 };
 

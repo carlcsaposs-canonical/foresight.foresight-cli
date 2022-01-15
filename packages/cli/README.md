@@ -1,11 +1,23 @@
 Thundra Foresight CLI
 ==========
 
-The Thundra Foresight CLI used to manage Thundra Foresight apps from the command line.
+The Thundra Foresight CLI used to manage Thundra Foresight commands from the command line. This is the composite CLI for manage all Thundra Foresight command line processes.
+
+Installation
+======
+
+```bash
+npm install -g @thundra/foresight-cli
+```
+
+# Command
+
+* [`thundra-foresight-cli upload-test`](../cli-test-uploader/README.md) - Upload JUnit formated test results
+
 
 Issues
 ======
 
-# Command
+For problems directly related to the CLI, [add an issue on GitHub](https://github.com/thundra-io/thundra-foresight-cli/issues/new).
 
-* [`thundra-foresight-cli uploadtest`]- Upload JUnit formated test results
+[Contributors](https://github.com/thundra-io/thundra-foresight-cli/contributors)

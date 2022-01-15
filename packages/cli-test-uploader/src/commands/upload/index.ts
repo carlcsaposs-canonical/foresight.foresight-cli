@@ -2,7 +2,7 @@ import { Command, Option } from 'commander';
 import { action, preAction } from './action/UploadAction';
 import ConfigNames from '../../config/ConfigNames';
 import ConfigMetadata from '../../config/ConfigMetadata';
-import { FRAMEWORK_TYPES } from '../../constats';
+import { FRAMEWORK_TYPES } from '../../constants';
 import {
     FileUtil,
     Utils,
@@ -44,13 +44,7 @@ export const createTestUploadCommand = () => {
                 .choices(Object.values(FRAMEWORK_TYPES))
                 .env(ConfigNames.THUNDRA_UPLOADER_FRAMEWORK)
                 .makeOptionMandatory())             
-        .addOption(
-            new Option(
-                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIGNER_URL].flag,
-                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIGNER_URL].description)
-                .env(ConfigNames.THUNDRA_UPLOADER_SIGNER_URL)
-                .hideHelp())
-        .description('Uploader')
+        .description('Upload JUnit formated test reports to Thundra Foresight.')
         .hook('preAction', preAction)
         .action(action);
 }

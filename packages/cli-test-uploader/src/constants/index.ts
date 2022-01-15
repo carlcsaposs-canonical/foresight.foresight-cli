@@ -5,6 +5,12 @@ export const UPLOADER_LOG_PREFIX = 'Foresight-CLI-TEST-UPLOADER';
 export const UPLOADER_SIGNER_PATH = '/signedUrl';
 export const UPLOADER_SIGNED_URL_TYPE = 'TEST';
 
+export const ALLOWED_COMMANDER_EXIT_CODES = [   
+    'commander.version',
+    'commander.help',
+    'commander.helpDisplayed',
+];
+
 export interface KeyValueType {
     [key: string]: string;
 }

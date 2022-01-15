@@ -1,7 +1,5 @@
 /* eslint-disable */
 
-import * as fs from 'fs';
-import * as util from 'util';
 import {
     Utils,
     FileUtil,
@@ -17,11 +15,9 @@ import {
     UPLOADER_TMP_PREFIX,
     UPLOADER_SIGNER_PATH,
     UPLOADER_SIGNED_URL_TYPE,
-} from '../../../constats';
+} from '../../../constants';
 import { init } from '../../../init';
 import { logger } from '@thundra/foresight-cli-logger';
-
-const readFile = util.promisify(fs.readFile);
 
 export const preAction = async (command: any) => {
     if (!command) {
@@ -45,11 +41,12 @@ export const action = async () => {
     const apiKey = ConfigProvider.get<string>(ConfigNames.THUNDRA_APIKEY);
     const projectId = ConfigProvider.get<string>(ConfigNames.THUNDRA_FORESIGHT_PROJECT_ID);
     const reportDir = ConfigProvider.get<string>(ConfigNames.THUNDRA_UPLOADER_REPORT_DIR);
+    const maxFileSize = ConfigProvider.get<number>(ConfigNames.THUNDRA_UPLOADER_SIZE_MAX);
     const fileKey = `${projectId}/${filename}`; // '/' for foldering on s3
 
     const metaData: Metadata = MetadataProvider.createMetaData();
     const sourceDir = Utils.getAbsolutePath(reportDir);
-    const destinationDir = FileUtil.createFolderUnderTmpSync(UPLOADER_TMP_PREFIX);
+    const destinationDir = await FileUtil.createFolderUnderTmp(UPLOADER_TMP_PREFIX);
 
     logger.debug(`<UploadAction> Tmp folder created under ${destinationDir}`);
 
@@ -66,6 +63,11 @@ export const action = async () => {
         }
 
         logger.debug(`<UploadAction> Files archived to ${archivedFileDir}`);
+
+        if ((await FileUtil.getFileSizeMB(archivedFileDir)) > maxFileSize) {
+            logger.debug(`<UploadAction> File size could not be greater than THUNDRA UPLOADER SIZE_MAX value: ${maxFileSize}`);
+            return;
+        }
 
         const mimeType = FileUtil.getMimeType(archivedFileDir);
         const presignedS3Url = await HttpUtil.request({
@@ -90,7 +92,7 @@ export const action = async () => {
         logger.debug('<UploadAction> Signed url created successfully');
 
         const uploadUrl = JSON.parse(presignedS3Url).url;
-        const file = await readFile(archivedFileDir);
+        const file = await FileUtil.getFile(archivedFileDir);
 
         await HttpUtil.request({
             url: uploadUrl,
@@ -109,7 +111,8 @@ export const action = async () => {
             message: `Successfully uploaded all files under ${reportDir}`,
         }));
     } finally {
-        if (FileUtil.removeFolderSync(destinationDir)) {
+        const removeResult = await FileUtil.removeFolder(destinationDir);
+        if (removeResult) {
             logger.debug(`<UploadAction> Tmp folder: ${destinationDir} deleted`);
         }
     }

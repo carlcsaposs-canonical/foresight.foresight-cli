@@ -13,7 +13,6 @@ export default class ConfigProvider {
             if (!ConfigProvider.configs[environmentKey]) {
                 ConfigProvider.configs[environmentKey] = process.env[environmentKey] || ( configMeta ? configMeta.default : '');
             }
-            
         })
     }
 
