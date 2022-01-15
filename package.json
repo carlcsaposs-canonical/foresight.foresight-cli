@@ -22,5 +22,15 @@
       "packages/**",
       "commons/**"
     ]
-  }
+  },
+  "author": "Thundra",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thundra-io/thundra-foresight-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thundra-io/thundra-foresight-cli/issues"
+  },
+  "homepage": "https://github.com/thundra-io/thundra-foresight-cli#README.md"
 }
