@@ -6,6 +6,8 @@ The Thundra Foresight CLI Test Uploader used to upload JUnit formated test repor
 Installation
 ======
 
+If ``@thundra/foresight-cli`` installed, don't need to install ``@thundra/foresight-cli-test-uploader``.
+
 ```bash
 npm install -g @thundra/foresight-cli-test-uploader
 ```
