@@ -18,15 +18,6 @@ export interface RequestModel {
     timeout?: number;
 }
 
-// const httpAgent = new http.Agent({
-//     keepAlive: true,
-// });
-
-// const httpsAgent = new https.Agent({
-//     maxCachedSessions: 1,
-//     keepAlive: true,
-// });
-
 export const request = (requestModel: RequestModel): any => {
     const requestUrl = new Url.URL(requestModel.url);
     const useHttps = requestUrl.protocol === 'https:';
@@ -37,7 +28,6 @@ export const request = (requestModel: RequestModel): any => {
         method: requestModel.method,
         headers: requestModel.headers || {},
         timeout: requestModel.timeout || 30,
-        //agent: useHttps ? httpsAgent : httpAgent,
     };
 
     return new Promise((resolve, reject) => {
