@@ -1,6 +1,6 @@
 {
   "name": "@thundra/foresight-cli-environment-provider",
-  "version": "1.0.15",
+  "version": "0.0.1",
   "private": "true",
   "description": "",
   "main": "dist/index.js",
@@ -18,9 +18,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@thundra/foresight-cli-config-provider": "1.0.15",
-    "@thundra/foresight-cli-logger": "1.0.15",
-    "@thundra/foresight-cli-utils": "1.0.15",
+    "@thundra/foresight-cli-config-provider": "0.0.1",
+    "@thundra/foresight-cli-logger": "0.0.1",
+    "@thundra/foresight-cli-utils": "0.0.1",
     "isomorphic-git": "^1.10.3"
   },
   "devDependencies": {
