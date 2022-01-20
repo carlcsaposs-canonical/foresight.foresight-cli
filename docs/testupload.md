@@ -1,7 +1,7 @@
 Thundra Foresight CLI Test Uploader
 ==========
 
-The Thundra Foresight CLI Test Uploader used to upload JUnit formated test reports to Thundra Foresight.
+The Thundra Foresight CLI Test Uploader used to upload test reports to Thundra Foresight.
 
 Installation
 ======
@@ -14,27 +14,22 @@ npm install -g @thundra/foresight-cli-test-uploader
 
 # Command
 
-* [`thundra-foresight-cli upload-test`] - Upload JUnit formated test results
+* [`thundra-foresight-cli upload-test`] - Upload test results
 
 
 # Options
 
-| Flag                          | Requirement       | Environment Variable
-| ---                           | ---               | ---
-| --apiKey <string>             | Required          | THUNDRA_APIKEY
-| --projectId <string>          | Required          | THUNDRA_FORESIGHT_PROJECT_ID
-| -ud, --uploadDir <string>     | Required          | THUNDRA_UPLOADER_REPORT_DIR
-| -f, --framework <enum>        | Required          | THUNDRA_UPLOADER_FRAMEWORK   ("TESTNG", "JUNIT", "JEST", "PYTHON", "TRX", "XUNIT2")
+| Flag                              | Requirement       | Environment Variable          | Default
+| ---                               | ---               | ---                           | ---
+| -a, --apiKey <string>             | Required          | THUNDRA_APIKEY                | None
+| -p, --projectId <string>          | Required          | THUNDRA_FORESIGHT_PROJECT_ID  | None
+| -ud, --uploadDir <string>         | Required          | THUNDRA_UPLOADER_REPORT_DIR   | None
+| -f, --framework <enum>            | Required          | THUNDRA_UPLOADER_FRAMEWORK    | None
+| -su, --uploaderSignerUrl <string> | Optional          | THUNDRA_UPLOADER_SIGNER_URL   | ThundraSignedUrl
+| -ms, --uploaderMaxSize <string>   | Optional          | THUNDRA_FORESIGHT_SIZE_MAX    | 20 MB
+| -l, --logLevel <string>           | Optional          | THUNDRA_FORESIGHT_LOG_LEVEL   | error
 
-
-# Environment Variables (Optional)
-
-| Environment Variable          | Requirement       | Default
-| ---                           | ---               | ---
-| THUNDRA_UPLOADER_SIZE_MAX     | Optional          | 20 MB
-| THUNDRA_UPLOADER_LOG_LEVEL    | Optional          | error
-| THUNDRA_UPLOADER_SIGNER_URL   | Optional          | Thundra Sign Url
-
+* THUNDRA_UPLOADER_FRAMEWORK value should be one of the ("TESTNG", "JUNIT", "JEST", "PYTHON", "TRX", "XUNIT2").
 
 Issues
 ======

@@ -1,4 +1,5 @@
 import { Utils } from '@thundra/foresight-cli-utils';
+const os = require('os');
 
 export const getCliRunId = (
     environment: string,
@@ -17,7 +18,7 @@ export const getDefaultCliRunId = (
     commitHash: string): string => {
 
     /** todo: generate more unique id from parente process ? */
-    const runId = process.ppid + '_';
+    const runId = os.hostname() + '_' + process.ppid + '_';
 
     return getCliRunId(
         environment,

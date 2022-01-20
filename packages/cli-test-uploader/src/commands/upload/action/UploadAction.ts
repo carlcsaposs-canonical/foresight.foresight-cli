@@ -58,14 +58,18 @@ export const action = async () => {
         );
 
         if (!archivedFileDir) {
-            logger.debug('<UploadAction> Files did not archived');
+            logger.error('<UploadAction> Files did not archived');
             return;
         }
 
         logger.debug(`<UploadAction> Files archived to ${archivedFileDir}`);
 
-        if ((await FileUtil.getFileSizeMB(archivedFileDir)) > maxFileSize) {
-            logger.debug(`<UploadAction> File size could not be greater than THUNDRA UPLOADER SIZE_MAX value: ${maxFileSize}`);
+        const archivedFileSize = await FileUtil.getFileSizeMB(archivedFileDir);
+        if (archivedFileSize > maxFileSize) {
+            logger.error(`<UploadAction> File size could not be greater than THUNDRA UPLOADER SIZE_MAX value: ${maxFileSize}`);
+            return;
+        } else if (archivedFileSize == 0) {
+            logger.error(`<UploadAction> Archived file size is zero: ${archivedFileDir}`);
             return;
         }
 
@@ -85,7 +89,7 @@ export const action = async () => {
         });
 
         if (!presignedS3Url) {
-            logger.debug('<UploadAction> Signed url did not created');
+            logger.error('<UploadAction> Signed url did not created');
             return;
         }
 
@@ -93,6 +97,11 @@ export const action = async () => {
 
         const uploadUrl = JSON.parse(presignedS3Url).url;
         const file = await FileUtil.getFile(archivedFileDir);
+
+        if (!file) {
+            logger.error(`<UploadAction> Could not retrive archivedFileDir: ${archivedFileDir}`);
+            return; 
+        }
 
         await HttpUtil.request({
             url: uploadUrl,

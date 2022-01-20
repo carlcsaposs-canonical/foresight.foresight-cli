@@ -12,7 +12,7 @@ npm install -g @thundra/foresight-cli
 
 # Command
 
-* [`thundra-foresight-cli upload-test`](docs/testupload.md)- Upload JUnit formated test results
+* [`thundra-foresight-cli upload-test`](docs/testupload.md)- Upload test results
 
 
 Issues
