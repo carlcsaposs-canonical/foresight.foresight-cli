@@ -17,6 +17,12 @@
     "release": "lerna publish from-package --ignore-scripts --no-verify-access --yes",
     "postrelease": "git push --follow-tags origin"
   },
+  "workspaces": {
+    "packages": [
+      "packages/**",
+      "commons/**"
+    ]
+  },
   "author": "Thundra",
   "license": "Apache-2.0",
   "repository": {

@@ -43,26 +43,8 @@ export const createTestUploadCommand = () => {
                 ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_FRAMEWORK].description)
                 .choices(Object.values(FRAMEWORK_TYPES))
                 .env(ConfigNames.THUNDRA_UPLOADER_FRAMEWORK)
-                .makeOptionMandatory())
-        .addOption(
-            new Option(
-                ConfigMetadata[ConfigNames.THUNDRA_FORESIGHT_LOG_LEVEL].flag,
-                ConfigMetadata[ConfigNames.THUNDRA_FORESIGHT_LOG_LEVEL].description)
-                .env(ConfigNames.THUNDRA_FORESIGHT_LOG_LEVEL)
-                .hideHelp())
-        .addOption(
-            new Option(
-                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIGNER_URL].flag,
-                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIGNER_URL].description)
-                .env(ConfigNames.THUNDRA_UPLOADER_SIGNER_URL)
-                .hideHelp())
-        .addOption(
-            new Option(
-                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIZE_MAX].flag,
-                ConfigMetadata[ConfigNames.THUNDRA_UPLOADER_SIZE_MAX].description)
-                .env(ConfigNames.THUNDRA_UPLOADER_SIZE_MAX)
-                .hideHelp())
-        .description('Upload test reports to Thundra Foresight.')
+                .makeOptionMandatory())             
+        .description('Upload JUnit formated test reports to Thundra Foresight.')
         .hook('preAction', preAction)
         .action(action);
 }

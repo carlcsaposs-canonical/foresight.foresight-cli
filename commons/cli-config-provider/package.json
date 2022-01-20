@@ -1,6 +1,6 @@
 {
   "name": "@thundra/foresight-cli-config-provider",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "private": "true",
   "description": "",
   "main": "dist/index.js",
@@ -9,7 +9,6 @@
     "dist/"
   ],
   "scripts": {
-    "test": "echo no test",
     "lint": "eslint src --ext .ts",
     "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
     "build": "run-s clean build:tsc",

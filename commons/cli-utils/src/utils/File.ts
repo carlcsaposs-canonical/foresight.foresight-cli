@@ -44,14 +44,8 @@ export const getFile = async (fileDir: string): Promise<Buffer | undefined> => {
 
 export const getFileSizeMB = async (fileDir: string): Promise<number | null> => {
     try {
-       const file = await getFile(fileDir);
-       if (file) {
-           const { size } = await getFileStat(fileDir);
-           return size / (1024 * 1024)
-       } else {
-           logger.debug(`<FileUtil> Couldn't find file for specified fileDir: ${fileDir}`);
-           return 0
-       }
+       const { size } = await getFileStat(fileDir);
+       return size / (1024 * 1024)
     } catch (error) {
         logger.debug(`<FileUtil> An error occured reading file size: ${fileDir}`);
         return null;
