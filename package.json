@@ -13,7 +13,7 @@
     "clean:all": "lerna run --parallel clean",
     "build:all": "lerna exec npm run build",
     "clean-build:all": "npm-run-all -p clean:all -s build:all",
-    "prerelease": "lerna version ${RELEASE_SCALE} -m \"chore(release): publish %s\" --no-push --exact --yes && npm run clean-build:all",
+    "prerelease": "lerna version ${RELEASE_SCALE} -m \"chore(release): publish %s\" --no-push --exact --yes",
     "release": "lerna publish from-package --ignore-scripts --no-verify-access --yes",
     "postrelease": "git push --follow-tags origin"
   },
