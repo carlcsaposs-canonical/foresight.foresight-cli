@@ -35,6 +35,10 @@
   "bugs": {
     "url": "https://github.com/thundra-io/thundra-foresight-cli/issues"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "homepage": "https://github.com/thundra-io/thundra-foresight-cli#README.md",
   "devDependencies": {
     "@thundra/foresight-cli-logger": "^0.0.4",
