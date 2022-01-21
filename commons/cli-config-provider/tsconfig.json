@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "target": "ES2017",
+        "rootDir": "src",
+        "outDir": "./dist",
+        "preserveConstEnums": true,
+        "removeComments": false,
+        "strictNullChecks": false,
+        "sourceMap": true,
+        "composite": true,
+        "baseUrl": "./",
+        "paths": {
+            "@thundra/foresight-cli-logger": ["@thundra/foresight-cli-logger"]
+        }
+    },
+    "include": [
+        "src"
+    ],
+    "references": [{ "path": "../cli-logger" }]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@thundra/foresight-cli-config-provider",
+  "version": "0.0.4",
+  "private": "true",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "test": "echo no test",
+    "lint": "eslint src --ext .ts",
+    "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
+    "build": "run-s clean build:tsc",
+    "build:tsc": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "gitHead": "7a587f48e4a8b825b0e26e2e743b8b64bf9527d2"
+}

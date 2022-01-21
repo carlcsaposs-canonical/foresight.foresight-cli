@@ -1,2 +1,1 @@
-# thundra-foresight-cli
-Thundra Foresight CLI
+./packages/cli/README.md

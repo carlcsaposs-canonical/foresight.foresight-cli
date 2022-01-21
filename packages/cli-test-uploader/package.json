@@ -1,0 +1,59 @@
+{
+  "name": "@thundra/foresight-cli-test-uploader",
+  "version": "0.0.4",
+  "description": "",
+  "bin": {
+    "thundra-foresight-cli": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "pretest": "npm run build:tsc",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
+    "build": "esbuild src/index.ts --bundle --minify --target=node12 --platform=node --outfile=dist/index.js && tsc --emitDeclarationOnly",
+    "build:tsc": "tsc"
+  },
+  "keywords": [
+    "cli",
+    "test",
+    "jest",
+    "junit",
+    "testng",
+    "pytest",
+    "trx",
+    "xunit2"
+  ],
+  "author": "Thundra",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thundra-io/thundra-foresight-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thundra-io/thundra-foresight-cli/issues"
+  },
+  "homepage": "https://github.com/thundra-io/thundra-foresight-cli#README.md",
+  "devDependencies": {
+    "@thundra/foresight-cli-config-provider": "^0.0.4",
+    "@thundra/foresight-cli-environment-provider": "^0.0.4",
+    "@thundra/foresight-cli-logger": "^0.0.4",
+    "@thundra/foresight-cli-utils": "^0.0.4",
+    "@types/node": "^16.11.6",
+    "@types/uuid": "^8.3.2",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "esbuild": "^0.14.10",
+    "eslint": "^7.29.0",
+    "jest": "^27.4.7",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "commander": "^8.3.0"
+  },
+  "gitHead": "1ee6668643574d8f33ea58b2d4ae7067a2f5ef54"
+}
