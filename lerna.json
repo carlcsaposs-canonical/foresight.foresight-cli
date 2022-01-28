@@ -4,5 +4,10 @@
     "commons/*"
   ],
   "version": "independent",
-  "npmClient": "npm"
+  "npmClient": "npm",
+  "command": {
+    "version": {
+      "message": "Prepare next release iteration"
+    }
+  }
 }
