@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with: 
-          token: ${{ secrets.THUNDRA_GITHUB_ACCESS_TOKEN }}
+          token: ${{ secrets.FORESIGHT_GITHUB_TOKEN }}
       - name: Configure Git User
         run: |
           git config --global user.email "action@github.com"
@@ -40,4 +40,4 @@ jobs:
         env:
           RELEASE_SCALE: ${{ github.event.inputs.version_scale }}
           NODE_AUTH_TOKEN: ${{ secrets.THUNDRA_NPM_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.THUNDRA_GITHUB_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.FORESIGHT_GITHUB_TOKEN }}
