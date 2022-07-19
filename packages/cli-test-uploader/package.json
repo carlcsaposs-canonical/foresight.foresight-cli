@@ -1,7 +1,6 @@
 {
   "name": "@thundra/foresight-cli-test-uploader",
   "version": "0.0.7",
-  "private":"true",
   "description": "",
   "bin": {
     "thundra-foresight-cli": "dist/index.js"
