@@ -1,5 +1,5 @@
 {
-  "name": "@thundra/foresight-cli-environment-provider",
+  "name": "@runforesight/foresight-cli-environment-provider",
   "version": "0.0.8",
   "private": "true",
   "description": "",
@@ -19,9 +19,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@thundra/foresight-cli-config-provider": "0.0.8",
-    "@thundra/foresight-cli-logger": "0.0.8",
-    "@thundra/foresight-cli-utils": "0.0.8",
+    "@runforesight/foresight-cli-config-provider": "0.0.8",
+    "@runforesight/foresight-cli-logger": "0.0.8",
+    "@runforesight/foresight-cli-utils": "0.0.8",
     "isomorphic-git": "^1.10.3"
   },
   "devDependencies": {

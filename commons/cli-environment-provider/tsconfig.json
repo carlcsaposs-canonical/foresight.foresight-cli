@@ -14,9 +14,9 @@
         "composite": true,
         "baseUrl": "./",
         "paths": {
-            "@thundra/foresight-cli-logger": ["@thundra/foresight-cli-logger"],
-            "@thundra/foresight-cli-utils": ["@thundra/foresight-cli-utils"],
-            "@thundra/foresight-cli-config-provider": ["@thundra/foresight-cli-config-provider"]
+            "@runforesight/foresight-cli-logger": ["@runforesight/foresight-cli-logger"],
+            "@runforesight/foresight-cli-utils": ["@runforesight/foresight-cli-utils"],
+            "@runforesight/foresight-cli-config-provider": ["@runforesight/foresight-cli-config-provider"]
         }
     },
     "include": [

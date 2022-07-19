@@ -1,20 +1,20 @@
-Thundra Foresight CLI Test Uploader
+Foresight CLI Test Uploader
 ==========
 
-The Thundra Foresight CLI Test Uploader used to upload test reports to Thundra Foresight.
+The Foresight CLI Test Uploader used to upload test reports to Foresight.
 
 Installation
 ======
 
-If ``@thundra/foresight-cli`` installed, don't need to install ``@thundra/foresight-cli-test-uploader``.
+If ``@runforesight/foresight-cli`` installed, don't need to install ``@runforesight/foresight-cli-test-uploader``.
 
 ```bash
-npm install -g @thundra/foresight-cli-test-uploader
+npm install -g @runforesight/foresight-cli-test-uploader
 ```
 
 # Command
 
-* [`thundra-foresight-cli upload-test`] - Upload test results
+* [`foresight-cli upload-test`] - Upload test results
 
 
 ### Options
@@ -37,7 +37,7 @@ npm install -g @thundra/foresight-cli-test-uploader
 ** FORESIGHT_UPLOADER_TEST_FRAMEWORK value should be one of the ("TESTNG", "JUNIT", "JEST", "PYTEST", "XUNIT2"). \
 ** FORESIGHT_UPLOADER_TEST_FORMAT value should be one of the ("JUNIT", "TRX").
 
-* [`thundra-foresight-cli upload-test-coverage`] - Upload test coverage results
+* [`foresight-cli upload-test-coverage`] - Upload test coverage results
 
 ### Options
 
@@ -60,6 +60,6 @@ npm install -g @thundra/foresight-cli-test-uploader
 Issues
 ======
 
-For problems directly related to the CLI, [add an issue on GitHub](https://github.com/runforesight/thundra-foresight-cli/issues/new).
+For problems directly related to the CLI, [add an issue on GitHub](https://github.com/runforesight/foresight-cli/issues/new).
 
-[Contributors](https://github.com/runforesight/thundra-foresight-cli/contributors)
+[Contributors](https://github.com/runforesight/foresight-cli/contributors)

@@ -1,5 +1,5 @@
 {
-  "name": "@thundra/foresight-cli-config-provider",
+  "name": "@runforesight/foresight-cli-config-provider",
   "version": "0.0.8",
   "private": "true",
   "description": "",
@@ -16,7 +16,7 @@
     "build:tsc": "tsc"
   },
   "dependencies": {
-    "@thundra/foresight-cli-utils": "0.0.8"
+    "@runforesight/foresight-cli-utils": "0.0.8"
   },
   "devDependencies": {
     "typescript": "^4.4.4"

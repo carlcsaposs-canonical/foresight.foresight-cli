@@ -1,18 +1,18 @@
 
-import { logger } from '@thundra/foresight-cli-logger';
+import { logger } from '@runforesight/foresight-cli-logger';
 import {
     StringUtil,
     UtilType,
-} from '@thundra/foresight-cli-utils';
+} from '@runforesight/foresight-cli-utils';
 import { 
     UPLOADER_SIGNED_URL_TYPES,
     ALLOWED_TEST_FILE_EXTENTIONS,
 } from '../../../../constants';
 import { initTest } from '../../../../init/test';
 import Upload from '../';
-import { ConfigProvider } from '@thundra/foresight-cli-config-provider';
+import { ConfigProvider } from '@runforesight/foresight-cli-config-provider';
 import { ConfigNames } from '../../../../config/ConfigNames';
-import { MetadataProvider } from '@thundra/foresight-cli-metadata-provider';
+import { MetadataProvider } from '@runforesight/foresight-cli-metadata-provider';
 import { TEST_FORMAT_TYPES } from '../../../../constants';
 
 const TestFileFilters: UtilType.ArchiveFilter[] = [

@@ -1,6 +1,6 @@
 import EnvironmentInfo from '../../model/EnvironmentInfo';
 import * as GitHelper from './helper';
-import { logger } from '@thundra/foresight-cli-logger';
+import { logger } from '@runforesight/foresight-cli-logger';
 
 export const ENVIRONMENT = GitHelper.ENVIRONMENT;
 

@@ -1,11 +1,11 @@
 
-import { logger } from '@thundra/foresight-cli-logger';
+import { logger } from '@runforesight/foresight-cli-logger';
 import { UPLOADER_SIGNED_URL_TYPES } from '../../../../constants';
 import { initCoverage } from '../../../../init/cov';
 import Upload from '..';
-import { ConfigProvider } from '@thundra/foresight-cli-config-provider';
+import { ConfigProvider } from '@runforesight/foresight-cli-config-provider';
 import { ConfigNames } from '../../../../config/ConfigNames';
-import { MetadataProvider } from '@thundra/foresight-cli-metadata-provider';
+import { MetadataProvider } from '@runforesight/foresight-cli-metadata-provider';
 import { COVERAGE_FORMAT_TYPES } from '../../../../constants';
 
 const getAdditinalInfoForCoverage = () => {

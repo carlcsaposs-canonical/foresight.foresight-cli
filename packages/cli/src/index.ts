@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import { Command, CommanderError } from "commander";
-import { logger } from '@thundra/foresight-cli-logger';
+import { logger } from '@runforesight/foresight-cli-logger';
 import { ALLOWED_COMMANDER_EXIT_CODES } from './constants';
-import * as TestUploader from '@thundra/foresight-cli-test-uploader/src/commands/upload';
+import * as TestUploader from '@runforesight/foresight-cli-test-uploader/src/commands/upload';
 
 const { version } = require('../package.json');
 

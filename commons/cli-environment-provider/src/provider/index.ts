@@ -5,7 +5,7 @@ import * as JenkinsEnvironmentInfoProvider from './jenkins';
 import * as GitlabEnvironmentInfoProvider from './gitlab';
 import * as CircleCIEnvironmentInfoProvider from './circleci';
 import * as TravisCIEnvironmentInfoProvider from './travisci';
-import { logger } from '@thundra/foresight-cli-logger';
+import { logger } from '@runforesight/foresight-cli-logger';
 
 export const environmentInfoProviders = {
     [GitEnvironmentInfoProvider.ENVIRONMENT]: GitEnvironmentInfoProvider,

@@ -1,6 +1,6 @@
 import ConfigValidationError from "../error/ConfigValidationError";
 import { BaseConfig, BaseConfigMetaData, ConfigProviderModel } from "../types";
-import { TypeUtil } from '@thundra/foresight-cli-utils';
+import { TypeUtil } from '@runforesight/foresight-cli-utils';
 
 export default class ConfigProvider {
 

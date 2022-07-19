@@ -2,7 +2,7 @@ import * as util from 'util';
 import * as stream from 'stream';
 import { once } from 'events';
 import * as IsStream from 'is-stream';
-import { CliProgessBarType } from '@thundra/foresight-cli-progress-bar';
+import { CliProgessBarType } from '@runforesight/foresight-cli-progress-bar';
 
 export const isStream = (content: unknown): boolean => {
     return IsStream(content);

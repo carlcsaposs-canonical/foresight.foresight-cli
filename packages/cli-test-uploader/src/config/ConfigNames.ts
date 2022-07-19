@@ -1,4 +1,4 @@
-import { ConfigType } from '@thundra/foresight-cli-config-provider';
+import { ConfigType } from '@runforesight/foresight-cli-config-provider';
 
 export const ConfigNames = {
     general: {

@@ -3,7 +3,7 @@
 import { Command, CommanderError } from 'commander';
 import * as CommandCreater from './commands/upload';
 import { ALLOWED_COMMANDER_EXIT_CODES } from './constants';
-import { logger } from '@thundra/foresight-cli-logger';
+import { logger } from '@runforesight/foresight-cli-logger';
 
 const { version } = require('../package.json');
 

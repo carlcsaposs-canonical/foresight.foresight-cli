@@ -6,7 +6,7 @@ const chai = require('chai');
 const yauzl = require("yauzl");
 
 const { Command } = require('commander');
-const { StreamUtil, HttpUtil, FileUtil } = require('@thundra/foresight-cli-utils');
+const { StreamUtil, HttpUtil, FileUtil } = require('@runforesight/foresight-cli-utils');
 const { createTestUploadCommand } = require('../../dist/commands/upload');
 const { UPLOADER_METADATA_FILENAME } = require('../../dist/constants');
 

@@ -1,10 +1,10 @@
 import * as fs from 'fs';
 
 import * as git from 'isomorphic-git';
-import { logger } from '@thundra/foresight-cli-logger';
+import { logger } from '@runforesight/foresight-cli-logger';
 import * as CliRunUtils from '../../utils/CliRunUtils';
 import { ENVIRONMENT_VARIABLE_NAMES } from '../../constants';
-import { ConfigProvider } from '@thundra/foresight-cli-config-provider';
+import { ConfigProvider } from '@runforesight/foresight-cli-config-provider';
 
 import { GitEnvironmentInfo } from '../../model/GitEnvironmentInfo';
 
@@ -13,7 +13,7 @@ export const ENVIRONMENT = 'Git';
 export let gitEnvironmentInfo: GitEnvironmentInfo;
 
 export const getCliRunId = (repoURL: string, commitHash: string) => {
-    const cliRunId = ConfigProvider.getEnv(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_FORESIGHT_CLI_RUN_ID);
+    const cliRunId = ConfigProvider.getEnv(ENVIRONMENT_VARIABLE_NAMES.FORESIGHT_CLI_RUN_ID);
     if (cliRunId) {
         return cliRunId;
     }
