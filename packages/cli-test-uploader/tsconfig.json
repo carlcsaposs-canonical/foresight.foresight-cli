@@ -17,7 +17,8 @@
             "@thundra/foresight-cli-logger": ["@thundra/foresight-cli-logger"],
             "@thundra/foresight-cli-utils": ["@thundra/foresight-cli-utils"],
             "@thundra/foresight-cli-config-provider": ["@thundra/foresight-cli-config-provider"],
-            "@thundra/foresight-cli-environment-provider": ["@thundra/foresight-cli-environment-provider"]
+            "@thundra/foresight-cli-environment-provider": ["@thundra/foresight-cli-environment-provider"],
+            "@thundra/foresight-cli-metadata-provider": ["@thundra/foresight-cli-metadata-provider"]
         }
     },
     "include": [
@@ -27,6 +28,7 @@
         { "path": "../../commons/cli-logger" },
         { "path": "../../commons/cli-utils" },
         { "path": "../../commons/cli-config-provider" },
-        { "path": "../../commons/cli-environment-provider" }
+        { "path": "../../commons/cli-environment-provider" },
+        { "path": "../../commons/cli-metadata-provider" }
     ]
 }

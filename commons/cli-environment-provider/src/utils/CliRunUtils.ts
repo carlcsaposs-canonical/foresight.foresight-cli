@@ -1,4 +1,4 @@
-import { Utils } from '@thundra/foresight-cli-utils';
+import { UuidUtil } from '@thundra/foresight-cli-utils';
 const os = require('os');
 
 export const getCliRunId = (
@@ -9,7 +9,7 @@ export const getCliRunId = (
 
     const cliRunIdSeed = environment + '_' + repoURL + '_' + commitHash + '_' + cliRunKey;
 
-    return Utils.generareIdFrom(cliRunIdSeed);
+    return UuidUtil.generareIdFrom(cliRunIdSeed);
 };
 
 export const getDefaultCliRunId = (

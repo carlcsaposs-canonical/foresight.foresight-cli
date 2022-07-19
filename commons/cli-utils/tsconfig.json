@@ -14,11 +14,15 @@
         "composite": true,
         "baseUrl": "./",
         "paths": {
-            "@thundra/foresight-cli-logger": ["@thundra/foresight-cli-logger"]
+            "@thundra/foresight-cli-logger": ["@thundra/foresight-cli-logger"],
+            "@thundra/foresight-cli-progress-bar": ["@thundra/foresight-cli-progress-bar"]
         }
     },
     "include": [
         "src"
     ],
-    "references": [{ "path": "../cli-logger" }]
+    "references": [
+        { "path": "../cli-logger" },
+        { "path": "../cli-progress-bar" }
+    ]
 }

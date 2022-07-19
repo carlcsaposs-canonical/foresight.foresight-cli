@@ -17,19 +17,45 @@ npm install -g @thundra/foresight-cli-test-uploader
 * [`thundra-foresight-cli upload-test`] - Upload test results
 
 
-# Options
+### Options
 
-| Flag                              | Requirement       | Environment Variable          | Default
-| ---                               | ---               | ---                           | ---
-| -a, --apiKey <string>             | Required          | THUNDRA_APIKEY                | None
-| -p, --projectId <string>          | Required          | THUNDRA_FORESIGHT_PROJECT_ID  | None
-| -ud, --uploadDir <string>         | Required          | THUNDRA_UPLOADER_REPORT_DIR   | None
-| -f, --framework <enum>            | Required          | THUNDRA_UPLOADER_FRAMEWORK    | None
-| -su, --uploaderSignerUrl <string> | Optional          | THUNDRA_UPLOADER_SIGNER_URL   | ThundraSignedUrl
-| -ms, --uploaderMaxSize <string>   | Optional          | THUNDRA_FORESIGHT_SIZE_MAX    | 20 MB
-| -l, --logLevel <string>           | Optional          | THUNDRA_FORESIGHT_LOG_LEVEL   | error
+| Flag                                       | Requirement       | Environment Variable                  | Default
+| ---                                        | ---               | ---                                   | ---
+| -a, --apiKey <string>                      | Required          | FORESIGHT_APIKEY                      | None
+| -ud, --uploadDir <string>                  | Required          | FORESIGHT_UPLOADER_REPORT_DIR         | None
+| -fw, --framework <enum>                    | Required          | FORESIGHT_UPLOADER_TEST_FRAMEWORK     | None
+| -fm, --format <enum>                       | Required          | FORESIGHT_UPLOADER_TEST_FORMAT        | None
+| -su, --signerUrl <string>                  | Optional          | FORESIGHT_UPLOADER_SIGNER_URL         | ThundraSignedUrl
+| -upms, --uploadMaxSize <string>            | Optional          | FORESIGHT_UPLOADER_SIZE_MAX           | 20 MB
+| -uptout, --uploadProcessTimeout <string>   | Optional          | FORESIGHT_UPLOAD_PROCESS_TIMEOUT      | 30000 ms
+| -uptp, --uploadTrackProgress <string>      | Optional          | FORESIGHT_UPLOAD_TRACK_PROGRESS       | true
+| -apsmd, --archiveScanPathMaxDepth <string> | Optional          | FORESIGHT_SCAN_PATH_MAX_DEPTH         | 5
+| -aptout, --archiveProcessTimeout <string>  | Optional          | FORESIGHT_ARCHIVE_PROCESS_TIMEOUT     | 30000 ms
+| -p, --projectId <string>                   | Optional          | FORESIGHT_PROJECT_ID                  | None
+| -l, --logLevel <string>                    | Optional          | FORESIGHT_LOG_LEVEL                   | info
 
-* THUNDRA_UPLOADER_FRAMEWORK value should be one of the ("TESTNG", "JUNIT", "JEST", "PYTHON", "TRX", "XUNIT2").
+** FORESIGHT_UPLOADER_TEST_FRAMEWORK value should be one of the ("TESTNG", "JUNIT", "JEST", "PYTEST", "XUNIT2"). \
+** FORESIGHT_UPLOADER_TEST_FORMAT value should be one of the ("JUNIT", "TRX").
+
+* [`thundra-foresight-cli upload-test-coverage`] - Upload test coverage results
+
+### Options
+
+| Flag                                       | Requirement       | Environment Variable                  | Default
+| ---                                        | ---               | ---                                   | ---
+| -a, --apiKey <string>                      | Required          | FORESIGHT_APIKEY                      | None
+| -ud, --uploadDir <string>                  | Required          | FORESIGHT_UPLOADER_REPORT_DIR         | None
+| -fm, --format <enum>                       | Required          | FORESIGHT_UPLOADER_COVERAGE_FORMAT    | None
+| -su, --signerUrl <string>                  | Optional          | FORESIGHT_UPLOADER_SIGNER_URL         | ThundraSignedUrl
+| -upms, --uploadMaxSize <string>            | Optional          | FORESIGHT_UPLOADER_SIZE_MAX           | 20 MB
+| -uptout, --uploadProcessTimeout <string>   | Optional          | FORESIGHT_UPLOAD_PROCESS_TIMEOUT      | 30000 ms
+| -uptp, --uploadTrackProgress <string>      | Optional          | FORESIGHT_UPLOAD_TRACK_PROGRESS       | true
+| -apsmd, --archiveScanPathMaxDepth <string> | Optional          | FORESIGHT_SCAN_PATH_MAX_DEPTH         | 5
+| -aptout, --archiveProcessTimeout <string>  | Optional          | FORESIGHT_ARCHIVE_PROCESS_TIMEOUT     | 30000 ms
+| -p, --projectId <string>                   | Optional          | FORESIGHT_PROJECT_ID                  | None
+| -l, --logLevel <string>                    | Optional          | FORESIGHT_LOG_LEVEL                   | info
+
+** FORESIGHT_UPLOADER_TEST_FORMAT value should be one of the ("JACOCO/XML", "COBERTURA/XML", "GOLANG").
 
 Issues
 ======

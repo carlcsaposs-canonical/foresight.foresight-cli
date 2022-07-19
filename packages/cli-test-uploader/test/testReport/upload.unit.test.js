@@ -1,11 +1,17 @@
-const { Command } = require('commander');
 const path = require('path');
-const { FileUtil, HttpUtil } = require('@thundra/foresight-cli-utils');
-const { createTestUploadCommand } = require('../dist/commands/upload');
+const chai = require('chai');
 
-describe('Cli Execution Tests', () => {
+const { Command } = require('commander');
 
-    const tmpPath = path.join(__dirname, './helper/tmp')
+const { 
+    HttpUtil,
+    FileUtil
+} = require('@thundra/foresight-cli-utils');
+const { createTestUploadCommand } = require('../../dist/commands/upload');
+
+describe('Cli Test Upload Unit Tests', function () {
+
+    const tmpPath = path.join(__dirname, '../config/tmp')
     const baseArgs = [
         process.argv[0],
         process.argv[1],
@@ -16,16 +22,18 @@ describe('Cli Execution Tests', () => {
         'upload-test',
         '--projectId=projectId',
         '--framework=JEST',
+        '--format=JUNIT',
         `--uploadDir=${tmpPath}`,
     ];
 
     const requiredArgs = [
         ...missingArgs,
         '--apiKey=apiKey',
+        '--signerUrl=http://abc.me/signedUrl'
     ];
 
-    beforeEach(() => {
-        HttpUtil.request = jest.fn(({ url })=> {
+    before(() => {
+        HttpUtil.request = async ({ url })=> {
             if (url.includes('signedUrl')){
                 return JSON.stringify({
                     url: 'http://mock.abc.me'
@@ -33,19 +41,15 @@ describe('Cli Execution Tests', () => {
             } else {
                 return JSON.stringify({});
             }
-        });
+        };
     })
 
-    afterEach(() => {
-        jest.clearAllMocks();
-    })
-
-    test('Verify Success Execution', async () => {
-        const consoleLogMock = jest.spyOn(console, 'log').mockImplementation((value) => {
+    it('Verify Success Execution', async function () {
+        const orginalLog = console.log;
+        console.log = (value) => {
             const result = JSON.parse(value);
-            expect(result).toBeTruthy();
-            expect(result.status).toBe('Ok');
-        });
+            chai.expect(result.status).to.be.a('string').that.equals('Ok');
+        };
 
         const program = new Command();
         program
@@ -57,20 +61,19 @@ describe('Cli Execution Tests', () => {
         await program.parseAsync(process.argv)
       
         process.argv = save;
-
-        consoleLogMock.mockRestore();
+        console.log = orginalLog;
     });
 
-    test('Verify Success Upload File Creation', async () => {
+    it('Verify Success Upload File Creation', async () => {
         const orginalRemoveFolder = FileUtil.removeFolder;
-        FileUtil.removeFolder = jest.fn((async tmpDir => {
+        FileUtil.removeFolder = async tmpDir => {
             const files = await FileUtil.readDir(tmpDir);
-            expect(files.length).toBe(1);
+            chai.expect(files.length).equals(1);
             const file = await FileUtil.getFile(path.join(tmpDir, files[0]));
-            expect(file).toBeTruthy();
+            chai.expect(file).to.be.not.undefined;
 
             await orginalRemoveFolder(tmpDir)           
-        }));
+        };
 
         const program = new Command();
         program
@@ -84,7 +87,7 @@ describe('Cli Execution Tests', () => {
         process.argv = save;
     });
 
-    test('Verify to Handle Missing Argument', (done) => {
+    it('Verify to Handle Missing Argument', (done) => {
         const program = new Command();
         program
             .addCommand(createTestUploadCommand()
@@ -98,8 +101,8 @@ describe('Cli Execution Tests', () => {
             done();
         })().catch((err) => {
             try {
-                expect(err.code).toBe('commander.missingMandatoryOptionValue');
-                expect(err.message).toContain('--apiKey')
+                chai.expect(err.code).to.be.a('string').that.equals('commander.missingMandatoryOptionValue');
+                chai.expect(err.message).to.be.a('string').that.contains('--apiKey');
                 done();
             } catch (error) {
                 done(error);
@@ -109,8 +112,8 @@ describe('Cli Execution Tests', () => {
         })
     });
 
-    test('Verify to Handle not Exist Upload Dir', (done) => {
-        FileUtil.isExist = jest.fn(() => false); 
+    it('Verify to Handle not Exist Upload Dir', (done) => {
+        FileUtil.isExist = () => false; 
         const program = new Command();
         program
             .addCommand(createTestUploadCommand()
@@ -124,7 +127,7 @@ describe('Cli Execution Tests', () => {
             done();
         })().catch((err) => {
             try {
-                expect(err.message).toContain('is not valid directory')
+                chai.expect(err.message).to.be.a('string').that.contains('is not valid directory');
                 done();
             } catch (error) {
                 done(error);

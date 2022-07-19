@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "target": "ES2017",
+        "rootDir": "src",
+        "outDir": "./dist",
+        "preserveConstEnums": true,
+        "removeComments": false,
+        "strictNullChecks": false,
+        "sourceMap": true,
+        "composite": true,
+        "baseUrl": "./",
+        "paths": {
+            "@thundra/foresight-cli-environment-provider": ["@thundra/foresight-cli-environment-provider"],
+        }
+    },
+    "include": [
+        "src"
+    ],
+    "references": [
+        { "path": "../cli-environment-provider" },
+    ]
+}

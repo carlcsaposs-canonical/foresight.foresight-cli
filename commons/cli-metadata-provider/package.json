@@ -1,0 +1,28 @@
+{
+  "name": "@thundra/foresight-cli-metadata-provider",
+  "version": "0.0.7",
+  "private": "true",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "test": "echo no test",
+    "lint": "eslint src --ext .ts",
+    "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
+    "build": "run-s clean build:tsc",
+    "build:tsc": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@thundra/foresight-cli-environment-provider": "0.0.7"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  },
+  "gitHead": "7a587f48e4a8b825b0e26e2e743b8b64bf9527d2"
+}

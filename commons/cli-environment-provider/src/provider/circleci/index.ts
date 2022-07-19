@@ -11,7 +11,7 @@ export const ENVIRONMENT = 'CircleCI';
 let environmentInfo: EnvironmentInfo;
 
 const getCliRunId = (repoURL: string, commitHash: string) => {
-    const cliRunId = ConfigProvider.get<string>(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_FORESIGHT_CLI_RUN_ID);
+    const cliRunId = ConfigProvider.getEnv(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_FORESIGHT_CLI_RUN_ID);
     if (cliRunId) {
         return cliRunId;
     }
@@ -58,6 +58,7 @@ export const init = async (): Promise<void> => {
             || process.env[ENVIRONMENT_VARIABLE_NAMES.CIRCLE_SHA1_ENV_VAR_NAME.toLowerCase()];
 
             let commitMessage = '';
+            let gitRoot;
 
             const gitEnvironmentInfo = GitEnvironmentInfo.getEnvironmentInfo();
             if (gitEnvironmentInfo) {
@@ -70,11 +71,21 @@ export const init = async (): Promise<void> => {
                 if (!commitHash) {
                     commitHash = gitEnvironmentInfo.commitHash;
                 }
+
+                gitRoot = gitEnvironmentInfo.gitRoot;
             }
 
-            const cliRunId = getCliRunId(repoURL, commitHash);
+            environmentInfo = new EnvironmentInfo(
+                getCliRunId(repoURL, commitHash),
+                ENVIRONMENT,
+                repoURL,
+                repoName,
+                branch,
+                commitHash,
+                commitMessage,
+                gitRoot);
 
-            environmentInfo = new EnvironmentInfo(cliRunId, ENVIRONMENT, repoURL, repoName, branch, commitHash, commitMessage);
+            logger.debug('<CircleCIEnvironmentInfoProvider> Initialized CircleCI environment');
         }
     } catch (e) {
         logger.error(

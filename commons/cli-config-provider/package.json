@@ -15,6 +15,9 @@
     "build": "run-s clean build:tsc",
     "build:tsc": "tsc"
   },
+  "dependencies": {
+    "@thundra/foresight-cli-utils": "0.0.7"
+  },
   "devDependencies": {
     "typescript": "^4.4.4"
   },

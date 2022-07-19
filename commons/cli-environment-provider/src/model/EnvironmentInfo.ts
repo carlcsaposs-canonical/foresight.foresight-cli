@@ -1,6 +1,4 @@
-import { GitEnvironmentInfo } from './GitEnvironmentInfo';
-
-export default class EnvironmentInfo extends GitEnvironmentInfo {
+export default class EnvironmentInfo {
 
     cliRunId: string;
     environment: string;
@@ -9,6 +7,7 @@ export default class EnvironmentInfo extends GitEnvironmentInfo {
     branch: string;
     commitHash: string;
     commitMessage: string;
+    gitRoot?: string;
 
     constructor(
         cliRunId: string,
@@ -18,10 +17,22 @@ export default class EnvironmentInfo extends GitEnvironmentInfo {
         branch: string,
         commitHash: string,
         commitMessage: string,
+        gitRoot?: string,
     ) {
-        super(repoURL, repoName, branch, commitHash, commitMessage);
-
         this.cliRunId = cliRunId;
         this.environment = environment;
+        this.repoURL = repoURL;
+        this.repoName = repoName;
+        this.branch = branch;
+        this.commitHash = commitHash;
+        this.commitMessage = commitMessage;
+        this.gitRoot = gitRoot;
+    }
+
+    getRepoFullName(): string {
+        /**
+         * default behavior
+         */
+        return this.repoName;
     }
 }

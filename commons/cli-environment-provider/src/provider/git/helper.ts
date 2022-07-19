@@ -2,10 +2,24 @@ import * as fs from 'fs';
 
 import * as git from 'isomorphic-git';
 import { logger } from '@thundra/foresight-cli-logger';
+import * as CliRunUtils from '../../utils/CliRunUtils';
+import { ENVIRONMENT_VARIABLE_NAMES } from '../../constants';
+import { ConfigProvider } from '@thundra/foresight-cli-config-provider';
 
 import { GitEnvironmentInfo } from '../../model/GitEnvironmentInfo';
 
+export const ENVIRONMENT = 'Git';
+
 export let gitEnvironmentInfo: GitEnvironmentInfo;
+
+export const getCliRunId = (repoURL: string, commitHash: string) => {
+    const cliRunId = ConfigProvider.getEnv(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_FORESIGHT_CLI_RUN_ID);
+    if (cliRunId) {
+        return cliRunId;
+    }
+
+    return CliRunUtils.getDefaultCliRunId(ENVIRONMENT, repoURL, commitHash);
+};
 
 /**
  * Extract repo name
@@ -38,6 +52,9 @@ const normalizeRepoName = (repoName: string) => {
  * Initiate project Git information
  */
 export const init = async (): Promise<GitEnvironmentInfo> => {
+    if (gitEnvironmentInfo) {
+        return gitEnvironmentInfo;
+    }
 
     let repoURL: string;
     let repoName: string;
@@ -83,14 +100,17 @@ export const init = async (): Promise<GitEnvironmentInfo> => {
         commitMessage = COMMITOBJECT && COMMITOBJECT.commit ? COMMITOBJECT.commit.message : '';
 
         gitEnvironmentInfo = new GitEnvironmentInfo(
+            getCliRunId(repoURL, commitHash),
+            ENVIRONMENT,
             repoURL,
             repoName,
             branch,
             commitHash,
             commitMessage,
+            gitroot,
         );
 
-        logger.debug('<GitHelper> Obtained git environment information ...');
+        logger.debug('<GitHelper> Obtained git environment information');
     } catch (error) {
         logger.error('<GitHelper> Git environment did not created.', error);
     }

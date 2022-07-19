@@ -12,7 +12,7 @@ export const ENVIRONMENT = 'BitBucket';
 let environmentInfo: EnvironmentInfo;
 
 const getCliRunId = (repoURL: string, commitHash: string) => {
-    const cliRunId = ConfigProvider.get<string>(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_FORESIGHT_CLI_RUN_ID);
+    const cliRunId = ConfigProvider.getEnv(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_FORESIGHT_CLI_RUN_ID);
     if (cliRunId) {
         return cliRunId;
     }
@@ -63,6 +63,7 @@ export const init = async (): Promise<void> => {
             const gitEnvironmentInfo = GitEnvironmentInfo.getEnvironmentInfo();
 
             let commitMessage = '';
+            let gitRoot;
             if (gitEnvironmentInfo) {
                 commitMessage = gitEnvironmentInfo.commitMessage;
 
@@ -73,11 +74,21 @@ export const init = async (): Promise<void> => {
                 if (commitHash) {
                     commitHash = gitEnvironmentInfo.commitHash;
                 }
+
+                gitRoot = gitEnvironmentInfo.gitRoot;
             }
 
-            const cliRunId = getCliRunId(repoURL, commitHash);
+            environmentInfo = new EnvironmentInfo(
+                getCliRunId(repoURL, commitHash),
+                ENVIRONMENT,
+                repoURL,
+                repoName,
+                branch,
+                commitHash,
+                commitMessage,
+                gitRoot);
 
-            environmentInfo = new EnvironmentInfo(cliRunId, ENVIRONMENT, repoURL, repoName, branch, commitHash, commitMessage);
+            logger.debug('<BitbucketEnvironmentInfoProvider> Initialized Bitbucket environment');
         }
     } catch (e) {
         logger.error(

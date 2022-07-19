@@ -1,4 +1,11 @@
-export * as Utils from './utils/Utils'
+export * as UuidUtil from './utils/Uuid'
 export * as HttpUtil from './utils/Http';
 export * as FileUtil from './utils/File';
+export * as PathUtil from './utils/Path';
 export * as ArchiveUtil from './utils/Archive';
+export * as TypeUtil from './utils/Type';
+export * as GlobUtil from './utils/Glob';
+export * as StringUtil from './utils/String';
+export * as StreamUtil from './utils/Stream';
+export * as UrlUtil from './utils/Url';
+export * as UtilType from './types';

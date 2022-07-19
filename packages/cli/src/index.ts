@@ -11,7 +11,8 @@ const program = new Command();
 program.version(version);
 program.exitOverride();
 program
-    .addCommand(TestUploader.createTestUploadCommand());
+    .addCommand(TestUploader.createTestUploadCommand())
+    .addCommand(TestUploader.createCoverageUploadCommand());
 
 (async() => {
     await program.parseAsync(process.argv);

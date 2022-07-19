@@ -11,7 +11,7 @@ export const ENVIRONMENT = 'TravisCI';
 let environmentInfo: EnvironmentInfo;
 
 const getCliRunId = (repoURL: string, commitHash: string) => {
-    const cliRunId = ConfigProvider.get<string>(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_FORESIGHT_CLI_RUN_ID);
+    const cliRunId = ConfigProvider.getEnv(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_FORESIGHT_CLI_RUN_ID);
     if (cliRunId) {
         return cliRunId;
     }
@@ -67,6 +67,7 @@ export const init = async (): Promise<void> => {
             let commitMessage = process.env[ENVIRONMENT_VARIABLE_NAMES.TRAVIS_COMMIT_MESSAGE_ENV_VAR_NAME]
                 || process.env[ENVIRONMENT_VARIABLE_NAMES.TRAVIS_COMMIT_MESSAGE_ENV_VAR_NAME.toLowerCase()];
 
+            let gitRoot;
             const gitEnvironmentInfo = GitEnvironmentInfo.getEnvironmentInfo();
             if (gitEnvironmentInfo) {
                 if (!branch) {
@@ -80,11 +81,21 @@ export const init = async (): Promise<void> => {
                 if (!commitMessage) {
                     commitMessage = gitEnvironmentInfo.commitMessage;
                 }
+
+                gitRoot = gitEnvironmentInfo.gitRoot;
             }
 
-            const cliRunId = getCliRunId(repoURL, commitHash);
+            environmentInfo = new EnvironmentInfo(
+                getCliRunId(repoURL, commitHash),
+                ENVIRONMENT,
+                repoURL,
+                repoName,
+                branch,
+                commitHash,
+                commitMessage,
+                gitRoot);
 
-            environmentInfo = new EnvironmentInfo(cliRunId, ENVIRONMENT, repoURL, repoName, branch, commitHash, commitMessage);
+            logger.debug('<TravisCIEnvironmentInfoProvider> Initialized TravisCI environment');
         }
     } catch (e) {
         logger.error(
