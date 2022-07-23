@@ -1,6 +1,6 @@
 {
   "name": "@runforesight/foresight-cli",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "bin": {
     "foresight-cli": "dist/index.js"
@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/runforesight/foresight-cli#README.md",
   "devDependencies": {
-    "@runforesight/foresight-cli-logger": "0.0.8",
+    "@runforesight/foresight-cli-logger": "0.0.9",
     "@types/node": "^16.11.6",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",
@@ -50,7 +50,7 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@runforesight/foresight-cli-test-uploader": "0.0.8",
+    "@runforesight/foresight-cli-test-uploader": "0.0.9",
     "commander": "^8.3.0"
   },
   "gitHead": "1ee6668643574d8f33ea58b2d4ae7067a2f5ef54"
