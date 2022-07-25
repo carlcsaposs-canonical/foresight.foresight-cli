@@ -1,5 +1,5 @@
-import { ConfigProvider } from '@thundra/foresight-cli-config-provider';
-import { logger} from '@thundra/foresight-cli-logger';
+import { ConfigProvider } from '@runforesight/foresight-cli-config-provider';
+import { logger} from '@runforesight/foresight-cli-logger';
 import { CoverageUploaderConfig } from '../../config/ConfigNames';
 import { CoveragetUploaderConfigMetadata } from '../../config/ConfigMetadata'
 import { init } from '../';

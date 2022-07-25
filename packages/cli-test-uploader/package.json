@@ -1,9 +1,9 @@
 {
-  "name": "@thundra/foresight-cli-test-uploader",
-  "version": "0.0.9",
+  "name": "@runforesight/foresight-cli-test-uploader",
+  "version": "1.0.0",
   "description": "",
   "bin": {
-    "thundra-foresight-cli": "dist/index.js"
+    "foresight-cli": "dist/index.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,26 +28,26 @@
     "trx",
     "xunit2"
   ],
-  "author": "Thundra",
+  "author": "Foresight",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/runforesight/thundra-foresight-cli.git"
+    "url": "git+https://github.com/runforesight/foresight-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/runforesight/thundra-foresight-cli/issues"
+    "url": "https://github.com/runforesight/foresight-cli/issues"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "homepage": "https://github.com/runforesight/thundra-foresight-cli#README.md",
+  "homepage": "https://github.com/runforesight/foresight-cli#README.md",
   "devDependencies": {
-    "@thundra/foresight-cli-config-provider": "0.0.9",
-    "@thundra/foresight-cli-environment-provider": "0.0.9",
-    "@thundra/foresight-cli-logger": "0.0.9",
-    "@thundra/foresight-cli-metadata-provider": "0.0.9",
-    "@thundra/foresight-cli-utils": "0.0.9",
+    "@runforesight/foresight-cli-config-provider": "1.0.0",
+    "@runforesight/foresight-cli-environment-provider": "1.0.0",
+    "@runforesight/foresight-cli-logger": "1.0.0",
+    "@runforesight/foresight-cli-metadata-provider": "1.0.0",
+    "@runforesight/foresight-cli-utils": "1.0.0",
     "@types/node": "^16.11.6",
     "@types/uuid": "^8.3.2",
     "@typescript-eslint/eslint-plugin": "^4.27.0",

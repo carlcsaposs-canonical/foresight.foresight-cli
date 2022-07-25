@@ -4,8 +4,8 @@ import * as Url from 'url';
 import * as TypeUtil from './Type';
 import * as StreamUtil from './Stream';
 import { RequestModel } from '../types';
-import { logger } from '@thundra/foresight-cli-logger';
-import { DefaultCliProgessBar, CliProgessBarType } from '@thundra/foresight-cli-progress-bar';
+import { logger } from '@runforesight/foresight-cli-logger';
+import { DefaultCliProgessBar, CliProgessBarType } from '@runforesight/foresight-cli-progress-bar';
 
 export const request = (requestModel: RequestModel): any => {
     const requestUrl = new Url.URL(requestModel.url);

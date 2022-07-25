@@ -5,10 +5,10 @@ import {
     HttpUtil,
     GlobUtil,
     UtilType,
-} from '@thundra/foresight-cli-utils';
+} from '@runforesight/foresight-cli-utils';
 import * as path from 'path';
-import { ConfigProvider } from '@thundra/foresight-cli-config-provider';
-import { MetadataType } from '@thundra/foresight-cli-metadata-provider';
+import { ConfigProvider } from '@runforesight/foresight-cli-config-provider';
+import { MetadataType } from '@runforesight/foresight-cli-metadata-provider';
 import { ConfigNames } from '../../../config/ConfigNames';
 import { 
     UPLOADER_TMP_PREFIX,
@@ -16,7 +16,7 @@ import {
     UPLOADER_SIGNED_URL_TYPES,
     UPLOADER_METADATA_FILENAME,
 } from '../../../constants';
-import { logger } from '@thundra/foresight-cli-logger';
+import { logger } from '@runforesight/foresight-cli-logger';
 
 export interface UploadRequest {
     type: string,

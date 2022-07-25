@@ -1,6 +1,6 @@
-import { ConfigProvider } from '@thundra/foresight-cli-config-provider';
-import { EnvironmentSupport } from '@thundra/foresight-cli-environment-provider';
-import { logger, LoggerType } from '@thundra/foresight-cli-logger';
+import { ConfigProvider } from '@runforesight/foresight-cli-config-provider';
+import { EnvironmentSupport } from '@runforesight/foresight-cli-environment-provider';
+import { logger, LoggerType } from '@runforesight/foresight-cli-logger';
 import { ConfigNames } from '../config/ConfigNames';
 
 export const init = async (): Promise<void> => {

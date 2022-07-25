@@ -1,6 +1,6 @@
 import EnvironmentInfo from '../model/EnvironmentInfo';
 import * as InfoProvider from '../provider';
-import { logger } from '@thundra/foresight-cli-logger';
+import { logger } from '@runforesight/foresight-cli-logger';
 
 let environmentInfo: EnvironmentInfo;
 

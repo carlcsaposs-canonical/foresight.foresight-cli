@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as os from 'os';
 import * as PathUtil from './Path';
 import * as UuidUtil from './Uuid';
-import { logger } from '@thundra/foresight-cli-logger';
+import { logger } from '@runforesight/foresight-cli-logger';
 
 const mime = require('mime-types');
 

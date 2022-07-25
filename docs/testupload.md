@@ -1,39 +1,39 @@
-Thundra Foresight CLI Test Uploader
+Foresight CLI Test Uploader
 ==========
 
-The Thundra Foresight CLI Test Uploader used to upload test reports to Thundra Foresight.
+The Foresight CLI Test Uploader used to upload test reports to Foresight.
 
 Installation
 ======
 
-If ``@thundra/foresight-cli`` installed, don't need to install ``@thundra/foresight-cli-test-uploader``.
+If ``@runforesight/foresight-cli`` installed, don't need to install ``@runforesight/foresight-cli-test-uploader``.
 
 ```bash
-npm install -g @thundra/foresight-cli-test-uploader
+npm install -g @runforesight/foresight-cli-test-uploader
 ```
 
 # Command
 
-* [`thundra-foresight-cli upload-test`] - Upload test results
+* [`foresight-cli upload-test`] - Upload test results
 
 
 # Options
 
-| Flag                              | Requirement       | Environment Variable          | Default
-| ---                               | ---               | ---                           | ---
-| -a, --apiKey <string>             | Required          | THUNDRA_APIKEY                | None
-| -p, --projectId <string>          | Required          | THUNDRA_FORESIGHT_PROJECT_ID  | None
-| -ud, --uploadDir <string>         | Required          | THUNDRA_UPLOADER_REPORT_DIR   | None
-| -f, --framework <enum>            | Required          | THUNDRA_UPLOADER_FRAMEWORK    | None
-| -su, --uploaderSignerUrl <string> | Optional          | THUNDRA_UPLOADER_SIGNER_URL   | ThundraSignedUrl
-| -ms, --uploaderMaxSize <string>   | Optional          | THUNDRA_FORESIGHT_SIZE_MAX    | 20 MB
-| -l, --logLevel <string>           | Optional          | THUNDRA_FORESIGHT_LOG_LEVEL   | error
+| Flag                              | Requirement       | Environment Variable            | Default
+| ---                               | ---               | ---                             | ---
+| -a, --apiKey <string>             | Required          | FORESIGHT_APIKEY                | None
+| -p, --projectId <string>          | Required          | FORESIGHT_PROJECT_ID            | None
+| -ud, --uploadDir <string>         | Required          | FORESIGHT_UPLOADER_REPORT_DIR   | None
+| -f, --framework <enum>            | Required          | FORESIGHT_UPLOADER_FRAMEWORK    | None
+| -su, --uploaderSignerUrl <string> | Optional          | FORESIGHT_UPLOADER_SIGNER_URL   | ThundraSignedUrl
+| -ms, --uploaderMaxSize <string>   | Optional          | FORESIGHT_FORESIGHT_SIZE_MAX    | 20 MB
+| -l, --logLevel <string>           | Optional          | FORESIGHT_FORESIGHT_LOG_LEVEL   | error
 
-* THUNDRA_UPLOADER_FRAMEWORK value should be one of the ("TESTNG", "JUNIT", "JEST", "PYTHON", "TRX", "XUNIT2").
+* FORESIGHT_UPLOADER_FRAMEWORK value should be one of the ("TESTNG", "JUNIT", "JEST", "PYTHON", "TRX", "XUNIT2").
 
 Issues
 ======
 
-For problems directly related to the CLI, [add an issue on GitHub](https://github.com/runforesight/thundra-foresight-cli/issues/new).
+For problems directly related to the CLI, [add an issue on GitHub](https://github.com/runforesight/foresight-cli/issues/new).
 
-[Contributors](https://github.com/runforesight/thundra-foresight-cli/contributors)
+[Contributors](https://github.com/runforesight/foresight-cli/contributors)

@@ -39,5 +39,5 @@ jobs:
         run: npm run release
         env:
           RELEASE_SCALE: ${{ github.event.inputs.version_scale }}
-          NODE_AUTH_TOKEN: ${{ secrets.THUNDRA_NPM_API_KEY }}
+          NODE_AUTH_TOKEN: ${{ secrets.FORESIGHT_NPM_PUBLISH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.FORESIGHT_GITHUB_TOKEN }}

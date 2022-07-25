@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { logger } from '@thundra/foresight-cli-logger';
+import { logger } from '@runforesight/foresight-cli-logger';
 import * as GlobUtil from './Glob';
 import { ArchiveGlobsModel } from '../types';
 

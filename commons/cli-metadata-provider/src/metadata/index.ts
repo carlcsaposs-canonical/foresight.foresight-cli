@@ -1,5 +1,5 @@
 import { Metadata } from '../types';
-import { EnvironmentSupport } from '@thundra/foresight-cli-environment-provider';
+import { EnvironmentSupport } from '@runforesight/foresight-cli-environment-provider';
 const os = require("os");
 
 const createMetadata = (additinalInfo: { [propName: string]: any }): Metadata => {

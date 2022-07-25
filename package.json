@@ -1,5 +1,5 @@
 {
-  "name": "@thundra/foresight-cli-root",
+  "name": "@runforesight/foresight-cli-root",
   "private": true,
   "version": "1.0.0",
   "devDependencies": {
@@ -17,14 +17,14 @@
     "release": "lerna publish from-package --ignore-scripts --no-verify-access --yes",
     "postrelease": "git push --follow-tags origin"
   },
-  "author": "Thundra",
+  "author": "Foresight",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/runforesight/thundra-foresight-cli.git"
+    "url": "git+https://github.com/runforesight/foresight-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/runforesight/thundra-foresight-cli/issues"
+    "url": "https://github.com/runforesight/foresight-cli/issues"
   },
-  "homepage": "https://github.com/runforesight/thundra-foresight-cli#README.md"
+  "homepage": "https://github.com/runforesight/foresight-cli#README.md"
 }

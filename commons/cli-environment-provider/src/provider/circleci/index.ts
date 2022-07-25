@@ -4,14 +4,14 @@ import * as CliRunUtils from '../../utils/CliRunUtils';
 import * as GitHelper from '../git/helper';
 import * as GitEnvironmentInfo from '../git';
 import { ENVIRONMENT_VARIABLE_NAMES } from '../../constants';
-import { ConfigProvider } from '@thundra/foresight-cli-config-provider';
-import { logger } from '@thundra/foresight-cli-logger';
+import { ConfigProvider } from '@runforesight/foresight-cli-config-provider';
+import { logger } from '@runforesight/foresight-cli-logger';
 export const ENVIRONMENT = 'CircleCI';
 
 let environmentInfo: EnvironmentInfo;
 
 const getCliRunId = (repoURL: string, commitHash: string) => {
-    const cliRunId = ConfigProvider.getEnv(ENVIRONMENT_VARIABLE_NAMES.THUNDRA_FORESIGHT_CLI_RUN_ID);
+    const cliRunId = ConfigProvider.getEnv(ENVIRONMENT_VARIABLE_NAMES.FORESIGHT_CLI_RUN_ID);
     if (cliRunId) {
         return cliRunId;
     }

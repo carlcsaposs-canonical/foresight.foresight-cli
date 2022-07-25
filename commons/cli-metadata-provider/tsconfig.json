@@ -14,7 +14,7 @@
         "composite": true,
         "baseUrl": "./",
         "paths": {
-            "@thundra/foresight-cli-environment-provider": ["@thundra/foresight-cli-environment-provider"],
+            "@runforesight/foresight-cli-environment-provider": ["@runforesight/foresight-cli-environment-provider"],
         }
     },
     "include": [

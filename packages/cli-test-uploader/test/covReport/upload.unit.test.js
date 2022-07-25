@@ -6,7 +6,7 @@ const { Command } = require('commander');
 const { 
     HttpUtil,
     FileUtil
-} = require('@thundra/foresight-cli-utils');
+} = require('@runforesight/foresight-cli-utils');
 const { createCoverageUploadCommand } = require('../../dist/commands/upload');
 
 describe('Cli Test Upload Unit Tests', function () {
