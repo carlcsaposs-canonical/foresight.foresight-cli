@@ -24,11 +24,14 @@ export const TEST_FRAMEWORK_TYPES: KeyValueType = Object.freeze({
     JEST: 'JEST',
     PYTEST: 'PYTEST',
     XUNIT2: 'XUNIT2',
+    GOLANG: 'GOLANG'
 });
 
 export const TEST_FORMAT_TYPES: KeyValueType = Object.freeze({
     JUNIT: 'JUNIT',
     TRX: 'TRX',
+    TEXT: 'TEXT',
+    JSON: 'JSON'
 });
 
 export const COVERAGE_FORMAT_TYPES: KeyValueType = Object.freeze({
@@ -38,5 +41,3 @@ export const COVERAGE_FORMAT_TYPES: KeyValueType = Object.freeze({
     'COBERTURA/XML': "COBERTURA/XML",
     'GOLANG': 'GOLANG'
 });
-
-export const ALLOWED_TEST_FILE_EXTENTIONS = ['.xml', '.trx'];

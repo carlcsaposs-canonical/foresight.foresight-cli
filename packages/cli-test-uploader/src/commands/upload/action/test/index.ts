@@ -4,24 +4,13 @@ import {
     StringUtil,
     UtilType,
 } from '@runforesight/foresight-cli-utils';
-import { 
-    UPLOADER_SIGNED_URL_TYPES,
-    ALLOWED_TEST_FILE_EXTENTIONS,
-} from '../../../../constants';
+import { UPLOADER_SIGNED_URL_TYPES } from '../../../../constants';
 import { initTest } from '../../../../init/test';
 import Upload from '../';
 import { ConfigProvider } from '@runforesight/foresight-cli-config-provider';
 import { ConfigNames } from '../../../../config/ConfigNames';
 import { MetadataProvider } from '@runforesight/foresight-cli-metadata-provider';
 import { TEST_FORMAT_TYPES } from '../../../../constants';
-
-const TestFileFilters: UtilType.ArchiveFilter[] = [
-    {
-        filter: (str: string) => {
-            return ALLOWED_TEST_FILE_EXTENTIONS.some(allowedExtention => StringUtil.endsWith(str, allowedExtention));
-        }
-    }
-]
 
 const getAdditinalInfoForTest = () => {
     return {
@@ -44,7 +33,6 @@ export const preAction = async (command: any) => {
 export const action = async () => {
     return Upload({
         type: UPLOADER_SIGNED_URL_TYPES.TEST, 
-        metadata: MetadataProvider(getAdditinalInfoForTest()),
-        filters: TestFileFilters
+        metadata: MetadataProvider(getAdditinalInfoForTest())
     });
 }
