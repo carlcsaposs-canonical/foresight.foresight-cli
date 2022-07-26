@@ -1,6 +1,6 @@
 {
   "name": "@runforesight/foresight-cli-metadata-provider",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": "true",
   "description": "",
   "main": "dist/index.js",
@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@runforesight/foresight-cli-environment-provider": "1.0.0"
+    "@runforesight/foresight-cli-environment-provider": "1.0.1"
   },
   "devDependencies": {
     "typescript": "^4.4.4"
