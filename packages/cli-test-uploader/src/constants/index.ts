@@ -28,7 +28,9 @@ export const TEST_FRAMEWORK_TYPES: KeyValueType = Object.freeze({
 });
 
 export const TEST_FORMAT_TYPES: KeyValueType = Object.freeze({
+    TESTNG: 'TESTNG',
     JUNIT: 'JUNIT',
+    XUNIT2: 'XUNIT2',
     TRX: 'TRX',
     TEXT: 'TEXT',
     JSON: 'JSON'
