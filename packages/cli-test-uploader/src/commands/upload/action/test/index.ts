@@ -18,6 +18,7 @@ const getAdditinalInfoForTest = () => {
         projectId: ConfigProvider.get<string>(ConfigNames.general.projectId),
         framework: ConfigProvider.get<string>(ConfigNames.command.test.framework),
         format: TEST_FORMAT_TYPES[ConfigProvider.get<string>(ConfigNames.command.test.format)]
+          || TEST_FORMAT_TYPES[ConfigProvider.get<string>(ConfigNames.command.test.framework)]
     }
 }
 
