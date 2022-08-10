@@ -1,0 +1,47 @@
+name: npm-test
+
+on:
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Collect Workflow Telemetry
+        if: always()
+        uses: runforesight/foresight-workflow-kit-action@v1
+        with:
+          api_key: ${{ secrets.FORESIGHT_PROD_API_KEY }}
+      
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: "12.x"
+
+      - name: NPM Install
+        run: npm install
+
+      - name: NPM Build
+        run: npm run clean-build:all
+
+      - name: NPM Test 
+        run: npm run test
+
+      - name: Install NYC module
+        run: npm install -g nyc
+
+      - name: Run NYC
+        run: nyc --reporter cobertura npm run test
+      
+      - name: Analyze Test and/or Coverage Results
+        if: always()
+        uses: thundra-io/foresight-test-kit-action@v1
+        with:
+          api_key: ${{ secrets.FORESIGHT_PROD_API_KEY }}
+          coverage_format: cobertura/xml
+          coverage_path: "coverage/cobertura-coverage.xml"
