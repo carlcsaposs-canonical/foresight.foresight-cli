@@ -25,7 +25,7 @@ npm install -g @runforesight/foresight-cli-test-uploader
 | -ud, --uploadDir <string>                  | Required          | FORESIGHT_UPLOADER_REPORT_DIR         | None
 | -fw, --framework <enum>                    | Required          | FORESIGHT_UPLOADER_TEST_FRAMEWORK     | None
 | -fm, --format <enum>                       | Required          | FORESIGHT_UPLOADER_TEST_FORMAT        | None
-| -su, --signerUrl <string>                  | Optional          | FORESIGHT_UPLOADER_SIGNER_URL         | ThundraSignedUrl
+| -su, --signerUrl <string>                  | Optional          | FORESIGHT_UPLOADER_SIGNER_URL         | ForesightSignedUrl
 | -upms, --uploadMaxSize <string>            | Optional          | FORESIGHT_UPLOADER_SIZE_MAX           | 20 MB
 | -uptout, --uploadProcessTimeout <string>   | Optional          | FORESIGHT_UPLOAD_PROCESS_TIMEOUT      | 30000 ms
 | -uptp, --uploadTrackProgress <string>      | Optional          | FORESIGHT_UPLOAD_TRACK_PROGRESS       | true
@@ -46,7 +46,7 @@ npm install -g @runforesight/foresight-cli-test-uploader
 | -a, --apiKey <string>                      | Required          | FORESIGHT_APIKEY                      | None
 | -ud, --uploadDir <string>                  | Required          | FORESIGHT_UPLOADER_REPORT_DIR         | None
 | -fm, --format <enum>                       | Required          | FORESIGHT_UPLOADER_COVERAGE_FORMAT    | None
-| -su, --signerUrl <string>                  | Optional          | FORESIGHT_UPLOADER_SIGNER_URL         | ThundraSignedUrl
+| -su, --signerUrl <string>                  | Optional          | FORESIGHT_UPLOADER_SIGNER_URL         | ForesightSignedUrl
 | -upms, --uploadMaxSize <string>            | Optional          | FORESIGHT_UPLOADER_SIZE_MAX           | 20 MB
 | -uptout, --uploadProcessTimeout <string>   | Optional          | FORESIGHT_UPLOAD_PROCESS_TIMEOUT      | 30000 ms
 | -uptp, --uploadTrackProgress <string>      | Optional          | FORESIGHT_UPLOAD_TRACK_PROGRESS       | true

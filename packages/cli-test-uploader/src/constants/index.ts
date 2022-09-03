@@ -1,4 +1,4 @@
-export const UPLOADER_TMP_PREFIX = 'thundra_uploader';
+export const UPLOADER_TMP_PREFIX = 'foresight_uploader';
 export const UPLOADER_SIGNER_PATH = '/signedUrl';
 
 export const UPLOADER_METADATA_FILENAME = 'CLI_REPORT_METADATA.json';

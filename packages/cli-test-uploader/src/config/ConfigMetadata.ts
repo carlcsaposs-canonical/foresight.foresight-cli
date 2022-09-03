@@ -34,7 +34,7 @@ export const UploaderConfigMetadata = {
         flag: '-su, --signerUrl <string>',
         description: 'Foresight Uploader Signer Url',
         type: 'string',
-        default: 'https://upload.thundra.io'
+        default: 'https://upload.service.runforesight.com'
     },
     [ConfigNames.archiver.scanPathMaxDepth]: {
         key: 'archiveScanPathMaxDepth',

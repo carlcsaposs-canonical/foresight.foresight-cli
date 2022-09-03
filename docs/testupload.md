@@ -25,7 +25,7 @@ npm install -g @runforesight/foresight-cli-test-uploader
 | -p, --projectId <string>          | Required          | FORESIGHT_PROJECT_ID            | None
 | -ud, --uploadDir <string>         | Required          | FORESIGHT_UPLOADER_REPORT_DIR   | None
 | -f, --framework <enum>            | Required          | FORESIGHT_UPLOADER_FRAMEWORK    | None
-| -su, --uploaderSignerUrl <string> | Optional          | FORESIGHT_UPLOADER_SIGNER_URL   | ThundraSignedUrl
+| -su, --uploaderSignerUrl <string> | Optional          | FORESIGHT_UPLOADER_SIGNER_URL   | ForesightSignedUrl
 | -ms, --uploaderMaxSize <string>   | Optional          | FORESIGHT_FORESIGHT_SIZE_MAX    | 20 MB
 | -l, --logLevel <string>           | Optional          | FORESIGHT_FORESIGHT_LOG_LEVEL   | error
 
