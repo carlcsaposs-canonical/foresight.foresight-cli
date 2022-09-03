@@ -12,6 +12,8 @@ export type Metadata = {
     format?: string;
     framework?: string;
     projectId?: string;
+    workflowName?: string;
+    pullRequestNumber?: number;
     runId?: string;
     runAttempt?: string;
     jobId?: string;

@@ -30,6 +30,19 @@ const getCliRunId = (repoURL: string, commitHash: string) => {
     }
 };
 
+const getPRNumber = (ref: string): number | undefined => {
+    if (!ref) {
+        return;
+    }
+
+    const splitedRef = ref.split('/');
+    if (splitedRef.length >= 3 && splitedRef[1] === 'pull') {
+        const prNumberStr = splitedRef[2];
+        const prNumber = prNumberStr ? Number(prNumberStr) : undefined;
+        return !isNaN(prNumber) ? prNumber :undefined;
+    }
+}
+
 /**
  * Get environment info
  */
@@ -68,9 +81,11 @@ export const init = async (): Promise<void> => {
                 }
             }
 
+            const ref = process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_REF_ENV_VAR_NAME]
+            || process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_REF_ENV_VAR_NAME.toLowerCase()];
+            const pullRequestNumber = getPRNumber(ref);
             if (!branch) {
-                branch = process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_REF_ENV_VAR_NAME]
-                    || process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_REF_ENV_VAR_NAME.toLowerCase()];
+                branch = ref;
                 if (branch && branch.startsWith(REFS_HEADS_PREFIX)) {
                     branch = branch.substring(REFS_HEADS_PREFIX.length);
                 }
@@ -80,6 +95,8 @@ export const init = async (): Promise<void> => {
                 || process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_RUN_ID_ENV_VAR_NAME.toLowerCase()];
             const githubRunAttempt = process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_RUN_ATTEMPT_ENV_VAR_NAME]
                 || process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_RUN_ATTEMPT_ENV_VAR_NAME.toLowerCase()];
+            const workflowName = process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_WORKFLOW_NAME_ENV_VAR_NAME]
+                || process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_WORKFLOW_NAME_ENV_VAR_NAME.toLowerCase()];
             const githubRunnerName = process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_RUNNER_NAME_ENV_VAR_NAME]
                 || process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_RUNNER_NAME_ENV_VAR_NAME.toLowerCase()];
             const githubJobId = process.env[ENVIRONMENT_VARIABLE_NAMES.FORESIGHT_WORKFLOW_JOB_ID]
@@ -113,9 +130,11 @@ export const init = async (): Promise<void> => {
                 commitMessage,
                 githubRunId,
                 githubRunAttempt,
+                workflowName,
                 githubRunnerName,
                 githubJobId,
                 githubJobName,
+                pullRequestNumber,
                 gitRoot);
 
             logger.debug('<GithubEnvironmentInfoProvider> Initialized Github environment');

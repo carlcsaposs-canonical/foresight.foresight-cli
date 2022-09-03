@@ -5,9 +5,11 @@ export default class GithubEnvironmentInfo extends EnvironmentInfo {
 
     runId: string;
     runAttempt: string;
+    workflowName: string;
     runnerName: string;
     jobId?: string;
     jobName?: string;
+    pullRequestNumber?: number;
 
     constructor(
         cliRunId: string,
@@ -19,18 +21,22 @@ export default class GithubEnvironmentInfo extends EnvironmentInfo {
         commitMessage: string,
         runId: string,
         runAttempt: string,
+        workflowName: string,
         runnerName: string,
         jobId?: string,
         jobName?: string,
+        pullRequestNumber?: number,
         gitRoot?: string
     ) {
         super(cliRunId, environment, repoURL, repoName, branch, commitHash, commitMessage, gitRoot);
 
         this.runId = runId;
         this.runAttempt = runAttempt;
+        this.workflowName = workflowName;
         this.jobId = jobId;
         this.jobName = jobName;
         this.runnerName = runnerName;
+        this.pullRequestNumber = pullRequestNumber;
     }
 
     getRepoFullName(): string {
