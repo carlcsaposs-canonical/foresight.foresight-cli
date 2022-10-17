@@ -41,5 +41,6 @@ export const COVERAGE_FORMAT_TYPES: KeyValueType = Object.freeze({
     'JACOCO/XML': 'JACOCO/XML',
     'COBERTURA': 'COBERTURA/XML',
     'COBERTURA/XML': "COBERTURA/XML",
-    'GOLANG': 'GOLANG'
+    'GOLANG': 'GOLANG',
+    'LCOV/TXT': 'LCOV/TXT'
 });
