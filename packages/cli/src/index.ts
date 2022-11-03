@@ -21,6 +21,7 @@ program
         return;
     }
     
-    logger.error(`<CLI> ${err.message}`, err);
+    logger.error(`<CLI> An error occured while executing command.`);
+    logger.debug(`<CLI> ${err.message}`);
 });
 

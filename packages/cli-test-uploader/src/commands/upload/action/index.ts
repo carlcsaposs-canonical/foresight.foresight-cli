@@ -97,7 +97,7 @@ const upload = async (uploadRequest: UploadRequest) => {
             archiveProcessTimeout
         ))
         .catch((err: any) => {
-            logger.error('<UploadAction> An error occured while creating archive', err);
+            logger.debug(`<UploadAction> ${err.message}`)
         });
 
         if (!archivedFileDir) {
@@ -137,7 +137,8 @@ const upload = async (uploadRequest: UploadRequest) => {
                 "authorization": `ApiKey ${apiKey}`
             }
         }).catch((err: any) => { 
-            logger.error('<UploadAction> An error occured while obtaining signer url', err);
+            logger.error('<UploadAction> An error occured while obtaining signer url');
+            logger.debug(`UploadAction ${err.message}`)
         });
 
         if (!presignedS3Url) {
@@ -151,7 +152,8 @@ const upload = async (uploadRequest: UploadRequest) => {
         try {
             uploadUrl = JSON.parse(presignedS3Url).url;
         } catch (error) {
-            logger.error(`<UploadAction> An error occured while parsing signer url: ${error.message}`);
+            logger.error(`<UploadAction> Signed url did not created.`);
+            logger.debug(`${error.message}`)
             return;
         }
 
@@ -184,7 +186,8 @@ const upload = async (uploadRequest: UploadRequest) => {
                 message: `Successfully uploaded all files under ${reportDirs}`,
             }));
         }).catch((err: any) => {
-            logger.error(`<UploadAction> An error occured while uploading process: ${err.message}`);
+            logger.error(`<UploadAction> An error occured while uploading process`);
+            logger.debug(`<UploadAction> ${err.message}`)
         });
     } finally {
         if (destinationDir) {
