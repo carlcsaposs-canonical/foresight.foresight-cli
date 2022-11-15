@@ -12,6 +12,7 @@ import {
 } from '../../constants';
 import * as TestUpload from './action/test';
 import * as CoverageUpload from './action/cov';
+import { logger } from '@runforesight/foresight-cli-logger';
 
 const createUploaderCommand = (commandName: string): Command => {
     return new Command(commandName)
@@ -80,6 +81,27 @@ const createUploaderCommand = (commandName: string): Command => {
                 UploaderConfigMetadata[ConfigNames.uploader.trackProgress].description)
                 .env(ConfigNames.uploader.trackProgress)
                 .hideHelp())
+        .addOption(
+            new Option(
+                UploaderConfigMetadata[ConfigNames.command.general.tag].flag,
+                UploaderConfigMetadata[ConfigNames.command.general.tag].description)
+                .env(ConfigNames.command.general.tag)
+                .default({})
+                .argParser((current: string, previous: { [key: string]: any }) => {
+                    const [
+                        key,
+                        value
+                    ] = current.split(':');
+
+                    if (!key || !value) {
+                        logger.debug('<CreateUploaderCommand> Tags argument must be formatted like that <key>:<value>'
+                            + 'ex: --tag key:value');
+                    } else {
+                        previous[key] = value;
+                    }
+
+                    return previous;
+                }))
 }
 
 export const createTestUploadCommand = () => {

@@ -70,7 +70,13 @@ export const UploaderConfigMetadata = {
         description: 'Foresight Upload Process Track Progress',
         type: 'boolean',
         default: true,
-    }
+    },
+    [ConfigNames.command.general.tag]: {
+        key: 'tag',
+        flag: '-t, --tag <key>:<value>',
+        description: 'Foresight Upload Tag',
+        type: 'map',
+    },
 } as UploaderConfig;
 
 export type TestUploaderMetaData = ConfigType.BaseConfigMetaData<TestUploaderConfig | {}> ;

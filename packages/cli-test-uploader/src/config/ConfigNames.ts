@@ -20,6 +20,9 @@ export const ConfigNames = {
         trackProgress: 'FORESIGHT_UPLOAD_TRACK_PROGRESS' 
     },
     command: {
+        general: {
+            tag: 'FORESIGHT_UPLOADER_TAG'
+        },
         test: {
             framework: 'FORESIGHT_UPLOADER_TEST_FRAMEWORK',
             format: 'FORESIGHT_UPLOADER_TEST_FORMAT', 
@@ -91,6 +94,13 @@ export interface UploaderConfig extends ConfigType.BaseConfig {
      * ``default 30000 ms``
      */
     archiveProcessTimeout?: number;
+
+    /**
+     * Append additional tags.
+     * Must be formated like ``key:value``
+     * ``default null``
+     */
+    tag: string
 }
 
 export interface TestUploaderConfig extends UploaderConfig { 

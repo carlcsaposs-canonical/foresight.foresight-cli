@@ -13,12 +13,14 @@ import { MetadataProvider } from '@runforesight/foresight-cli-metadata-provider'
 import { TEST_FORMAT_TYPES } from '../../../../constants';
 
 const getAdditinalInfoForTest = () => {
+    const tags = ConfigProvider.get<{ [key: string]: any }>(ConfigNames.command.general.tag);
     return {
         apiKey: ConfigProvider.get<string>(ConfigNames.general.apiKey),
         projectId: ConfigProvider.get<string>(ConfigNames.general.projectId),
         framework: ConfigProvider.get<string>(ConfigNames.command.test.framework),
         format: TEST_FORMAT_TYPES[ConfigProvider.get<string>(ConfigNames.command.test.format)]
-          || TEST_FORMAT_TYPES[ConfigProvider.get<string>(ConfigNames.command.test.framework)]
+          || TEST_FORMAT_TYPES[ConfigProvider.get<string>(ConfigNames.command.test.framework)],
+        ...( tags && Object.keys(tags).length ? { userTags: tags }: undefined )
     }
 }
 

@@ -9,10 +9,12 @@ import { MetadataProvider } from '@runforesight/foresight-cli-metadata-provider'
 import { COVERAGE_FORMAT_TYPES } from '../../../../constants';
 
 const getAdditinalInfoForCoverage = () => {
+    const tags = ConfigProvider.get<{ [key: string]: any }>(ConfigNames.command.general.tag);
     return {
         apiKey: ConfigProvider.get<string>(ConfigNames.general.apiKey),
         projectId: ConfigProvider.get<string>(ConfigNames.general.projectId),
-        format: COVERAGE_FORMAT_TYPES[ConfigProvider.get<string>(ConfigNames.command.coverage.format)]
+        format: COVERAGE_FORMAT_TYPES[ConfigProvider.get<string>(ConfigNames.command.coverage.format)],
+        ...( tags && Object.keys(tags).length ? { userTags: tags }: undefined )
     }
 }
 

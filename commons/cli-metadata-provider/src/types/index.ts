@@ -21,5 +21,6 @@ export type Metadata = {
     runnerName?: string;
     gitRoot?: string;
     host?: string;
+    userTags?: { [key: string]: any },
     [propName: string]: any;
 }
