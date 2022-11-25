@@ -50,6 +50,12 @@ export const UploaderConfigMetadata = {
         type: 'number',
         default: 30000,
     },
+    [ConfigNames.archiver.forceStreamToEnd]: {
+        key: 'forceStreamToEnd',
+        flag: '',
+        description: '',
+        type: 'boolean',
+    },
     [ConfigNames.uploader.maxSize]: {
         key: 'uploaderMaxSize',
         flag: '-upms, --uploaderMaxSize <number>',

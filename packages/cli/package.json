@@ -13,7 +13,7 @@
     "test": "echo no test",
     "lint": "eslint src --ext .ts",
     "clean": "rimraf dist coverage tsconfig.tsbuildinfo",
-    "build": "esbuild src/index.ts --bundle --minify --target=node12 --platform=node --outfile=dist/index.js",
+    "build": "esbuild src/index.ts --bundle --minify --target=node14 --platform=node --outfile=dist/index.js",
     "build:tsc": "tsc"
   },
   "keywords": [

@@ -23,7 +23,8 @@ export class ArchiveGlobsModel {
     root?: string;
     maxDepth: number;
     filters?: ArchiveFilter[];
-    timeout: number;
+    timeout?: number;
+    forceStreamToEnd?: boolean;
 
     constructor(
         globs: string[],
@@ -33,6 +34,7 @@ export class ArchiveGlobsModel {
         maxDepth = 5,
         filters?: ArchiveFilter[],
         timeout = 60000,
+        forceStreamToEnd?: boolean,
     ) {
         this.globs = globs;
         this.destinationDir = destinationDir;
@@ -41,5 +43,6 @@ export class ArchiveGlobsModel {
         this.maxDepth = maxDepth;
         this.filters = filters;
         this.timeout = timeout;
+        this.forceStreamToEnd = forceStreamToEnd;
     }
 }

@@ -5,6 +5,7 @@ import {
     HttpUtil,
     GlobUtil,
     UtilType,
+    PathUtil,
 } from '@runforesight/foresight-cli-utils';
 import * as path from 'path';
 import { ConfigProvider } from '@runforesight/foresight-cli-config-provider';
@@ -52,6 +53,7 @@ const upload = async (uploadRequest: UploadRequest) => {
     const uploaderMaxSize = ConfigProvider.get<number>(ConfigNames.uploader.maxSize);
     const scanPathMaxDepth = ConfigProvider.get<number>(ConfigNames.archiver.scanPathMaxDepth);
     const archiveProcessTimeout = ConfigProvider.get<number>(ConfigNames.archiver.processTimeout);
+    const forceStreamToEnd = ConfigProvider.get<boolean>(ConfigNames.archiver.forceStreamToEnd);
     const uploadProcessTimeout = ConfigProvider.get<number>(ConfigNames.uploader.processTimeout);
     const uploadTrackProgress = ConfigProvider.get<boolean>(ConfigNames.uploader.trackProgress);
 
@@ -91,10 +93,11 @@ const upload = async (uploadRequest: UploadRequest) => {
                 content: JSON.stringify(metadata),
                 filaname: UPLOADER_METADATA_FILENAME
             }],
-            metadata.gitRoot,
+            PathUtil.normalize(metadata.gitRoot),
             scanPathMaxDepth,
             uploadRequest.filters,
-            archiveProcessTimeout
+            archiveProcessTimeout,
+            forceStreamToEnd,
         ))
         .catch((err: any) => {
             logger.debug(`<UploadAction> ${err.message}`)

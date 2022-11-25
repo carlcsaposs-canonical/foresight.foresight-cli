@@ -8,4 +8,5 @@ export * as GlobUtil from './utils/Glob';
 export * as StringUtil from './utils/String';
 export * as StreamUtil from './utils/Stream';
 export * as UrlUtil from './utils/Url';
+export * as OsUtil from './utils/Os';
 export * as UtilType from './types';
