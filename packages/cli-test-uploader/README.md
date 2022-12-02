@@ -34,7 +34,7 @@ npm install -g @runforesight/foresight-cli-test-uploader
 | -p, --projectId <string>                   | Optional          | FORESIGHT_PROJECT_ID                  | None
 | -l, --logLevel <string>                    | Optional          | FORESIGHT_LOG_LEVEL                   | info
 
-** FORESIGHT_UPLOADER_TEST_FRAMEWORK value should be one of the ("TESTNG", "JUNIT", "JEST", "PYTEST", "XUNIT2"). \
+** FORESIGHT_UPLOADER_TEST_FRAMEWORK value should be one of the ("TESTNG", "JUNIT", "JEST", "PYTEST", "XUNIT2", "CYPRESS"). \
 ** FORESIGHT_UPLOADER_TEST_FORMAT value should be one of the ("JUNIT", "TRX").
 
 * [`foresight-cli upload-test-coverage`] - Upload test coverage results

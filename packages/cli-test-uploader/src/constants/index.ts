@@ -24,7 +24,8 @@ export const TEST_FRAMEWORK_TYPES: KeyValueType = Object.freeze({
     JEST: 'JEST',
     PYTEST: 'PYTEST',
     XUNIT2: 'XUNIT2',
-    GOLANG: 'GOLANG'
+    GOLANG: 'GOLANG',
+    CYPRESS: 'CYPRESS'
 });
 
 export const TEST_FORMAT_TYPES: KeyValueType = Object.freeze({

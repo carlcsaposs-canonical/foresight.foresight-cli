@@ -29,7 +29,7 @@ npm install -g @runforesight/foresight-cli-test-uploader
 | -ms, --uploaderMaxSize <string>   | Optional          | FORESIGHT_FORESIGHT_SIZE_MAX    | 20 MB
 | -l, --logLevel <string>           | Optional          | FORESIGHT_FORESIGHT_LOG_LEVEL   | error
 
-* FORESIGHT_UPLOADER_FRAMEWORK value should be one of the ("TESTNG", "JUNIT", "JEST", "PYTHON", "TRX", "XUNIT2").
+* FORESIGHT_UPLOADER_FRAMEWORK value should be one of the ("TESTNG", "JUNIT", "JEST", "PYTHON", "TRX", "XUNIT2", "CYPRESS").
 
 Issues
 ======
