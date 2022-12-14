@@ -4,7 +4,7 @@ import { ENVIRONMENT_VARIABLE_NAMES } from '../../constants';
 import { ConfigProvider } from '@runforesight/foresight-cli-config-provider';
 import { logger } from '@runforesight/foresight-cli-logger';
 import * as GitHelper from '../git/helper';
-import * as GitEnvironmentInfo from '../git';
+import * as DefaultHelper from '../default/helper';
 
 export const ENVIRONMENT = 'GitLab';
 
@@ -65,22 +65,22 @@ export const init = async (): Promise<void> => {
             let commitMessage = process.env[ENVIRONMENT_VARIABLE_NAMES.CI_COMMIT_MESSAGE_ENV_VAR_NAME]
                 || process.env[ENVIRONMENT_VARIABLE_NAMES.CI_COMMIT_MESSAGE_ENV_VAR_NAME.toLowerCase()];
 
-            let gitRoot;
-            const gitEnvironmentInfo = GitEnvironmentInfo.getEnvironmentInfo();
-            if (gitEnvironmentInfo) {
+            let root;
+            const defaultEnvironmentInfo = await DefaultHelper.init();
+            if (defaultEnvironmentInfo) {
                 if (!branch) {
-                    branch = gitEnvironmentInfo.branch;
+                    branch = defaultEnvironmentInfo.branch;
                 }
 
                 if (!commitHash) {
-                    commitHash = gitEnvironmentInfo.commitHash;
+                    commitHash = defaultEnvironmentInfo.commitHash;
                 }
 
                 if (!commitMessage) {
-                    commitMessage = gitEnvironmentInfo.commitMessage;
+                    commitMessage = defaultEnvironmentInfo.commitMessage;
                 }
 
-                gitRoot = gitEnvironmentInfo.gitRoot;
+                root = defaultEnvironmentInfo.root;
             }
 
             environmentInfo = new EnvironmentInfo(
@@ -91,7 +91,7 @@ export const init = async (): Promise<void> => {
                 branch,
                 commitHash,
                 commitMessage,
-                gitRoot);
+                root);
 
             logger.debug('<GitlabEnvironmentInfoProvider> Initialized Gitlab environment');
         }

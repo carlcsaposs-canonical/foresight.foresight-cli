@@ -11,7 +11,7 @@ export class GitEnvironmentInfo extends EnvironmentInfo {
         branch: string,
         commitHash: string,
         commitMessage: string,
-        gitRoot?: string
+        gitRoot: string
     ) {   
         super(cliRunId, environment, repoURL, repoName, branch, commitHash, commitMessage, gitRoot)
     }

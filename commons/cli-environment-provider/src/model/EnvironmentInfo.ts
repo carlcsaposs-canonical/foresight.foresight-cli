@@ -7,7 +7,7 @@ export default class EnvironmentInfo {
     branch: string;
     commitHash: string;
     commitMessage: string;
-    gitRoot?: string;
+    root: string;
 
     constructor(
         cliRunId: string,
@@ -17,7 +17,7 @@ export default class EnvironmentInfo {
         branch: string,
         commitHash: string,
         commitMessage: string,
-        gitRoot?: string,
+        root: string,
     ) {
         this.cliRunId = cliRunId;
         this.environment = environment;
@@ -26,7 +26,7 @@ export default class EnvironmentInfo {
         this.branch = branch;
         this.commitHash = commitHash;
         this.commitMessage = commitMessage;
-        this.gitRoot = gitRoot;
+        this.root = root;
     }
 
     getRepoFullName(): string {

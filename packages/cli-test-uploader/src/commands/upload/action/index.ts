@@ -93,7 +93,7 @@ const upload = async (uploadRequest: UploadRequest) => {
                 content: JSON.stringify(metadata),
                 filaname: UPLOADER_METADATA_FILENAME
             }],
-            PathUtil.normalize(metadata.gitRoot),
+            PathUtil.normalize(metadata.root),
             scanPathMaxDepth,
             uploadRequest.filters,
             archiveProcessTimeout,

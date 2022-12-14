@@ -2,7 +2,7 @@
 import EnvironmentInfo from '../../model/EnvironmentInfo';
 import * as CliRunUtils from '../../utils/CliRunUtils';
 import * as GitHelper from '../git/helper';
-import * as GitEnvironmentInfo from '../git';
+import * as DefaultHelper from '../default/helper';
 import { ENVIRONMENT_VARIABLE_NAMES } from '../../constants';
 import { ConfigProvider } from '@runforesight/foresight-cli-config-provider';
 import { logger } from '@runforesight/foresight-cli-logger';
@@ -58,21 +58,21 @@ export const init = async (): Promise<void> => {
             || process.env[ENVIRONMENT_VARIABLE_NAMES.CIRCLE_SHA1_ENV_VAR_NAME.toLowerCase()];
 
             let commitMessage = '';
-            let gitRoot;
+            let root;
 
-            const gitEnvironmentInfo = GitEnvironmentInfo.getEnvironmentInfo();
-            if (gitEnvironmentInfo) {
-                commitMessage = gitEnvironmentInfo.commitMessage;
+            const defaultEnvironmentInfo = await DefaultHelper.init();
+            if (defaultEnvironmentInfo) {
+                commitMessage = defaultEnvironmentInfo.commitMessage;
 
                 if (!branch) {
-                    branch = gitEnvironmentInfo.branch;
+                    branch = defaultEnvironmentInfo.branch;
                 }
 
                 if (!commitHash) {
-                    commitHash = gitEnvironmentInfo.commitHash;
+                    commitHash = defaultEnvironmentInfo.commitHash;
                 }
 
-                gitRoot = gitEnvironmentInfo.gitRoot;
+                root = defaultEnvironmentInfo.root;
             }
 
             environmentInfo = new EnvironmentInfo(
@@ -83,7 +83,7 @@ export const init = async (): Promise<void> => {
                 branch,
                 commitHash,
                 commitMessage,
-                gitRoot);
+                root);
 
             logger.debug('<CircleCIEnvironmentInfoProvider> Initialized CircleCI environment');
         }

@@ -4,7 +4,7 @@ import { ENVIRONMENT_VARIABLE_NAMES } from '../../constants';
 import { ConfigProvider } from '@runforesight/foresight-cli-config-provider';
 import { logger } from '@runforesight/foresight-cli-logger';
 import * as GitHelper from '../git/helper';
-import * as GitEnvironmentInfo from '../git';
+import * as DefaultHelper from '../default/helper';
 
 export const ENVIRONMENT = 'Jenkins';
 
@@ -62,22 +62,22 @@ export const init = async (): Promise<void> => {
             let commitHash = process.env[ENVIRONMENT_VARIABLE_NAMES.GIT_COMMIT_ENV_VAR_NAME]
                 || process.env[ENVIRONMENT_VARIABLE_NAMES.GIT_COMMIT_ENV_VAR_NAME.toLowerCase()];
 
-            const gitEnvironmentInfo = GitEnvironmentInfo.getEnvironmentInfo();
+            const defaultEnvironmentInfo = await DefaultHelper.init();
 
             let commitMessage = '';
-            let gitRoot;
-            if (gitEnvironmentInfo) {
-                commitMessage = gitEnvironmentInfo.commitMessage;
+            let root;
+            if (defaultEnvironmentInfo) {
+                commitMessage = defaultEnvironmentInfo.commitMessage;
 
                 if (branch) {
-                    branch = gitEnvironmentInfo.branch;
+                    branch = defaultEnvironmentInfo.branch;
                 }
 
                 if (commitHash) {
-                    commitHash = gitEnvironmentInfo.commitHash;
+                    commitHash = defaultEnvironmentInfo.commitHash;
                 }
 
-                gitRoot = gitEnvironmentInfo.gitRoot;
+                root = defaultEnvironmentInfo.root;
             }
 
             environmentInfo = new EnvironmentInfo(
@@ -88,7 +88,7 @@ export const init = async (): Promise<void> => {
                 branch,
                 commitHash,
                 commitMessage,
-                gitRoot);
+                root);
 
             logger.debug('<JenkinsEnvironmentInfoProvider> Initialized Jenkins environment');
         }

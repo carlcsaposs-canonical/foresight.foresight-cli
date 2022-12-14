@@ -12,6 +12,7 @@ const MetadataSchema = Joi.object()
         commitHash: Joi.string().required().allow(''),
         commitMessage: Joi.string().required().allow(''),
         createdAt: Joi.number().required(),
+        root: Joi.string(),
         framework: Joi.string(),
         format: Joi.string(),
         projectId: Joi.string(),
@@ -20,7 +21,6 @@ const MetadataSchema = Joi.object()
         jobId: Joi.string(),
         jobName: Joi.string(),
         runnerName: Joi.string(),
-        gitRoot: Joi.string(),
         host: Joi.string(),
     })
 

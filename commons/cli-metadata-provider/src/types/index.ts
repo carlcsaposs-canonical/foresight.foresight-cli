@@ -9,6 +9,7 @@ export type Metadata = {
     commitHash: string;
     commitMessage: string;
     createdAt: number;
+    root: string;
     format?: string;
     framework?: string;
     projectId?: string;
@@ -19,7 +20,6 @@ export type Metadata = {
     jobId?: string;
     jobName?: string;
     runnerName?: string;
-    gitRoot?: string;
     host?: string;
     userTags?: { [key: string]: any },
     [propName: string]: any;

@@ -23,10 +23,10 @@ export default class GithubEnvironmentInfo extends EnvironmentInfo {
         runAttempt: string,
         workflowName: string,
         runnerName: string,
+        gitRoot: string,
         jobId?: string,
         jobName?: string,
-        pullRequestNumber?: number,
-        gitRoot?: string
+        pullRequestNumber?: number
     ) {
         super(cliRunId, environment, repoURL, repoName, branch, commitHash, commitMessage, gitRoot);
 

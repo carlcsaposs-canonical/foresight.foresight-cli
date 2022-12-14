@@ -1,4 +1,4 @@
-import * as GitEnvironmentInfoProvider from './git';
+import * as DefaultEnvironmentInfoProvider from './default';
 import * as GithubEnvironmentInfoProvider from './github';
 import * as BitbucketEnvironmentInfoProvider from './bitbucket';
 import * as JenkinsEnvironmentInfoProvider from './jenkins';
@@ -8,7 +8,7 @@ import * as TravisCIEnvironmentInfoProvider from './travisci';
 import { logger } from '@runforesight/foresight-cli-logger';
 
 export const environmentInfoProviders = {
-    [GitEnvironmentInfoProvider.ENVIRONMENT]: GitEnvironmentInfoProvider,
+    [DefaultEnvironmentInfoProvider.ENVIRONMENT]: DefaultEnvironmentInfoProvider,
     [GithubEnvironmentInfoProvider.ENVIRONMENT]: GithubEnvironmentInfoProvider,
     [BitbucketEnvironmentInfoProvider.ENVIRONMENT]: BitbucketEnvironmentInfoProvider,
     [JenkinsEnvironmentInfoProvider.ENVIRONMENT]: JenkinsEnvironmentInfoProvider,

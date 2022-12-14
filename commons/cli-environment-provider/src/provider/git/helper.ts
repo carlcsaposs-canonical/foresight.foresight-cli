@@ -64,11 +64,16 @@ export const init = async (): Promise<GitEnvironmentInfo> => {
 
     try {
         logger.debug('<GitHelper> Obtaining git environment information ...');
-        
-        const gitroot = await git.findRoot({
-            fs,
-            filepath: process.cwd(),
-        });
+        let gitroot;
+        try {
+            gitroot = await git.findRoot({
+                fs,
+                filepath: process.cwd(),
+            });
+        } catch (error) {
+            logger.error(`<GitHelper> Git environment couldn't find git file path!`);
+            logger.debug(`<GitHelper> Error message according to git file exception: ${error.message}`);
+        }
 
         if (!gitroot) {
             return;
@@ -112,7 +117,7 @@ export const init = async (): Promise<GitEnvironmentInfo> => {
 
         logger.debug('<GitHelper> Obtained git environment information');
     } catch (error) {
-        logger.error('<GitHelper> Git environment did not created.', error);
+        logger.error(`<GitHelper> Git environment did not created: ${error.message}`);
     }
 
     return gitEnvironmentInfo;

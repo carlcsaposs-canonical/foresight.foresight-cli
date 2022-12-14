@@ -1,7 +1,7 @@
 import GithubEnvironmentInfo from '../../model/GithubEnvironmentInfo';
 import EnvironmentInfo from '../../model/EnvironmentInfo';
 import * as CliRunUtils from '../../utils/CliRunUtils';
-import * as GitHelper from '../git/helper';
+import * as DefaultHelper from '../default/helper';
 import { ENVIRONMENT_VARIABLE_NAMES } from '../../constants';
 import { ConfigProvider } from '@runforesight/foresight-cli-config-provider';
 import { logger } from '@runforesight/foresight-cli-logger';
@@ -56,7 +56,7 @@ export const getEnvironmentInfo = (): EnvironmentInfo => {
 export const init = async (): Promise<void> => {
     try {
         if (environmentInfo == null) {
-            const gitEnvironmentInfo = await GitHelper.init();
+            const defaultEnvironmentInfo = await DefaultHelper.init();
             const githubRepo = process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_REPOSITORY_ENV_VAR_NAME]
                 || process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_REPOSITORY_ENV_VAR_NAME.toLowerCase()];
             if (!githubRepo) {
@@ -107,17 +107,17 @@ export const init = async (): Promise<void> => {
             let commitMessage = '';
             let gitRoot;
 
-            if (gitEnvironmentInfo) {
+            if (defaultEnvironmentInfo) {
                 if (!branch) {
-                    branch = gitEnvironmentInfo.branch;
+                    branch = defaultEnvironmentInfo.branch;
                 }
     
                 if (!commitHash) {
-                    commitHash = gitEnvironmentInfo.commitHash;
+                    commitHash = defaultEnvironmentInfo.commitHash;
                 }
 
-                commitMessage = gitEnvironmentInfo.commitMessage;
-                gitRoot = gitEnvironmentInfo.gitRoot;
+                commitMessage = defaultEnvironmentInfo.commitMessage;
+                gitRoot = defaultEnvironmentInfo.root;
             }
 
             environmentInfo = new GithubEnvironmentInfo(
@@ -132,10 +132,10 @@ export const init = async (): Promise<void> => {
                 githubRunAttempt,
                 workflowName,
                 githubRunnerName,
+                gitRoot,
                 githubJobId,
                 githubJobName,
-                pullRequestNumber,
-                gitRoot);
+                pullRequestNumber);
 
             logger.debug('<GithubEnvironmentInfoProvider> Initialized Github environment');
         }
