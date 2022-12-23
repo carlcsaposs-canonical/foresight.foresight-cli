@@ -9,7 +9,7 @@ const createMetadata = (additinalInfo: { [propName: string]: any }): Metadata =>
         ...additinalInfo,
         ...environmentInfo,
         repoFullName: environmentInfo.getRepoFullName(),
-        createdAt: new Date().getTime(),
+        createdAt: Math.floor(Date.now() / 1000) * 1000,
         host: os.hostname()
     } as Metadata;
 };
