@@ -41,7 +41,7 @@ const normalizeRepoName = (repoName: string) => {
     if (repoName == null) {
         return null;
     }
-    const idx = repoName.indexOf('.');
+    const idx = repoName.lastIndexOf('.');
     if (idx >= 0) {
         repoName = repoName.substring(0, idx);
     }
