@@ -1,6 +1,6 @@
 {
   "name": "@runforesight/foresight-cli-progress-bar",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "private": "true",
   "description": "",
   "main": "dist/index.js",
