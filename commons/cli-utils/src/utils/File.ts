@@ -15,7 +15,7 @@ export const createFolderUnderTmp = async (prefix: string): Promise<string | und
     try {
         return fs.promises.mkdtemp(path.join(os.tmpdir(), prefix));
     } catch (error) {
-        logger.debug(`<FileUtil> ${prefix} did not created`);
+        logger.debug(`<FileUtil> ${prefix} folder could not be created in the temp folder: ${error}`);
         return null;
     }
 };
@@ -25,7 +25,7 @@ export const removeFolder = (tmpDir: string): boolean => {
         fs.rmdirSync(tmpDir, { recursive: true });
         return true;
     } catch (error) {
-        logger.debug(`<FileUtil> ${tmpDir} did not removed`);
+        logger.debug(`<FileUtil> ${tmpDir} folder could not be removed: ${error}`);
         return false;
     }
 };
@@ -34,7 +34,7 @@ export const isExist = (dir: string): boolean => {
     try {
         return fs.existsSync(dir);
     } catch (error) {
-        logger.debug(`<FileUtil> An error occured while checking dir: ${dir}`);
+        logger.debug(`<FileUtil> An error occured while checking directory '${dir}': ${error}`);
         return false;
     }
 };
@@ -43,7 +43,7 @@ export const getFile = async (fileDir: string): Promise<Buffer | undefined> => {
     try {
         return fs.promises.readFile(fileDir);
     } catch (error) {
-        logger.debug(`<FileUtil> An error occured reading file: ${fileDir}`);
+        logger.debug(`<FileUtil> An error occured while reading file '${fileDir}': ${error}`);
         return null;
     }
 };
@@ -52,7 +52,7 @@ export const createReadStream = (fileDir: string): fs.ReadStream => {
     try {
         return fs.createReadStream(fileDir);
     } catch (error) {
-        logger.debug(`<FileUtil> An error occured creating read stream for file: ${fileDir}`);
+        logger.debug(`<FileUtil> An error occured while creating read stream for file '${fileDir}': ${error}`);
         return null;
     }
 };
@@ -68,11 +68,11 @@ export const getFileSize = async (fileDir: string): Promise<number | null> => {
            const { size } = await getFileStat(fileDir);
            return size
        } else {
-           logger.debug(`<FileUtil> Couldn't find file for specified fileDir: ${fileDir}`);
+           logger.debug(`<FileUtil> Couldn't find file '${fileDir}'`);
            return 0
        }
     } catch (error) {
-        logger.debug(`<FileUtil> An error occured reading file size: ${fileDir}`);
+        logger.debug(`<FileUtil> An error occured while reading size of the file '${fileDir}': ${error}`);
         return null;
     }
 }
@@ -91,7 +91,7 @@ export const getFileStat = (fileDir: string): fs.Stats | undefined => {
     try {
         return fs.statSync(fileDir);
     } catch (error) {
-        logger.debug(`<FileUtil> An error occured reading file stat: ${fileDir}`);
+        logger.debug(`<FileUtil> An error occured while reading stat of the file '${fileDir}': ${error}`);
         return null;
     }
 }
@@ -100,7 +100,7 @@ export const readDir = async (dir: string): Promise<string[]> => {
     try {
         return fs.promises.readdir(dir);
     } catch (error) {
-        logger.debug(`<FileUtil> An error occured while reading dir: ${dir}`);
+        logger.debug(`<FileUtil> An error occured while reading directory '${dir}': ${error}`);
         return [];
     }
 }
