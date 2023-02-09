@@ -12,7 +12,6 @@ export const ConfigNames = {
     archiver: {
         scanPathMaxDepth: 'FORESIGHT_SCAN_PATH_MAX_DEPTH',
         processTimeout: 'FORESIGHT_ARCHIVE_PROCESS_TIMEOUT',
-        forceStreamToEnd: 'FORESIGHT_ARCHIVE_FORCE_STREAM_TO_END',
     },
     uploader: {
         dir: 'FORESIGHT_UPLOADER_REPORT_DIR',

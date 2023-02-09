@@ -53,7 +53,6 @@ const upload = async (uploadRequest: UploadRequest) => {
     const uploaderMaxSize = ConfigProvider.get<number>(ConfigNames.uploader.maxSize);
     const scanPathMaxDepth = ConfigProvider.get<number>(ConfigNames.archiver.scanPathMaxDepth);
     const archiveProcessTimeout = ConfigProvider.get<number>(ConfigNames.archiver.processTimeout);
-    const forceStreamToEnd = ConfigProvider.get<boolean>(ConfigNames.archiver.forceStreamToEnd);
     const uploadProcessTimeout = ConfigProvider.get<number>(ConfigNames.uploader.processTimeout);
     const uploadTrackProgress = ConfigProvider.get<boolean>(ConfigNames.uploader.trackProgress);
 
@@ -97,7 +96,6 @@ const upload = async (uploadRequest: UploadRequest) => {
             scanPathMaxDepth,
             uploadRequest.filters,
             archiveProcessTimeout,
-            forceStreamToEnd,
         ))
         .catch((err: any) => {
             logger.debug(`<UploadAction> ${err.message}`)

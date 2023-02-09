@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import { logger } from '@runforesight/foresight-cli-logger';
 import * as GlobUtil from './Glob';
-import * as OsUtil from './Os';
 import { ArchiveGlobsModel } from '../types';
 
 import * as archiver from 'archiver';
@@ -82,15 +81,7 @@ export const zipGlobs = async (archiveGlobsModel: ArchiveGlobsModel) : Promise<s
             } 
 
             logger.debug('<ArchiveUtil> Archive will be finalized');
-            archive.finalize()
-            .then(() => {
-                if (archiveGlobsModel.forceStreamToEnd 
-                    || !OsUtil.isWindows()) {
-                    logger.debug('<ArchiveUtil> Stream force to end');
-                    archive.emit('end', '');
-                } 
-            })
-            .catch(() => { /** no need any logic already handled by .on('error') handler */ });
+            archive.finalize();
         });
       
         stream.on('error', function (err) {

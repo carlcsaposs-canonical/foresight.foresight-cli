@@ -21,8 +21,15 @@ export const createFolderUnderTmp = async (prefix: string): Promise<string | und
 };
 
 export const removeFolder = (tmpDir: string): boolean => {
-    try {   
-        fs.rmdirSync(tmpDir, { recursive: true });
+    try {
+        if (fs.rmSync) {
+            // Added in Node version `v14.14.0`.
+            // Using `rmSync` to prevent deprecation warning for the usage of `rmdirSync`.
+            fs.rmSync(tmpDir, {recursive: true});
+        } else {
+            // To support versions earlier than Node `v14.14.0`
+            fs.rmdirSync(tmpDir, {recursive: true});
+        }
         return true;
     } catch (error) {
         logger.debug(`<FileUtil> ${tmpDir} folder could not be removed: ${error}`);
