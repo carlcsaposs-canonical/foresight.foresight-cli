@@ -1,0 +1,44 @@
+name: snapshot
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_scale:
+        type: choice
+        description: Version Scale
+        options:
+        - prepatch
+        - preminor
+        - premajor
+        default: 'prepatch'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with: 
+          token: ${{ secrets.FORESIGHT_GITHUB_TOKEN }}
+      - name: Configure Git User
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: "14.x"
+          registry-url: https://registry.npmjs.org
+
+      - name: NPM Install
+        run: npm install
+
+      - name: NPM Build
+        run: npm run clean-build:all
+
+      - name: NPM Publish
+        run: npm run snapshot
+        env:
+          SNAPSHOT_SCALE: ${{ github.event.inputs.version_scale }}
+          NODE_AUTH_TOKEN: ${{ secrets.FORESIGHT_NPM_PUBLISH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.FORESIGHT_GITHUB_TOKEN }}

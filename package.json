@@ -15,6 +15,7 @@
     "clean-build:all": "npm-run-all -p clean:all -s build:all",
     "prerelease": "lerna version ${RELEASE_SCALE} --no-push --exact --yes",
     "release": "lerna publish from-package --ignore-scripts --no-verify-access --yes",
+    "snapshot": "lerna publish --canary ${SNAPSHOT_SCALE} --preid snapshot --dist-tag snapshot from-package --ignore-scripts --no-verify-access --yes",
     "postrelease": "git push --follow-tags origin"
   },
   "author": "Foresight",
