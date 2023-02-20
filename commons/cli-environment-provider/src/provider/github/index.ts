@@ -97,6 +97,8 @@ export const init = async (): Promise<void> => {
                 || process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_RUN_ATTEMPT_ENV_VAR_NAME.toLowerCase()];
             const workflowName = process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_WORKFLOW_NAME_ENV_VAR_NAME]
                 || process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_WORKFLOW_NAME_ENV_VAR_NAME.toLowerCase()];
+            const workflowRef = process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_WORKFLOW_REF_ENV_VAR_NAME]
+                || process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_WORKFLOW_REF_ENV_VAR_NAME.toLowerCase()];
             const githubRunnerName = process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_RUNNER_NAME_ENV_VAR_NAME]
                 || process.env[ENVIRONMENT_VARIABLE_NAMES.GITHUB_RUNNER_NAME_ENV_VAR_NAME.toLowerCase()];
             const githubJobId = process.env[ENVIRONMENT_VARIABLE_NAMES.FORESIGHT_WORKFLOW_JOB_ID]
@@ -130,6 +132,7 @@ export const init = async (): Promise<void> => {
                 commitMessage,
                 githubRunId,
                 githubRunAttempt,
+                workflowRef,
                 workflowName,
                 githubRunnerName,
                 gitRoot,

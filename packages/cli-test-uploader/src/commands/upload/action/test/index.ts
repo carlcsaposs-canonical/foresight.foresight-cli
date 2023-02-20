@@ -34,8 +34,10 @@ export const preAction = async (command: any) => {
 };
 
 export const action = async () => {
+    let metadata = MetadataProvider(getAdditinalInfoForTest());
     return Upload({
-        type: UPLOADER_SIGNED_URL_TYPES.TEST, 
-        metadata: MetadataProvider(getAdditinalInfoForTest())
+        type: UPLOADER_SIGNED_URL_TYPES.TEST,
+        filepath: `${metadata.apiKey}`,
+        metadata: metadata
     });
 }

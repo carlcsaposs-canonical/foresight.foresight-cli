@@ -10,6 +10,7 @@ export interface KeyValueType {
 export const UPLOADER_SIGNED_URL_TYPES: KeyValueType = Object.freeze({
     TEST: 'TEST',
     COVERAGE: 'COVERAGE',
+    COVERAGEV2: 'COVERAGEV2',
 });
 
 export const ALLOWED_COMMANDER_EXIT_CODES = [   

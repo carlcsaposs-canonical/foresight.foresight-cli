@@ -5,6 +5,7 @@ export default class GithubEnvironmentInfo extends EnvironmentInfo {
 
     runId: string;
     runAttempt: string;
+    workflowRef: string;
     workflowName: string;
     runnerName: string;
     jobId?: string;
@@ -21,6 +22,7 @@ export default class GithubEnvironmentInfo extends EnvironmentInfo {
         commitMessage: string,
         runId: string,
         runAttempt: string,
+        workflowRef: string,
         workflowName: string,
         runnerName: string,
         gitRoot: string,
@@ -32,6 +34,7 @@ export default class GithubEnvironmentInfo extends EnvironmentInfo {
 
         this.runId = runId;
         this.runAttempt = runAttempt;
+        this.workflowRef = workflowRef;
         this.workflowName = workflowName;
         this.jobId = jobId;
         this.jobName = jobName;

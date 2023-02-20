@@ -13,6 +13,7 @@ export type Metadata = {
     format?: string;
     framework?: string;
     projectId?: string;
+    workflowRef?: string;
     workflowName?: string;
     pullRequestNumber?: number;
     runId?: string;

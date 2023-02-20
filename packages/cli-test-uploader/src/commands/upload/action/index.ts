@@ -21,6 +21,7 @@ import { logger } from '@runforesight/foresight-cli-logger';
 
 export interface UploadRequest {
     type: string,
+    filepath: string,
     metadata: MetadataType.Metadata,
     filters?: UtilType.ArchiveFilter[]
 }
@@ -41,6 +42,7 @@ const upload = async (uploadRequest: UploadRequest) => {
     }
 
     const metadata = uploadRequest.metadata;
+    const filepath = uploadRequest.filepath;
     const apiKey = metadata.apiKey;
     const filename = FileUtil.generateRandomFileName('.zip');
     const signerUrl = ConfigProvider.get<string>(ConfigNames.signer.url);
@@ -59,7 +61,7 @@ const upload = async (uploadRequest: UploadRequest) => {
     /**
      * '/' for foldering on s3
      */
-    const fileKey = `${apiKey}/${filename}`;
+    const fileKey = `${filepath}/${filename}`;
     let destinationDir;
     try {
         /**
@@ -125,6 +127,7 @@ const upload = async (uploadRequest: UploadRequest) => {
          * Try to get upload signed url according to mine type
          */
         const mimeType = FileUtil.getMimeType(archivedFileDir);
+
         const presignedS3Url = await HttpUtil.request({
             url: UrlUtil.getJoinedUrl(signerUrl, UPLOADER_SIGNER_PATH),
             method: 'POST',

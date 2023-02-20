@@ -31,16 +31,8 @@
   ],
   "author": "Foresight",
   "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/runforesight/foresight-cli.git"
-  },
   "bugs": {
     "url": "https://github.com/runforesight/foresight-cli/issues"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
   },
   "homepage": "https://github.com/runforesight/foresight-cli#README.md",
   "devDependencies": {
